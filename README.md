@@ -1,2 +1,0 @@
-# lodigital
-lodigital web site
