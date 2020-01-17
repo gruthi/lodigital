@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 import Login from "./Login";
+import Pic from "./Pic";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
-  url = "/api";
+  url = "/login";
   state = { data: "" };
 
   clickHandler = () => {
@@ -24,6 +25,7 @@ class App extends Component {
     return (
       <div className="App">
          <Login/>
+         {/* <Pic/> */}
          {/* <button onClick={this.clickHandler}>Access express server !!!!!</button> */}
         {/* <p>Got : {this.state.data}</p> */}
       </div>
