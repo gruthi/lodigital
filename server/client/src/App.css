@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background-color: darkgray;
+  /* background-color: darkgray; */
+  /* direction: rtl; */
 }
 
 .App-logo {

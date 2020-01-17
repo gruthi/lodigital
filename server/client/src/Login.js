@@ -29,7 +29,9 @@ class Login extends Component {
           width: "30%",
           left: "30%",
           position: "absolute",
-          padding: "5%"
+          backgroundColor: "darkgray",
+          padding: "5%",
+          textAlign: "center"
         }}
         // class="bg-secondary"
       >
