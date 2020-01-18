@@ -4,23 +4,18 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-class Login extends Component {
-  loginUrl = "/login";
-  // loginUrl = "/users/login";
-  state = { email: "", password: "" ,redirectToStudent:false,isError:false,redirectToRegister:false,redirectToResetPassword:false};
- register=()=>{
-   this.setState({redirectToRegister:true})
- }
- forgotPassword=()=>{
-  this.setState({redirectToResetPassword:true})
- }
-  clickLogin = e => {
+class Register extends Component {
+ //  registerUrl = "/register";
+       registerUrl = "/users/register";
+  state = { email: "", password: "" ,redirectToStudent:false,errorNum:0};
+
+  clickRegister = e => {
     e.preventDefault();
     console.log("clicked");
     console.log(this.state.email,this.state.password);
-    this.setState({isError:false});
+    this.setState({errorNum:0});
     axios
-      .post(this.loginUrl, {
+      .post(this.registerUrl, {
         params: {
           email: this.state.email,
           password: this.state.password
@@ -30,31 +25,40 @@ class Login extends Component {
       .then(res => {
         console.log("then axios");
         console.log(res.data.res);
-        if (res.status === 200)
+        if (res.status === 201)
         {
-          this.setState({redirectToStudent:true})
-          this.props.setUser(res.data);
+          this.setState({redirectToStudent:true});
+          this.props.setUser({email:this.state.email,password:this.state.password})
         }else{
-          this.setState({isError:true});
-          console.log('cna not login')
+          this.setState({errorNum:res.status});
+          console.log('cna not register')
         }
         // this.setState({ data: res.data.res });
       })
-      .catch(err => { this.setState({isError:true});
+      .catch(err => { this.setState({errorNum:600});
       console.log(err)});
   };
+  getErrorText=()=>{
+    let txtError='';
+    switch(this.state.errorNum) {
+       
+        case 400:
+            txtError='User exist';
+          break;
+        case 600,500:
+            txtError='Error';
+          break;
+        default:
+            txtError='Error';
+      }
+      return txtError;
+  }
 
   render() {
     const disabled=!this.state.email || !this.state.password;
 
     if (this.state.redirectToStudent){
       return <Redirect to='/'/>
-    }
-    if (this.state.redirectToRegister){
-      return <Redirect to='/register'/>
-    }
-    if (this.state.redirectToResetPassword){
-      return <Redirect to='/resetPassword'/>
     }
     return (
       <div
@@ -68,40 +72,30 @@ class Login extends Component {
           textAlign: "center"
         }}
       >
-        {/* <button onClick={this.clickLogin}>Access express server !!!!!</button> */}
-        {/* <p>Got : {this.state.data}</p> */}
-        <Form onSubmit={this.clickLogin}>
+        
+        <Form onSubmit={this.clickRegister}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
-              onChange={e => this.setState({ email: e.target.value })}
+              onChange={e => this.setState({ email: e.target.value,errorNum:0 })}
             />
-            {/* {
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            } */}
+           
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            {/* <Form.Text className="text-muted">Forgot Password?</Form.Text> */}
+           
             <Form.Control
               type="password"
               placeholder="Password"
-              onChange={e => this.setState({ password: e.target.value })}
+              onChange={e => this.setState({ password: e.target.value,errorNum:0 })}
             />
           </Form.Group>
-          {/* { <Form.Group controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group> } */}
-
-          
-          {this.state.isError?
+          {this.state.errorNum>0?
           <Form.Text style={{color:'red'}}>
-            Login Error
+            {this.getErrorText()}
           </Form.Text>:''}
           
           
@@ -109,17 +103,11 @@ class Login extends Component {
             Submit
           </Button>
         </Form>
-        <Form.Text className="text-muted" >
-            <button variant="outline-secondary" onClick={this.forgotPassword}>Forgot Password?</button>
-          </Form.Text>
-        <Form.Text className="text-muted" >
-            Don't have an Account? <button variant="outline-secondary" onClick={this.register}> Register Now!</button>
-          </Form.Text>
       </div>
     );
   }
 }
-export default Login;
+export default Register;
 
 //     <span className="label label-default">Email address</span>
 //    <div><input type="text" placeholder="Your mail"/></div>

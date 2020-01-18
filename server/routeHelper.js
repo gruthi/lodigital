@@ -5,33 +5,36 @@ const usersColl = "users";
 
 
 function login(req, res) {
-  // console.log(req.query.userName);
   console.log('--0--');
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url, function(err, mongoClient) {
     if (err) {
       console.log('--1--');
       return res.sendStatus(500);
     }
-    const dbo = db.db(myDb);
+    const dbo = mongoClient.db(myDb);
     //req.body =={ email: req.body.email,password: req.body.password }
     dbo.collection(usersColl).findOne(req.body,
         function(err, userFound) {
+         //  dbo.close();
+         console.log('--in coonetc--');
           if (err) {
+            // dbo.close();
             console.log('--2--');
             return res.sendStatus(500);
           }
           if (!userFound) {
+            // dbo.close();
             console.log('--3--');
             return res.sendStatus(404);
           }
-          return res.sendStatus(200);
+          // dbo.close();
+          return res.status(200).send(userFound);
          
   });
 });
 }
 function register(req, res) {
-  // console.log(req.query.userName);
-  console.log('--0--');
+   console.log('--0--');
   MongoClient.connect(url, function(err, db) {
     if (err) {
       console.log('--1--');
@@ -60,8 +63,7 @@ function register(req, res) {
 });
 }
 function handleGet(req, res) {
-  console.log(req.query.userName);
-
+ 
   MongoClient.connect(url, function(err, db) {
     if (err) {
       return res.sendStatus(500);
