@@ -13,7 +13,7 @@ class NavInformation extends Component {
     
       return (
         <div className="NavInformation">
-          <div className="top" expand="md"><div></div></div>
+          <div className="top" expand="md"><div></div><div></div><div></div></div>
           <Navbar  expand="md">
             {/* <Navbar.Brand href="#home">בית</Navbar.Brand> */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -21,17 +21,19 @@ class NavInformation extends Component {
               <Nav className="mr-auto">
                 <Nav.Link href="/"><i className="fas fa-home"></i>&nbsp;&nbsp;בית</Nav.Link>
                 <Nav.Link href="/login">אתר הלימודים</Nav.Link>
-                <Nav.Link href="/aboutTheProject">אודות המיזם</Nav.Link>
-                <NavDropdown title="אודות הקורס " id="basic-nav-dropdown" href="/aboutTheCourse">
-                  <NavDropdown.Item href="/goals/3.1">מטרות הקורס</NavDropdown.Item>
-                  <NavDropdown.Item href="/audience/3.2">למי מיועד הקורס</NavDropdown.Item>
-                  <NavDropdown.Item href="/technologiesAreTaught/3.3">טכנולוגיות הנלמדות בקורס</NavDropdown.Item>
-                  <NavDropdown.Item href="/times&CourseFormat/3.4">זמנים ומתכונת הקורס</NavDropdown.Item>
-                  <NavDropdown.Item href="/Projects/3.5">פרויקטים ופרויוקטונים</NavDropdown.Item>
-                  <NavDropdown.Item href="/Admission/3.6">תנאי קבלה</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="/syllabus/3.7">סילבוס</NavDropdown.Item>
-                </NavDropdown>
+                <Nav.Link href="/aboutTheVenture">אודות המיזם</Nav.Link>
+                {/* <Nav.Link href="/aboutTheCourse"> */}
+                  <NavDropdown title="אודות הקורס " id="basic-nav-dropdown" >
+                    <NavDropdown.Item href="/goals">מטרות הקורס</NavDropdown.Item>
+                    <NavDropdown.Item href="/audience">למי מיועד הקורס</NavDropdown.Item>
+                    <NavDropdown.Item href="/technologiesAreTaught">טכנולוגיות הנלמדות בקורס</NavDropdown.Item>
+                    <NavDropdown.Item href="/courseFormat">זמנים ומתכונת הקורס</NavDropdown.Item>
+                    <NavDropdown.Item href="/projects">פרויקטים ופרויוקטונים</NavDropdown.Item>
+                    <NavDropdown.Item href="/admission">תנאי קבלה</NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item href="/syllabus">סילבוס</NavDropdown.Item>
+                  </NavDropdown>
+                {/* </Nav.Link> */}
                 <Nav.Link href="/syllabus">סילבוס</Nav.Link>
                 <Nav.Link href="/aboutFullStack">מה זה full stack ?</Nav.Link>
                 <Nav.Link href="/graduates">בוגרים</Nav.Link>

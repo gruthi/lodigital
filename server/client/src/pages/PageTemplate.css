@@ -2,18 +2,21 @@
     width: 100%;
     height: calc(100vh - 7.7rem);
     background-color: black;
-    background-image: url(../images/background-information-page.jpg);
-    background-image: url(../images/Capture2.JPG);
-    
+    /* background-image: url(../images/background-information-page.jpg);
+    background-image: url(../images/Capture2.JPG); */
+    background-image: url(../images/Capture8.JPG);
+    /* background-position-x: -100%; */
     /* background-size:  100vw; */
     background-size: cover; 
-    margin-top: -3.1rem;
+    /* background-position: 0px -50vh; */
+
+    margin-top: -3.6rem;
     padding: 4.2rem 10% 2rem 40%;
     text-align: justify;
     direction: rtl;
     overflow-y: scroll;
 }
-h1,h2{
+h1{
     color: rgb(44, 77, 224);
     color: rgb(44, 77, 224);
     color: #8d8741;
@@ -30,6 +33,14 @@ h1,h2{
     color: #5C88C5;
     color: #20a58f;
     /* color: #D08231; */
+    color: #170bc0;
+    color:#c0990b;
+    color:#0bc020;
+    color:#75ad21;
+    color: #509E67;
+    text-shadow:2px 2px 5px rgb(15, 74, 88);
+    text-shadow:2px 2px 5px rgb(1, 23, 27);
+    /* ,  #197989,  #1f8ea1,  #1f8ea1, #509E67); */
     font-weight: bold;
 }
 
@@ -37,18 +48,39 @@ h1{
     margin-right: -3rem;
     font-size: 3rem;
     /* text-shadow:3px 3px 6px #D08231 ; */
-    text-shadow:2px 2px 3px rgb(255, 94, 0);
+    /* text-shadow:2px 2px 3px rgb(255, 94, 0); */
     /* text-shadow:5px 5px 10px rgb(44, 77, 224); */
 }
 h2{
     font-size: 2rem;
-    text-shadow:2px 2px 5px black;
+    /* text-shadow:2px 2px 5px black; */
+    /* color:#c00bb4; */
+    /* color:#ad2175; */
+      font-size: 72px;
+      background: -webkit-linear-gradient(green, red);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; */
+      /* -webkit-text-fill-color: rgb(47, 171, 202); */
+      /* -webkit-text-fill-color: hsl(hue, saturation, lightness); */
+   position: relative;
+   z-index: 1000;
 }
+/* h2::after{
+  content:"h2";
+  text-shadow:2px 2px 5px black; 
+  position: absolute;
+  top:0;
+  right:0;
+  z-index: -1;
+} */
 p{
     font-size: 1.25rem;
     line-height: 2.4rem;
     text-indent:2rem;
-    color: rgb(255, 252, 211);
+    /* color: rgb(255, 252, 211); */
 }
 
 ::-webkit-scrollbar {
@@ -67,7 +99,7 @@ p{
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: red; 
+    background: #509E67; 
     border-radius: 10px;
   }
   
