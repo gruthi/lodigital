@@ -3,6 +3,7 @@ const url = "mongodb://localhost:27017/";
 const myDb = "lodigitalDB";
 const usersColl = "users";
 
+   
 
 function login(req, res) {
   console.log('--0--');
@@ -40,6 +41,7 @@ function register(req, res) {
       console.log('--1--');
       return res.sendStatus(500);
     }
+          
     const dbo = db.db(myDb);
     dbo.collection(usersColl).findOne({ email: req.body.email },
         function(err, userFound) {
@@ -51,6 +53,9 @@ function register(req, res) {
             console.log('--3--');
             return res.sendStatus(400);
           }
+          
+          //const myReq= {req.body.email,hashedPassword};
+          
           dbo.collection(usersColl).insertOne(req.body, function(err, result) {
             if (err) {
               console.log(err.message);
