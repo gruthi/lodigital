@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import axios from "axios";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavInformation from "./NavInformation.js";
 import Home from "./pages/Home.js";
@@ -21,20 +20,6 @@ import Graduates from "./pages/Graduates.js";
 import ContactUs from "./pages/ContactUs.js";
             
 class App extends Component {
-  url = "/login";
-  state = { data: "" };
-
-  clickHandler = () => {
-    console.log("clicked");
-    axios
-      .get(this.url)
-      .then(res => {
-        console.log(res.data.res);
-        this.setState({ data: res.data.res });
-      })
-      .catch(err => console.log(err));
-     };
-
   render() {
     return (
       <div className="App">
