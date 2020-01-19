@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavInformation from "./NavInformation.js";
 import Home from "./pages/Home.js";
 import Login from "./Login";
+import Register from "./Register";
 import AboutTheVenture from "./pages/AboutTheVenture.js";
 import AboutTheCourse from "./pages/AboutTheCourse.js";
 import Goals from "./pages/Goals.js";
@@ -20,17 +20,20 @@ import Graduates from "./pages/Graduates.js";
 import ContactUs from "./pages/ContactUs.js";
             
 class App extends Component {
+  state = { user: null };
+  setUser = user => {
+    this.setState({user: user})
+  };
   render() {
     return (
       <div className="App">
-        {/* <Login/> */}
-        {/* <button onClick={this.clickHandler}>Access express server !!!!!</button> */}
-        {/* <p>Got : {this.state.data}</p> */}
-        <NavInformation/>
+          <NavInformation/>
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/login" component={Login} /> */}
+            <Route exact path="/login" render={()=><Login setUser={this.setUser}/>} />
+            <Route exact path="/register" render={()=><Register setUser={this.setUser}/>} />
             <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
             <Route exact path="/aboutTheCourse" component={AboutTheCourse} />
             <Route exact path="/goals" component={Goals} />
