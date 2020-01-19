@@ -4,54 +4,59 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-class Login extends Component {
-  //loginUrl = "/login";
-  loginUrl = "/users/login";
-  state = {
-    email: "",
-    password: "",
-    redirectToStudent: false,
-    isError: false,
-    redirectToRegister: false,
-    redirectToResetPassword: false
-  };
+class Register extends Component {
+  //  registerUrl = "/register";
+  registerUrl = "/users/register";
+  state = { email: "", password: "", redirectToStudent: false, errorNum: 0 };
   hashCode =(s)=>{
     return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
   }
-  register = () => {
-    this.setState({ redirectToRegister: true });
-  };
-  forgotPassword = () => {
-    this.setState({ redirectToResetPassword: true });
-  };
-  clickLogin = e => {
+  clickRegister = e => {
     e.preventDefault();
     console.log("clicked");
-    
-    console.log('hashed:'+ this.hashCode(this.state.password));
     console.log(this.state.email, this.state.password);
-    this.setState({ isError: false });
+    this.setState({ errorNum: 0 });
     axios
-      .post(this.loginUrl, {
-        email: this.state.email,
-        password: this.hashCode(this.state.password)//this.state.password
+      .post(this.registerUrl, {
+        
+          email: this.state.email,
+          password:this.hashCode(this.state.password)
+        
       })
       .then(res => {
         console.log("then axios");
         console.log(res.data.res);
-        if (res.status === 200) {
+        if (res.status === 201) {
           this.setState({ redirectToStudent: true });
-          this.props.setUser(res.data);
+          this.props.setUser({
+            email: this.state.email,
+            password: this.state.password
+          });
         } else {
-          this.setState({ isError: true });
-          console.log("cna not login");
+          this.setState({ errorNum: res.status });
+          console.log("cna not register");
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        this.setState({ isError: true });
+        this.setState({ errorNum: 600 });
         console.log(err);
       });
+  };
+  getErrorText = () => {
+    let txtError = "";
+    switch (this.state.errorNum) {
+      case 400:
+        txtError = "User exist";
+        break;
+      case 600:
+      case 500:
+        txtError = "Error";
+        break;
+      default:
+        txtError = "Error";
+    }
+    return txtError;
   };
 
   render() {
@@ -60,13 +65,6 @@ class Login extends Component {
     if (this.state.redirectToStudent) {
       return <Redirect to="/" />;
     }
-    if (this.state.redirectToRegister) {
-      return <Redirect to="/register" />;
-    }
-    if (this.state.redirectToResetPassword) {
-      return <Redirect to="/resetPassword" />;
-    }
-
     return (
       <div
         className="jumbotron"
@@ -79,13 +77,15 @@ class Login extends Component {
           textAlign: "center"
         }}
       >
-        <Form onSubmit={this.clickLogin}>
+        <Form onSubmit={this.clickRegister}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
-              onChange={e => this.setState({ email: e.target.value })}
+              onChange={e =>
+                this.setState({ email: e.target.value, errorNum: 0 })
+              }
             />
           </Form.Group>
 
@@ -95,12 +95,15 @@ class Login extends Component {
             <Form.Control
               type="password"
               placeholder="Password"
-              onChange={e => this.setState({ password: e.target.value })}
+              onChange={e =>
+                this.setState({ password: e.target.value, errorNum: 0 })
+              }
             />
           </Form.Group>
-
-          {this.state.isError ? (
-            <Form.Text style={{ color: "red" }}>Login Error</Form.Text>
+          {this.state.errorNum > 0 ? (
+            <Form.Text style={{ color: "red" }}>
+              {this.getErrorText()}
+            </Form.Text>
           ) : (
             ""
           )}
@@ -109,23 +112,11 @@ class Login extends Component {
             Submit
           </Button>
         </Form>
-        <Form.Text className="text-muted">
-          <button variant="outline-secondary" onClick={this.forgotPassword}>
-            Forgot Password?
-          </button>
-        </Form.Text>
-        <Form.Text className="text-muted">
-          Don't have an Account?{" "}
-          <button variant="outline-secondary" onClick={this.register}>
-            {" "}
-            Register Now!
-          </button>
-        </Form.Text>
       </div>
     );
   }
 }
-export default Login;
+export default Register;
 
 //     <span className="label label-default">Email address</span>
 //    <div><input type="text" placeholder="Your mail"/></div>
