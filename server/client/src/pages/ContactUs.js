@@ -1,37 +1,32 @@
 import React from "react";
 import "./PageTemplate.css";
+import TitlePage from "./TitlePage.js";
 
-function ContactUs() {
-    // const content = "hello";
-
-
-    
-    return (
-        <div className="AboutTheVenture PageTemplate">
-            {/* <PageTemplate>  */}
-            <div>
-      <h1>ContactUs</h1>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
+function ContactUs(){
+   
+  return (
+    <div className="ContactUs PageTemplate">
+      <div className="wrapper">
+        <TitlePage title="צור קשר"/>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+      </div>
     </div>
-    {/* </PageTemplate>  */}
-        </div>
-    );
+  );
 };
-
 
 export default ContactUs;

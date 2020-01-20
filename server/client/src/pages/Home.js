@@ -1,37 +1,32 @@
 import React from "react";
 import "./PageTemplate.css";
+import TitlePage from "./TitlePage.js";
 
-function Home() {
-    // const content = "hello";
-
-
+function Home(){
     
-    return (
-        <div className="AboutTheVenture PageTemplate">
-            {/* <PageTemplate>  */}
-            <div>
-      <h1>Home</h1>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
+  return (
+    <div className="Home PageTemplate">
+      <div className="wrapper">
+        <TitlePage title="בית"/>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+      </div>
     </div>
-    {/* </PageTemplate>  */}
-        </div>
-    );
+  );
 };
-
 
 export default Home;

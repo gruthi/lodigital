@@ -1,37 +1,32 @@
 import React from "react";
 import "./PageTemplate.css";
+import TitlePage from "./TitlePage.js";
 
 function AboutFullStack() {
-    // const content = "hello";
-
-
     
-    return (
-        <div className="AboutTheVenture PageTemplate">
-            {/* <PageTemplate>  */}
-            <div>
-      <h1>מה זה Full Stack?</h1>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
+  return (
+    <div className="AboutFullStack PageTemplate">
+      <div className="wrapper">
+        <TitlePage title="מה זה Full Stack?"/>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+      </div>
     </div>
-    {/* </PageTemplate>  */}
-        </div>
-    );
+  );
 };
-
 
 export default AboutFullStack;

@@ -1,37 +1,32 @@
 import React from "react";
 import "./PageTemplate.css";
+import TitlePage from "./TitlePage.js";
 
 function Syllabus() {
-    // const content = "hello";
-
-
     
-    return (
-        <div className="AboutTheVenture PageTemplate">
-            {/* <PageTemplate>  */}
-            <div>
-      <h1>Syllabus</h1>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
-      <p>
-      <h2>h2</h2>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
+  return (
+    <div className="AboutTheVenture PageTemplate">
+      <div className="wrapper">
+        <TitlePage title="סילבוס"/>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+        <TitlePage subTitle="כותרת משנה"/>
+        <p>
+        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
+        </p>
+      </div>
     </div>
-    {/* </PageTemplate>  */}
-        </div>
-    );
+  );
 };
-
 
 export default Syllabus;
