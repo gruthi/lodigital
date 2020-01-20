@@ -3,27 +3,14 @@ import "./PageTemplate.css";
 import TitlePage from "./TitlePage.js";
 
 function Audience() {
-   
+  let txt = [
+  {subTitle:'קהל היעד',subTxt:''},
+  {subTitle:'  מועמדים ללא רקע או עם רקע בסיסי בתכנות WEB- המעוניינים להתמקצע בתחום האינטרנט ותכנות בעולם הWEB',subTxt:''}
+            ]
   return (
     <div className="Audience PageTemplate">
       <div className="wrapper">
-        <TitlePage title="קהל היעד"/>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
+       {txt.map((item,i)=><p><TitlePage subTitle={item.subTitle}/><p>{item.subTxt}</p></p>)}    
       </div>
     </div>
   );
