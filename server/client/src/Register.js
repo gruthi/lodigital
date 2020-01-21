@@ -117,7 +117,7 @@ class Register extends Component {
 
                   <div className="card">
                     <div className="card-body">
-                      <div className="form-group">
+                      <div className="form-group" style={{ marginBottom: "4px"}}>>
                         <input
                           type="text"
                           className="form-control"
@@ -129,7 +129,7 @@ class Register extends Component {
                         />
                       </div>
                       <div style={{ height: "20px" }}></div>
-                      <div className="form-group">
+                      <div className="form-group" style={{ marginBottom: "4px"}}>
                         <input
                           type="password"
                           className="form-control"
@@ -155,7 +155,7 @@ class Register extends Component {
                           </p>
                         )}
                       </div>
-                      <div className="form-group">
+                      <div className="form-group" style={{ marginBottom: "4px"}}>
                         <input
                           type="password"
                           className="form-control"
