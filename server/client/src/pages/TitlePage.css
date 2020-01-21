@@ -1,0 +1,38 @@
+.TitlePage, .SubTitlePage{
+    position: relative;
+}
+.TitlePage{
+    margin-right: -2rem;
+    padding-bottom: 5rem;
+}
+.SubTitlePage{
+    padding-bottom: 4rem;
+}
+.TitlePage h1, .SubTitlePage h2{
+    font-weight: bold;
+    position: absolute;
+}
+.TitlePage h1{
+    font-size: calc(30px + 1vw);
+}
+.TitlePage h1:first-of-type{
+    text-shadow:2px 2px 5px rgb(1, 23, 27); 
+}
+.TitlePage h1:last-of-type{
+    background: -webkit-linear-gradient(#D87206 30%, rgb(114, 61, 4));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.SubTitlePage h2{
+    font-size: calc(22px + 1vw);
+}
+.SubTitlePage h2:first-of-type{
+    text-shadow:1.8px 1.8px 4px rgb(1, 23, 27); 
+}
+.SubTitlePage h2:last-of-type{
+    background: -webkit-linear-gradient(rgb(62, 148, 101), rgb(42, 134, 153));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

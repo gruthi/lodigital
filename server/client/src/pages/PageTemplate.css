@@ -1,10 +1,8 @@
 .PageTemplate{
     width: 100%;
-    height: calc(100vh - 7.7rem);
-    background-color: black;
-    /* background-image: url(../images/background-information-page.jpg);
-    background-image: url(../images/Capture2.JPG); */
-    background-image: url(../images/Capture8.JPG);
+    height: calc(100vh - 9rem);
+    background-color: rgb(204, 238, 252);
+    background-image: url(../images/Capture10.JPG);
     background-size: cover; 
     margin-top: -3rem;
     padding: 4.2rem 10% 2rem 40%;
@@ -13,74 +11,43 @@
     overflow-y: scroll;
 }
 
-/* Title and Sub Title */
-.TitlePage, .SubTitlePage{
-  position: relative;
-}
-.TitlePage{
-  margin-right: -2rem;
-  padding-bottom: 5rem;
-}
-.SubTitlePage{
-  padding-bottom: 4rem;
-}
-.TitlePage h1, .SubTitlePage h2{
-  font-weight: bold;
-  position: absolute;
-}
-.TitlePage h1{
-  font-size: 3.5rem;
-}
-.TitlePage h1:first-of-type{
-  text-shadow:2px 2px 5px rgb(1, 23, 27); 
-}
-.TitlePage h1:last-of-type{
-  background: -webkit-linear-gradient(#D87206, rgb(114, 61, 4));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.SubTitlePage h2{
-  font-size: 2.5rem;
-}
-.SubTitlePage h2:first-of-type{
-  text-shadow:1.8px 1.8px 4px rgb(1, 23, 27); 
-}
-.SubTitlePage h2:last-of-type{
-  background: -webkit-linear-gradient(rgb(62, 148, 101), rgb(42, 134, 153));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+@media screen and (min-width: 768px){
+  .PageTemplate{
+    background-image: url(../images/Capture9.JPG);
+  }
 }
 
-/* Paragraph */
 p{
     font-size: 1.5rem;
     line-height: 2.4rem;
-    text-indent:2rem;
 }
 
 ::-webkit-scrollbar {
-    margin-top: 3rem;
-    width: 20px;
-    height: 90%;
-  }
+  margin-top: 3rem;
+  width: 20px;
+  height: 90%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 2px;
+  /* height: 40px; */
+  direction: rtl; 
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 2px;
-    /* height: 40px; */
-    direction: rtl; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #509E67; 
-    border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #D87206; 
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #509E67; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #D87206; 
+}
+
+img{
+  height: 80vh;
+  width: 100vw;
+}
