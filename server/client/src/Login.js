@@ -4,6 +4,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 //import Popup from "reactjs-popup";
+import Modal from "react-bootstrap/Modal";
+import "./pages/PageTemplate.css";
 
    
 
@@ -16,7 +18,8 @@ class Login extends Component {
     redirectToStudent: false,
     isError: false,
     redirectToRegister: false,
-    redirectToResetPassword: false
+    redirectToResetPassword: false,
+    showModal:true
   };
   hashCode =(s)=>{
     return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
@@ -46,6 +49,7 @@ class Login extends Component {
         if (res.status === 200) {
           this.setState({ redirectToStudent: true });
           this.props.setUser(res.data);
+          this.handleClose();
         } else {
           this.setState({ isError: true });
           console.log("cna not login");
@@ -57,6 +61,7 @@ class Login extends Component {
         console.log(err);
       });
   };
+  handleClose = () => this.setState({showModal:false});
 
   render() {
     const disabled = !this.state.email || !this.state.password;
@@ -73,8 +78,11 @@ class Login extends Component {
     }
 
     return (
-    
-  <div className="container w-25 p-3">   
+      <div className=" PageTemplate">
+      <Modal show={this.state.showModal} onHide={this.handleClose}  >
+        <Modal.Header closeButton> ! ברוך שובך</Modal.Header>
+        <Modal.Body >
+  {/* <div className="container w-25 p-3">   
   
   <div className="row">
     <div className="col main">
@@ -83,8 +91,8 @@ class Login extends Component {
           <form className="form-signin">
             <h6 className="form-signin-heading text-center pb-4 pt-3">
             ! ברוך שובך
-            </h6>
-            <div className="card">
+            </h6> */}
+            <div className="card" >
               <div className="card-body">
                 <div className="form-group">
                   <input
@@ -104,8 +112,9 @@ class Login extends Component {
                     onChange={e => this.setState({ password: e.target.value })}
                   />
                 </div>
-                
-                {this.state.isError? <p style={{color:'red',fontSize:'10px'}}> בעיית כניסה</p>:''}
+                <div style={{ height: "10px" }}>
+                {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''}
+                </div>
                 <button
                   id="btn-log-in"
                   className="btn btn-lg btn-primary btn-block"
@@ -114,7 +123,7 @@ class Login extends Component {
                   onClick={this.clickLogin}
                   style={{backgroundColor:'#37889A'}}
                 >
-                  <div>רישום</div>
+                  <div>כניסה לחשבונך</div>
                 </button>
               </div>
               <div className="card-body text-center">
@@ -128,13 +137,15 @@ class Login extends Component {
                 </div>
               </div>
             </div>
-          </form>
+          {/* </form>
         </div>
       </div>
     </div>
   </div>
-</div>
-
+</div> */}
+</Modal.Body>
+      </Modal>
+      </div>
     );
   }
 }
