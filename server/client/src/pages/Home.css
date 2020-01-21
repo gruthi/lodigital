@@ -1,0 +1,10 @@
+Home{
+    height: calc(100vh - 9rem);
+    margin-top: -3rem;
+}
+ul.thumbs.animated{
+    display:none;
+}
+img{
+    height: calc(100vh - 30rem);
+}
