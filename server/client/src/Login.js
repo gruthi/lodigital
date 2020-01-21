@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+//import Popup from "reactjs-popup";
+
+   
 
 class Login extends Component {
   //loginUrl = "/login";
@@ -19,6 +22,7 @@ class Login extends Component {
     return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
   }
   register = () => {
+    console.log('reg1');
     this.setState({ redirectToRegister: true });
   };
   forgotPassword = () => {
@@ -61,6 +65,7 @@ class Login extends Component {
       return <Redirect to="/" />;
     }
     if (this.state.redirectToRegister) {
+      console.log('reg');
       return <Redirect to="/register" />;
     }
     if (this.state.redirectToResetPassword) {
@@ -68,7 +73,79 @@ class Login extends Component {
     }
 
     return (
-      <div
+    
+  <div className="container w-25 p-3">   
+  
+  <div className="row">
+    <div className="col main">
+      <div id="login">
+        <div>
+          <form className="form-signin">
+            <h6 className="form-signin-heading text-center pb-4 pt-3">
+            ! ברוך שובך
+            </h6>
+            <div className="card">
+              <div className="card-body">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder=" Email Address"
+                    required={true}
+                    onChange={e => this.setState({ email: e.target.value })}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Password"
+                    required=""
+                    onChange={e => this.setState({ password: e.target.value })}
+                  />
+                </div>
+                
+                {this.state.isError? <p style={{color:'red',fontSize:'10px'}}> בעיית כניסה</p>:''}
+                <button
+                  id="btn-log-in"
+                  className="btn btn-lg btn-primary btn-block"
+                  type="submit"
+                  disabled={disabled} 
+                  onClick={this.clickLogin}
+                  style={{backgroundColor:'#37889A'}}
+                >
+                  <div>רישום</div>
+                </button>
+              </div>
+              <div className="card-body text-center">
+                <div className="pt-3">
+                  <a href="/forgotten-password" style={{color:'#37889A'}}>? שכחת סיסמא</a>
+                </div>
+                <div className="pt-3">
+                  <a href="/register" className="text-muted"  onClick={this.register}>
+                    הירשם כעת
+                  </a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    );
+  }
+}
+export default Login;
+
+//     <span className="label label-default">Email address</span>
+//    <div><input type="text" placeholder="Your mail"/></div>
+//  <span className="label label-default">Password</span>
+//   <div><input type="email" placeholder="Your Password"/></div>
+//  <div><button className="btn btn-secondary" type ="button" onClick={this.clickHandler}> Submit</button></div>
+/*  <div
         className="jumbotron"
         style={{
           width: "30%",
@@ -121,14 +198,4 @@ class Login extends Component {
             Register Now!
           </button>
         </Form.Text>
-      </div>
-    );
-  }
-}
-export default Login;
-
-//     <span className="label label-default">Email address</span>
-//    <div><input type="text" placeholder="Your mail"/></div>
-//  <span className="label label-default">Password</span>
-//   <div><input type="email" placeholder="Your Password"/></div>
-//  <div><button className="btn btn-secondary" type ="button" onClick={this.clickHandler}> Submit</button></div>
+      </div> */
