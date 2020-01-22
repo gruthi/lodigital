@@ -7,8 +7,6 @@ import { Redirect } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import "./pages/PageTemplate.css";
 
-   
-
 class Login extends Component {
   //loginUrl = "/login";
   loginUrl = "/users/login";
@@ -21,16 +19,20 @@ class Login extends Component {
     redirectToResetPassword: false,
     showModal:true
   };
+
   hashCode =(s)=>{
     return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
   }
+  
   register = () => {
     console.log('reg1');
     this.setState({ redirectToRegister: true });
   };
+
   forgotPassword = () => {
     this.setState({ redirectToResetPassword: true });
   };
+  
   clickLogin = e => {
     e.preventDefault();
     console.log("clicked");

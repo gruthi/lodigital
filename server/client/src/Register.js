@@ -106,8 +106,8 @@ class Register extends Component {
     }
     return (
       <div className=" PageTemplate">
-      <Modal show={this.state.showModal} onHide={this.handleClose}>
-        <Modal.Header closeButton>! מברכים אותך על החלטתך להרשם</Modal.Header>
+      <Modal show={this.state.showModal} onHide={this.handleClose} style={{ marginTop: "200px"}}>
+        <Modal.Header closeButton >! מברכים אותך על החלטתך להרשם</Modal.Header>
         <Modal.Body>
           <div className="row">
             <div className="col main">
@@ -117,7 +117,7 @@ class Register extends Component {
 
                   <div className="card">
                     <div className="card-body">
-                      <div className="form-group" style={{ marginBottom: "4px"}}>>
+                      <div className="form-group" style={{ marginBottom: "4px"}}>
                         <input
                           type="text"
                           className="form-control"
