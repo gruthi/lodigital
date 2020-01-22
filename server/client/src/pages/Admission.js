@@ -3,27 +3,18 @@ import "./PageTemplate.css";
 import TitlePage from "./TitlePage.js";
 
 function Admission() {
-    
+  let lst=[
+    'עמידה במבחן הקבלה )לא דורש ידע מקדים(',
+  'נוכחות ב %90מהשיעורים והתרגולים',
+  'התחיבות להשקעה של לפחות 10שעות בבית מעבר להרצאות והתרגולים',
+  'מחשב נייד',
+  'הגשת כל המטלות ,פרויקטונים ופרויקטים וקבלת ממוצע גבוה מ80'
+]
   return (
     <div className="Admission PageTemplate">
       <div className="wrapper">
         <TitlePage title="תנאי קבלה"/>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
-        <TitlePage subTitle="כותרת משנה"/>
-        <p>
-        כאן יש קטע כתוב שישובץ, שיכלול מספר מילים בנושא המיזם והקורס
-        </p>
+        <ul>{lst.map((item,i)=><li>{item}</li>)} </ul>
       </div>
     </div>
   );

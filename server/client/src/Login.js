@@ -63,7 +63,7 @@ class Login extends Component {
         console.log(err);
       });
   };
-  handleClose = () => this.setState({showModal:false});
+  handleClose = () => this.setState({showModal:false,redirectToStudent:true});
 
   render() {
     const disabled = !this.state.email || !this.state.password;
@@ -82,25 +82,16 @@ class Login extends Component {
     return (
       <div className=" PageTemplate">
       <Modal show={this.state.showModal} onHide={this.handleClose}  >
-        <Modal.Header closeButton> ! ברוך שובך</Modal.Header>
+        <Modal.Header closeButton >! ברוך שובך</Modal.Header>
         <Modal.Body >
-  {/* <div className="container w-25 p-3">   
-  
-  <div className="row">
-    <div className="col main">
-      <div id="login">
-        <div>
-          <form className="form-signin">
-            <h6 className="form-signin-heading text-center pb-4 pt-3">
-            ! ברוך שובך
-            </h6> */}
-            <div className="card" >
-              <div className="card-body">
+
+              <div className="card"> 
+               <div className="card-body">
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder=" Email Address"
+                    placeholder='כתובת דוא"ל'
                     required={true}
                     onChange={e => this.setState({ email: e.target.value })}
                   />
@@ -109,7 +100,7 @@ class Login extends Component {
                   <input
                     type="password"
                     className="form-control"
-                    placeholder="Password"
+                    placeholder="סיסמא"
                     required=""
                     onChange={e => this.setState({ password: e.target.value })}
                   />
@@ -127,7 +118,7 @@ class Login extends Component {
                 >
                   <div>כניסה לחשבונך</div>
                 </button>
-              </div>
+              {/* </div> */}
               <div className="card-body text-center">
                 <div className="pt-3">
                   <a href="/forgotten-password" style={{color:'#37889A'}}>? שכחת סיסמא</a>
@@ -139,12 +130,9 @@ class Login extends Component {
                 </div>
               </div>
             </div>
-          {/* </form>
+          
         </div>
-      </div>
-    </div>
-  </div>
-</div> */}
+    
 </Modal.Body>
       </Modal>
       </div>

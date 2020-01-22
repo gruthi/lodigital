@@ -19,8 +19,8 @@ function CourseFormat() {
     <div className="CourseFormat PageTemplate">
       <div className="wrapper">
         <TitlePage title="מבנה הקורס"/>
-        {txt.map((item,i)=><p><TitlePage subTitle={item.subTitle}/><p>{item.subTxt}</p></p>)}  
-        <ul>{lst.map((item,i)=><li>{item}</li>)} </ul>
+        {txt.map((item,i)=><div  key={i}><TitlePage subTitle={item.subTitle}/>{item.subTxt}</div>)}  
+        <ul>{lst.map((item,i)=><li key={i}>{item}</li>)} </ul>
         <TitlePage title="מתכונת הקורס"/>
         <p>התוכנית תשלב בין הרצאות פרונטליות להרצאות וידאו :</p>
         <ul><li>בחודשים 2: 2-1הרצאות בשבוע פרונטליות</li>
