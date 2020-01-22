@@ -85,15 +85,15 @@ class Register extends Component {
   repeatPasswordChange = e => {
     let tmpRepeatPassword = e.target.value;
     this.setState({ repeatPassword: tmpRepeatPassword });
-    if (this.state.password === tmpRepeatPassword) {
-      console.log("in true");
+    console.log(tmpRepeatPassword.length);
+    if ((this.state.password === tmpRepeatPassword) && (tmpRepeatPassword.length>1)) {
       this.setState({ repeatPasswordIsSame: true });
+     
     } else {
-      console.log("in false");
       this.setState({ repeatPasswordIsSame: false });
     }
   };
-  handleClose = () => this.setState({showModal:false});
+  handleClose = () => this.setState({showModal:false,redirectToStudent:true});
   render() {
     const disabled =
       !this.state.email ||
@@ -109,19 +109,14 @@ class Register extends Component {
       <Modal show={this.state.showModal} onHide={this.handleClose}>
         <Modal.Header closeButton>! מברכים אותך על החלטתך להרשם</Modal.Header>
         <Modal.Body>
-          <div className="row">
-            <div className="col main">
-              <div id="login">
-                <div>
-                  {/* <form className="form-signin"> */}
-
-                  <div className="card">
+         
+                  <div className="card" >
                     <div className="card-body">
-                      <div className="form-group" style={{ marginBottom: "4px"}}>>
+                      <div className="form-group" style={{ marginBottom: "4px"}}>
                         <input
                           type="text"
                           className="form-control"
-                          placeholder=" Email Address"
+                          placeholder='כתובת דוא"ל'
                           required=""
                           onChange={e =>
                             this.setState({ email: e.target.value })
@@ -133,7 +128,7 @@ class Register extends Component {
                         <input
                           type="password"
                           className="form-control"
-                          placeholder="Password"
+                          placeholder="סיסמא"
                           required=""
                           onChange={e => this.passwordChange(e)}
                         />
@@ -159,7 +154,7 @@ class Register extends Component {
                         <input
                           type="password"
                           className="form-control"
-                          placeholder="Repeat Password"
+                          placeholder="הכנס סיסמתך שוב"
                           required=""
                           onChange={e => this.repeatPasswordChange(e)}
                         />
@@ -190,13 +185,9 @@ class Register extends Component {
                       >
                         <div>רישום</div>
                       </button>
-                    </div>
-                  </div>
-                  {/* </form> */}
-                </div>
-              </div>
+                    
             </div>
-          </div>
+          </div> 
         </Modal.Body>
       </Modal>
       </div>
