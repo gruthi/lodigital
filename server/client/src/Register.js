@@ -2,7 +2,8 @@ import React, { Component } from "react";
 //import Button from "react-bootstrap/Button";
 //import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import "./pages/PageTemplate.css";
 
@@ -86,7 +87,7 @@ class Register extends Component {
     let tmpRepeatPassword = e.target.value;
     this.setState({ repeatPassword: tmpRepeatPassword });
     console.log(tmpRepeatPassword.length);
-    if (this.state.password === tmpRepeatPassword || tmpRepeatPassword=="") {
+    if (this.state.password === tmpRepeatPassword || tmpRepeatPassword==="") {
       this.setState({ repeatPasswordIsSame: true });
      
     } else {
@@ -103,7 +104,8 @@ class Register extends Component {
       !this.state.repeatPasswordIsSame;
 
     if (this.state.redirectToStudent) {
-      return <Redirect to="/" />;
+     // return <Redirect to="/" />;
+      return <Link to="/"></Link> ;
     }
     
     return (

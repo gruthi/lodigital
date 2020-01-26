@@ -2,7 +2,8 @@ import React, { Component } from "react";
 // import Button from "react-bootstrap/Button";
 // import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { Redirect,Link } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 //import Popup from "reactjs-popup";
 import Modal from "react-bootstrap/Modal";
 import "./pages/PageTemplate.css";
@@ -67,7 +68,8 @@ class Login extends Component {
     const disabled = !this.state.email || !this.state.password;
 
     if (this.state.redirectToStudent) {
-      return <Redirect to="/courseHome" />;
+      // return <Redirect to="/courseHome" />;
+      return <Link to="/courseHome"></Link> ;
     }
     if (this.state.redirectToRegister) {
       console.log('reg');
@@ -76,7 +78,9 @@ class Login extends Component {
 
     }
     if (this.state.redirectToResetPassword) {
-      return <Redirect to="/resetPassword" />;
+     // return <Redirect to="/resetPassword" />;
+      return <Link to="/resetPassword"></Link> ;
+      
     }
 
     return (
