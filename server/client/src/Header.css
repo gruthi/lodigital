@@ -1,0 +1,89 @@
+.Header{
+    height: calc(65px + 2.5vw);
+    background-color: rgb(245,245,245);
+    padding:0.6rem 0;
+}
+
+.Header>div{
+    background-image: url(./images/Capture-lodogotal2.JPG);
+    background-repeat: no-repeat; 
+    height: 100%;
+    background-position: center;
+    /* animation: App-logo-spin  20s linear; */
+}
+.Header>div{
+    position: relative;
+    overflow: hidden;
+}
+
+.Header>div::after{
+    background-color: khaki !important;
+    width:500px !important;
+    height: 100px !important;
+    display: block !important;
+    z-index: 10000 !important;
+}
+
+  
+  /**
+   * The "shine" element
+   */
+  
+/* .top>div:after {
+    
+    animation: shine 20s ease-in-out  infinite;
+    animation-fill-mode: forwards;  
+    content: "";
+    position: absolute;
+    top: -110%;
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    transform: rotate(30deg);
+    background: rgba(245, 224, 104, 0.6);
+    background: linear-gradient(
+      to right, 
+      rgba(245, 224, 104, 0.13) 0%,
+      rgba(245, 224, 104, 0.13) 77%,
+      rgba(245, 224, 104, 0.5) 92%,
+      rgba(245, 224, 104, 0.0) 100%
+    );
+  } */
+  
+  /* Hover state - trigger effect */
+  
+  
+  /* Active state */
+  
+  /* .icon:active:after {
+    opacity: 0;
+  }
+   */
+/* @keyframes shine{
+10% {
+    opacity: 1;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+    
+    
+    transition-duration: 20s,20s,20s;
+    transition-timing-function: ease;
+}
+100% {
+    opacity: 0;
+    top: -30%;
+    left: -30%;
+    transition-property: left, top, opacity;
+}
+} */
+/* @keyframes App-logo-spin {
+    from {
+        transform: scale(2);
+    }
+    to {
+        transform: scale(1);
+    }
+} */
+

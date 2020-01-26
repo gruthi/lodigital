@@ -1,21 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import "./NavInformation.css";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
-class NavInformation extends Component {
+function NavInformation() {
 
-      render() {
-    
-      
-    
       return (
         <div className="NavInformation">
-          <div className="top" expand="md"><div></div></div>
           <Navbar  expand="md">
-            {/* <Navbar.Brand href="#home">בית</Navbar.Brand> */}
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
@@ -40,12 +34,10 @@ class NavInformation extends Component {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          {/* <div className="main" expand="md"></div>
-          <div className="bottom" expand="md"></div> */}
         </div>
       );
     }
-  }
+
   
 export default NavInformation;
   
