@@ -11,7 +11,7 @@ function AboutTheVenture() {
     <div className="AboutTheVenture PageTemplate">
       <div className="wrapper">
         <TitlePage title="אודות המיזם"/>
-        {txt.map((item,i)=><p><TitlePage subTitle={item.subTitle}/><p>{item.subTxt}</p></p>)}     
+        {txt.map((item,i)=><div key={i}><TitlePage subTitle={item.subTitle}/>{item.subTxt}</div>)}     
       </div>
     </div>
   );

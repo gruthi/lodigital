@@ -67,7 +67,7 @@ class Register extends Component {
         txtError = "Error";
         break;
       default:
-        txtError = "Error";
+        txtError = "";
     }
     return txtError;
   };
@@ -86,7 +86,7 @@ class Register extends Component {
     let tmpRepeatPassword = e.target.value;
     this.setState({ repeatPassword: tmpRepeatPassword });
     console.log(tmpRepeatPassword.length);
-    if ((this.state.password === tmpRepeatPassword) && (tmpRepeatPassword.length>1)) {
+    if (this.state.password === tmpRepeatPassword || tmpRepeatPassword=="") {
       this.setState({ repeatPasswordIsSame: true });
      
     } else {
@@ -95,6 +95,7 @@ class Register extends Component {
   };
   handleClose = () => this.setState({showModal:false,redirectToStudent:true});
   render() {
+    //let str="test";
     const disabled =
       !this.state.email ||
       !this.state.password ||
@@ -104,8 +105,10 @@ class Register extends Component {
     if (this.state.redirectToStudent) {
       return <Redirect to="/" />;
     }
+    
     return (
       <div className=" PageTemplate">
+        
       <Modal show={this.state.showModal} onHide={this.handleClose}>
         <Modal.Header closeButton>! מברכים אותך על החלטתך להרשם</Modal.Header>
         <Modal.Body>
@@ -185,6 +188,15 @@ class Register extends Component {
                       >
                         <div>רישום</div>
                       </button>
+                      <p
+                            style={{
+                              color: "red",
+                              fontSize: "10px",
+                              lineHeight: "10px"
+                            }}
+                          >
+                           {this.getErrorText()}
+                          </p>
                     
             </div>
           </div> 
@@ -195,58 +207,3 @@ class Register extends Component {
   }
 }
 export default Register;
-
-//     <span className="label label-default">Email address</span>
-//    <div><input type="text" placeholder="Your mail"/></div>
-//  <span className="label label-default">Password</span>
-//   <div><input type="email" placeholder="Your Password"/></div>
-//  <div><button className="btn btn-secondary" type ="button" onClick={this.clickHandler}> Submit</button></div>
-
-/*
-   <div
-        className="jumbotron"
-        style={{
-          width: "30%",
-          left: "30%",
-          position: "absolute",
-          backgroundColor: "darkgray",
-          padding: "5%",
-          textAlign: "center"
-        }}
-      >
-        <Form onSubmit={this.clickRegister}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              onChange={e =>
-                this.setState({ email: e.target.value, errorNum: 0 })
-              }
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={e =>
-                this.setState({ password: e.target.value, errorNum: 0 })
-              }
-            />
-          </Form.Group>
-          {this.state.errorNum > 0 ? (
-            <Form.Text style={{ color: "red" }}>
-              {this.getErrorText()}
-            </Form.Text>
-          ) : (
-            ""
-          )}
-
-          <Button variant="secondary" type="submit" disabled={disabled}>
-            Submit
-          </Button>
-        </Form>
-      </div> */

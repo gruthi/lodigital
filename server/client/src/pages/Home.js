@@ -11,7 +11,7 @@ class Home extends Component {
     render() {
         return (
           <div className="Home">
-            <Carousel infiniteLoop="true" autoPlay="true" interval="4000" transitionTime="500">
+            <Carousel infiniteLoop={true} autoPlay={true} interval={4000} transitionTime={500}>
                 <div>
                     {/* <img src={computer2Img} alt="Los Angeles" width="1100" height="500"/> */}
                     <img src={computer2Img} alt="Los Angeles"/>

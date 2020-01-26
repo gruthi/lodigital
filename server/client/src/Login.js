@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Button from "react-bootstrap/Button";
 // import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect,Link } from "react-router-dom";
 //import Popup from "reactjs-popup";
 import Modal from "react-bootstrap/Modal";
 import "./pages/PageTemplate.css";
@@ -32,7 +32,7 @@ class Login extends Component {
     this.setState({ redirectToResetPassword: true });
   };
   clickLogin = e => {
-    e.preventDefault();
+    //e.preventDefault();
     console.log("clicked");
     
     console.log('hashed:'+ this.hashCode(this.state.password));
@@ -47,7 +47,7 @@ class Login extends Component {
         console.log("then axios");
         console.log(res.data.res);
         if (res.status === 200) {
-          this.setState({ redirectToStudent: true });
+         this.setState({ redirectToStudent: true });
           this.props.setUser(res.data);
           this.handleClose();
         } else {
@@ -61,17 +61,19 @@ class Login extends Component {
         console.log(err);
       });
   };
-  handleClose = () => this.setState({showModal:false,redirectToStudent:true});
+  handleClose = () => this.setState({showModal:false});
 
   render() {
     const disabled = !this.state.email || !this.state.password;
 
     if (this.state.redirectToStudent) {
-      return <Redirect to="/" />;
+      return <Redirect to="/courseHome" />;
     }
     if (this.state.redirectToRegister) {
       console.log('reg');
-      return <Redirect to="/register" />;
+    //  return <Redirect to="/register" />;
+        return <Link to="/register"></Link> ;
+
     }
     if (this.state.redirectToResetPassword) {
       return <Redirect to="/resetPassword" />;
@@ -138,63 +140,3 @@ class Login extends Component {
   }
 }
 export default Login;
-
-//     <span className="label label-default">Email address</span>
-//    <div><input type="text" placeholder="Your mail"/></div>
-//  <span className="label label-default">Password</span>
-//   <div><input type="email" placeholder="Your Password"/></div>
-//  <div><button className="btn btn-secondary" type ="button" onClick={this.clickHandler}> Submit</button></div>
-/*  <div
-        className="jumbotron"
-        style={{
-          width: "30%",
-          left: "30%",
-          position: "absolute",
-          backgroundColor: "darkgray",
-          padding: "5%",
-          textAlign: "center"
-        }}
-      >
-        <Form onSubmit={this.clickLogin}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={e => this.setState({ password: e.target.value })}
-            />
-          </Form.Group>
-
-          {this.state.isError ? (
-            <Form.Text style={{ color: "red" }}>Login Error</Form.Text>
-          ) : (
-            ""
-          )}
-
-          <Button variant="secondary" type="submit" disabled={disabled}>
-            Submit
-          </Button>
-        </Form>
-        <Form.Text className="text-muted">
-          <button variant="outline-secondary" onClick={this.forgotPassword}>
-            Forgot Password?
-          </button>
-        </Form.Text>
-        <Form.Text className="text-muted">
-          Don't have an Account?{" "}
-          <button variant="outline-secondary" onClick={this.register}>
-            {" "}
-            Register Now!
-          </button>
-        </Form.Text>
-      </div> */

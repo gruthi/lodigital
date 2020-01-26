@@ -33,9 +33,9 @@ function Syllabus() {
       <div className="wrapper">
         <TitlePage title="סילבוס"/>
         <Table striped bordered hover size="sm" responsive="sm" className="text-left"  dir="ltr" >
-    <thead> {courseHeader.map((item,i)=><tr><th>{item.subject}</th><th>{item.desc}</th></tr>)}</thead>
+    <thead>{courseHeader.map((item,i)=><tr key={i}><th>{item.subject}</th><th>{item.desc}</th></tr>)}</thead>
     <tbody> 
-      {course.map((item,i)=><tr>
+      {course.map((item,i)=><tr key={i}>
       <td>{item.subject} </td>
       <td>{item.desc} <ul>{item.lst.map((lstI,index)=><li key={index}>{lstI.subject}:{lstI.desc}</li>)} </ul></td>
       </tr>) } 
