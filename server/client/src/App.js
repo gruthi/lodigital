@@ -20,12 +20,9 @@ import Admission from "./pages/Admission.js";
 import Syllabus from "./pages/Syllabus.js";
 import AboutFullStack from "./pages/AboutFullStack.js";
 import Graduates from "./pages/Graduates.js";
-// import ContactUs from "./pages/ContactUs.js";
-// import AnimationPage from "./pages/AnimationPage.js";
-// import FormsNavPage from "./pages/FormsNavPage.js";
-// import FormsPage from "./pages/FormsPage.js";
+import ContactUs from "./pages/ContactUs.js";
+import CourseHome from "./pages/CourseHome.js";
 
-     
 class App extends Component {
   state = { user: null };
   setUser = user => {
@@ -52,11 +49,8 @@ class App extends Component {
             <Route exact path="/syllabus" component={Syllabus} />                
             <Route exact path="/aboutFullStack" component={AboutFullStack} />                
             <Route exact path="/graduates" component={Graduates} />                
-            {/* <Route exact path="/contactUs" component={ContactUs} />                 */}
-            {/* <Route exact path="/AnimationPage" component={AnimationPage} />                
-            <Route exact path="/FormsNavPage" component={FormsNavPage} />  
-            <Route exact path="/FormsPage" component={FormsPage} />                               */}
-            
+            <Route exact path="/contactUs" component={ContactUs} /> 
+            <Route exact path="/courseHome" component={CourseHome} />                
           </Switch>
         </BrowserRouter>
         <Footer/>
