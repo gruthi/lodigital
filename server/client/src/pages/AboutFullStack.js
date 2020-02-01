@@ -10,7 +10,7 @@ function AboutFullStack() {
       <div className="wrapper">
         <TitlePage title="מה זה Full Stack?"/>
         <TitlePage subTitle="פיתוח המסורתי WEB  אינטרנט - נחלק לשניים: "/>
-        {txt.map((item,i)=><div><TitlePage subTitle={item.subTitle} key={i}/><p>{item.subTxt}</p></div>)}  
+        {txt.map((item,i)=><div key={i}><TitlePage subTitle={item.subTitle} /><p>{item.subTxt}</p></div>)}  
        
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./PageTemplate.css";
 import TitlePage from "./TitlePage.js";
 import Table from 'react-bootstrap/Table'
-
+// import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
 function Syllabus() {
    let courseHeader=[{subject:'Subject',desc:'Description'}]
@@ -30,7 +30,7 @@ function Syllabus() {
   ] 
   return (
     <div className="AboutTheVenture PageTemplate">
-      <div className="wrapper">
+      {/* <div className="wrapper"> */}
         <TitlePage title="סילבוס"/>
         <Table striped bordered hover size="sm" responsive="sm" className="text-left"  dir="ltr" >
     <thead>{courseHeader.map((item,i)=><tr key={i}><th>{item.subject}</th><th>{item.desc}</th></tr>)}</thead>
@@ -42,7 +42,7 @@ function Syllabus() {
       </tbody>
     </Table>
       </div>
-    </div>
+    // </div>
   );
 };
 
