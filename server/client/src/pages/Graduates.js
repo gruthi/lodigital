@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./PageTemplate.css";
 import Graduate from "./Graduate.js";
-import GraduateInsertProject from "./GraduateInsertProject.js";
-//import computer4Img from "../images/computer4.jpg";
+import { Link} from "react-router-dom";
+// import { LinkContainer} from "react-router-bootstrap";
 import axios from "axios";
 import CardDeck from 'react-bootstrap/CardDeck'
 
@@ -11,9 +11,15 @@ class Graduates extends Component {
 //     {title:'Hen Ilana & Ruthi Glick',text:'Lodigital Web Site',img:computer4Img,link:'https://github.com/gruthi/lodigital'}
 //     // {title:'',text:'',img:'',link:''}
 // ]
-state={addGraduate:false,graduates:[]}
-addGraduate=()=>{this.setState({addGraduate:true})}
-getGraduate=()=>{
+state={graduates:[]}
+updateGraduates=(graduates)=>{
+  console.log('updateGraduates');
+  this.setState({graduates:graduates});
+  this.getGraduates();
+};
+
+
+getGraduates=()=>{
   axios
   .get("/graduate/get" )
   .then(res => {
@@ -32,19 +38,21 @@ getGraduate=()=>{
   });
 }
 componentWillMount(){
-  this.getGraduate();
+  this.getGraduates();
 }
 render() {
+  
   return (
     <div className="Graduates PageTemplate">
       <div className="wrapper">
-        <button onClick={this.addGraduate} ><i className="fas fa-plus"></i></button>
-        {this.state.addGraduate?
-        <GraduateInsertProject/>:
+      <Link to="/graduateInsertProject">
+        <button><i className="fas fa-plus"></i></button>
+        </Link>
         <CardDeck>
         {this.state.graduates.map((item,i)=>
-        <Graduate key ={i} title={item.name} desc={item.desc} img={item.img} link={item.gitAddress} id={item._id}/>)}
-        </CardDeck>}
+        <Graduate key ={i} title={item.name} desc={item.desc} img={item.img} link={item.gitAddress} id={item._id} updateGraduates={this.updateGraduates}/>)}
+        </CardDeck>
+        {/* } */}
       </div>
     </div>
   );

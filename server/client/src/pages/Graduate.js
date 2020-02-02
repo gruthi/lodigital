@@ -22,7 +22,9 @@ class Graduate extends Component {
       console.log("then axios");
       console.log(res.data);
       if (res.status === 200) {
-        this.setState({graduates:res.data});
+        this.props.updateGraduates(res.data);
+        
+       // this.setState({graduates:res.data});
        console.log( 'hi'+res.data);   
        console.log(this.state.graduates);
       } else {

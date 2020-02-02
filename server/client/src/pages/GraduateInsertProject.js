@@ -59,10 +59,6 @@ class GraduateInsertProject extends Component {
         if (res.status === 201) {
           console.log(res);
           this.setState({ redirectToGraduates: true });
-        }else if (res.status === 413) {
-          this.setState({errorDesc:"Image is too large.Please choose another image"})
-          console.log(res);
-          
         } else {
           this.setState({ errorDesc: "error" });
           console.log("error");
@@ -70,16 +66,20 @@ class GraduateInsertProject extends Component {
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        this.setState({ errorDesc: "error" });
-        console.log(err);
+        if(err.response.status ===413){
+        this.setState({errorDesc:"Image is too large.Please choose another image"})
+      }
+          else{
+            this.setState({errorDesc:"error"})
+         }
       });
   };
   render() {
-    if (this.state.redirectToGraduates) {
-      console.log("redirectToGraduates!!")
-    //  return <Redirect to="/graduates"></Redirect>;
-      return <Link to="/graduates"></Link>;
-    }
+     if (this.state.redirectToGraduates) {
+    //   console.log("redirectToGraduates!!")
+       return <Redirect to="/graduates"></Redirect>;
+   //  return <Link to="/graduates"></Link>;
+     }
     return (
       
         <div className="card">
