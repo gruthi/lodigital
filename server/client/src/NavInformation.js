@@ -3,41 +3,48 @@ import "./NavInformation.css";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { LinkContainer } from 'react-router-bootstrap'
 
+function LinkContainerNavLink(props){
+  return(
+      <LinkContainer to={props.to}>
+        <Nav.Link>{props.textLink}</Nav.Link>
+      </LinkContainer>
+  )
+}
 
 function NavInformation() {
 
-      return (
-        <div className="NavInformation">
-          <Navbar  expand="md">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <Nav.Link href="/"><i className="fas fa-home"></i></Nav.Link>
-                <Nav.Link href="/login">אתר הלימודים</Nav.Link>
-                <Nav.Link href="/aboutTheVenture">אודות המיזם</Nav.Link>
-                {/* <Nav.Link href="/aboutTheCourse"> */}
-                  <NavDropdown title="אודות הקורס " id="basic-nav-dropdown" >
-                    <NavDropdown.Item href="/audience">למי מיועד הקורס</NavDropdown.Item>
-                    <NavDropdown.Item href="/technologiesAreTaught">טכנולוגיות הנלמדות בקורס</NavDropdown.Item>
-                    <NavDropdown.Item href="/courseFormat">זמנים ומתכונת הקורס</NavDropdown.Item>
-                    <NavDropdown.Item href="/projects">פרויקטים ופרויוקטונים</NavDropdown.Item>
-                    <NavDropdown.Item href="/admission">תנאי קבלה</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="/syllabus">סילבוס</NavDropdown.Item>
-                  </NavDropdown>
-                {/* </Nav.Link> */}
-                <Nav.Link href="/syllabus">סילבוס</Nav.Link>
-                <Nav.Link href="/aboutFullStack">מה זה full stack ?</Nav.Link>
-                <Nav.Link href="/graduates">בוגרים</Nav.Link>
-                <Nav.Link href="/contactUs">צור קשר</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </div>
-      );
-    }
+  return (
+    <div className="NavInformation">
+      
+      <Navbar  expand="md">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <LinkContainerNavLink to="/" textLink="<i className='fas fa-home'></i>" />
+            <LinkContainerNavLink to="/login" textLink="אתר הלימודים" />
+              <LinkContainerNavLink to="/aboutTheVenture" textLink="אודות המיזם" />
+              <NavDropdown title="אודות הקורס " id="basic-nav-dropdown" >
+                {/* <NavDropdown.Item href="/audience">למי מיועד הקורס</NavDropdown.Item> */}
+                <LinkContainerNavLink to="/audience" textLink="למי מיועד הקורס" />
+                <LinkContainerNavLink to="/technologiesAreTaught" textLink="טכנולוגיות הנלמדות בקורס" />
+                <LinkContainerNavLink to="/courseFormat" textLink="זמנים ומתכונת הקורס" />
+                <LinkContainerNavLink to="/projects" textLink="פרויקטים ופרויוקטונים" />
+                <LinkContainerNavLink to="/admission" textLink="תנאי קבלה" />
+                <LinkContainerNavLink to="/syllabus" textLink="סילבוס" />
+              </NavDropdown>
+            <LinkContainerNavLink to="/syllabus" textLink="סילבוס" />
+            <LinkContainerNavLink to="/aboutFullStack" textLink="מה זה full stack ?" />
+            <LinkContainerNavLink to="/graduates" textLink="בוגרים" />
+            <LinkContainerNavLink to="/contactUs" textLink="צור קשר" />
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      
+    </div>
+  );
+}
 
-  
 export default NavInformation;
   

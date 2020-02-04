@@ -13,8 +13,8 @@ class Home extends Component {
           <div className="Home">
             <Carousel infiniteLoop={true} autoPlay={true} interval={4000} transitionTime={500}>
                 <div>
-                    {/* <img src={computer2Img} alt="Los Angeles" width="1100" height="500"/> */}
-                    <img src={computer2Img} alt="Los Angeles"/>
+                    <img src={computer2Img} alt="Los Angeles" width="1100" height="500"/>
+                    {/* <img src={computer2Img} alt="Los Angeles"/> */}
                     {/* <p className="legend">Legend 1</p> */}
                 </div>
                 <div>

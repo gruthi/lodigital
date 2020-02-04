@@ -6,5 +6,5 @@ ul.thumbs.animated{
     display:none;
 }
 img{
-    height: calc(100vh - 30rem);
+    height: calc(100vh - 9rem);
 }

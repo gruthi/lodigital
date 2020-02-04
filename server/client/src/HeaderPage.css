@@ -1,22 +1,22 @@
-.Header{
+.HeaderPage{
     height: calc(65px + 2.5vw);
     background-color: rgb(245,245,245);
     padding:0.6rem 0;
 }
 
-.Header>div{
+.HeaderPage>div{
     background-image: url(./images/Capture-lodogotal2.JPG);
     background-repeat: no-repeat; 
     height: 100%;
     background-position: center;
     /* animation: App-logo-spin  20s linear; */
 }
-.Header>div{
+.HeaderPage>div{
     position: relative;
     overflow: hidden;
 }
 
-.Header>div::after{
+.HeaderPage>div::after{
     background-color: khaki !important;
     width:500px !important;
     height: 100px !important;
