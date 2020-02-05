@@ -1,53 +1,27 @@
-.PageTemplate{
-    width: 100%;
-    height: calc(100vh - 9rem);
-    background-color: rgb(204, 238, 252);
-    background-image: url(../images/Capture10.JPG);
-    background-size: cover; 
-    margin-top: -3rem;
-    padding: 4.2rem 10% 2rem 40%;
-    text-align: justify;
-    direction: rtl;
-    overflow-y: scroll;
+.pageTemplate{
+  width: 100%;
+  height: calc(100vh - 65px - 3.4vw);
+  background-color: rgb(204, 238, 252);
+  background-size: cover; 
+  margin-top: -3.4vw;
+  text-align: justify;
+  direction: rtl;
+}
+
+.backTemp{
+  background-image: url(../images/Capture10.JPG);
+  background-size: cover; 
+  overflow-y: scroll;
+  padding: 4.4vw 10% 2.4vw 20%;
 }
 
 @media screen and (min-width: 768px){
-  .PageTemplate{
+  .pageTemplate{
     background-image: url(../images/Capture9.JPG);
+    /* background-color: red; */
   }
 }
 
-p{
-    font-size: 1.5rem;
-    line-height: 2.4rem;
-}
-
-::-webkit-scrollbar {
-  margin-top: 3rem;
-  width: 20px;
-  height: 90%;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 2px;
-  /* height: 40px; */
-  direction: rtl; 
-}
-  
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #509E67; 
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #D87206; 
-}
-
-img{
-  height: 80vh;
-  width: 100vw;
+div{
+  font-size: calc(14px + 0.5vw);
 }

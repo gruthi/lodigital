@@ -16,7 +16,7 @@ function CourseFormat() {
 ]
 
   return (
-    <div className="CourseFormat PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="מבנה הקורס"/>
         {txt.map((item,i)=><div  key={i}><TitlePage subTitle={item.subTitle}/>{item.subTxt}</div>)}  

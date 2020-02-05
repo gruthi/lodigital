@@ -5,7 +5,7 @@ import TitlePage from "./TitlePage.js";
 function ContactUs(){
    
   return (
-    <div className="ContactUs PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="צור קשר"/>
         <TitlePage subTitle="כותרת משנה"/>

@@ -84,7 +84,7 @@ class Login extends Component {
     }
 
     return (
-      <div className=" PageTemplate">
+      <div className="pageTemplate backTemp">
       <Modal show={this.state.showModal} onHide={this.handleClose}  >
         <Modal.Header closeButton >! ברוך שובך</Modal.Header>
         <Modal.Body >

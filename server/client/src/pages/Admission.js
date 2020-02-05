@@ -11,7 +11,7 @@ function Admission() {
   'הגשת כל המטלות ,פרויקטונים ופרויקטים וקבלת ממוצע גבוה מ80'
 ]
   return (
-    <div className="Admission PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="תנאי קבלה"/>
         <ul>{lst.map((item,i)=><li>{item}</li>)} </ul>

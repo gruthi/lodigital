@@ -43,7 +43,7 @@ componentWillMount(){
 render() {
   
   return (
-    <div className="Graduates PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
       <Link to="/graduateInsertProject">
         <button><i className="fas fa-plus"></i></button>

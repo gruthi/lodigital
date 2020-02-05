@@ -5,7 +5,7 @@ import TitlePage from "./TitlePage.js";
 function AboutTheCourse() {
   
   return (
-    <div className="AboutTheCourse PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="אודות הקורס"/>
         <TitlePage subTitle="כותרת משנה"/>

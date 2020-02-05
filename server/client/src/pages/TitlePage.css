@@ -13,7 +13,7 @@
     position: absolute;
 }
 .TitlePage h1{
-    font-size: calc(30px + 1vw);
+    font-size: calc(30px + 0.5vw);
 }
 .TitlePage h1:first-of-type{
     text-shadow:2px 2px 5px rgb(1, 23, 27); 
@@ -25,7 +25,7 @@
     -webkit-text-fill-color: transparent;
 }
 .SubTitlePage h2{
-    font-size: calc(22px + 1vw);
+    font-size: calc(22px + 0.5vw);
 }
 .SubTitlePage h2:first-of-type{
     text-shadow:1.8px 1.8px 4px rgb(1, 23, 27); 

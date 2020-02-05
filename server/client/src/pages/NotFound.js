@@ -4,7 +4,7 @@ import "./PageTemplate.css";
 
 const NotFound = () => (
   <div>
-    <div className="CourseFormat PageTemplate">
+    <div className="pageTemplate backTemp">
       <center>
         <h1>ERROR 404 </h1>
         <div />

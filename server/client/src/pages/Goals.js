@@ -5,7 +5,7 @@ import TitlePage from "./TitlePage.js";
 function Goals(){
    
   return (
-    <div className="Goals PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="מטרות הקורס"/>
         <TitlePage subTitle="כותרת משנה"/>

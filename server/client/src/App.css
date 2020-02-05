@@ -2,6 +2,9 @@ html, body{
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: hidden;
 }
+.App {
+  position: relative;
+}
 /* .App { */
   /* text-align: center; */
   /* background-color: darkgray; */

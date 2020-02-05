@@ -1,13 +1,14 @@
 .HeaderPage{
     height: calc(65px + 2.5vw);
     background-color: rgb(245,245,245);
-    padding:0.6rem 0;
+    padding:calc(5px + 0.5vw);
 }
 
 .HeaderPage>div{
     background-image: url(./images/Capture-lodogotal2.JPG);
     background-repeat: no-repeat; 
     height: 100%;
+    /* max-width: 80vw; */
     background-position: center;
     /* animation: App-logo-spin  20s linear; */
 }

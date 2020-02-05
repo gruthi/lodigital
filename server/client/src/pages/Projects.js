@@ -13,7 +13,7 @@ function Projects() {
 'Mongo+Express בסיוםWeb Server פרויקט'
 ];
   return (
-    <div className="Projects PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="פרויקטים ופרויקטונים"/>
         <TitlePage subTitle='פרויקטונים'/>

@@ -8,7 +8,7 @@ function AboutTheVenture() {
   {subTitle:'חזון המיזם',subTxt:'התרחבת המיזם לערי פריפריה נוספות ויצירת שת"פ עם מרכזי צעירים מקומיים'},
   {subTitle:'',subTxt:'קורס FullStackבנוי בהתאם לצרכי השוק ומאפשר לבוגריו לשמש כ'}  ]      
   return (
-    <div className="AboutTheVenture PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="אודות המיזם"/>
         {txt.map((item,i)=><div key={i}><TitlePage subTitle={item.subTitle}/>{item.subTxt}</div>)}     

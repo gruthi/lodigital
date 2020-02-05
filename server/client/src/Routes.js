@@ -19,6 +19,7 @@ import Graduates from "./pages/Graduates.js";
 import ContactUs from "./pages/ContactUs.js";
 import CourseHome from "./pages/CourseHome.js";
 
+
 class Routes extends Component {
   state = { user: null};
 

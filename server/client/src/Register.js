@@ -105,7 +105,7 @@ class Register extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className=" PageTemplate">
+      <div className="pageTemplate backTemp">
       <Modal show={this.state.showModal} onHide={this.handleClose} style={{ marginTop: "200px"}}>
         <Modal.Header closeButton >! מברכים אותך על החלטתך להרשם</Modal.Header>
         <Modal.Body>

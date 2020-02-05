@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import HeaderPage from "./HeaderPage.js";
 import NavInformation from "./NavInformation.js";
 import Routes from "./Routes.js";
@@ -38,3 +38,4 @@ class App extends Component {
 }
 
 export default App;
+

@@ -5,24 +5,26 @@ import computer2Img from '../images/computer2.jpg'
 import computer3Img from '../images/computer3.jpg'
 import computer4Img from '../images/computer4.jpg'
 import "./Home.css";
+import "./PageTemplate.css";
 
  
 class Home extends Component {
     render() {
         return (
-          <div className="Home">
+         <div className="Home">
+              
             <Carousel infiniteLoop={true} autoPlay={true} interval={4000} transitionTime={500}>
                 <div>
-                    <img src={computer2Img} alt="Los Angeles" width="1100" height="500"/>
+                    <img src={computer2Img} alt="Los Angeles"/>
                     {/* <img src={computer2Img} alt="Los Angeles"/> */}
                     {/* <p className="legend">Legend 1</p> */}
                 </div>
                 <div>
-                    <img src={computer3Img} alt="Los Angeles" width="1100" height="500"/>
+                    <img src={computer3Img} alt="Los Angeles"/>
                     {/* <p className="legend">Legend 2</p> */}
                 </div>
                 <div>
-                    <img src={computer4Img} alt="Los Angeles" width="1100" height="500"/>
+                    <img src={computer4Img} alt="Los Angeles"/>
                     {/* <p className="legend">Legend 3</p> */}
                 </div>
             </Carousel>

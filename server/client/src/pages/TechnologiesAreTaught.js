@@ -9,7 +9,7 @@ function TechnologiesAreTaught() {
   {subTitle:'אחסון הנתונים',subTxt:'BIG DATA- אחסון מידע לא-מובנה המאפיין את עולם האינטרנט וה -MONGODB'}
 ]
   return (
-    <div className="TechnologiesAreTaught PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="הטכנולוגיות הנלמדות בקורס"/>
         {txt.map((item,i)=><p><TitlePage subTitle={item.subTitle}/><p>{item.subTxt}</p></p>)}    

@@ -8,7 +8,7 @@ function Audience() {
   {subTitle:'  מועמדים ללא רקע או עם רקע בסיסי בתכנות WEB- המעוניינים להתמקצע בתחום האינטרנט ותכנות בעולם הWEB',subTxt:''}
             ]
   return (
-    <div className="Audience PageTemplate">
+    <div className="pageTemplate backTemp">
       <div className="wrapper">
        {txt.map((item,i)=><p><TitlePage subTitle={item.subTitle}/><p>{item.subTxt}</p></p>)}    
       </div>

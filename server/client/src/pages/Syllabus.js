@@ -29,7 +29,7 @@ function Syllabus() {
 
   ] 
   return (
-    <div className="AboutTheVenture PageTemplate">
+    <div className="pageTemplate backTemp">
       {/* <div className="wrapper"> */}
         <TitlePage title="סילבוס"/>
         <Table striped bordered hover size="sm" responsive="sm" className="text-left"  dir="ltr" >
