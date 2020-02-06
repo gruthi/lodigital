@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-// import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Home from "./pages/Home.js";
 import Login from "./Login";
 import Register from "./Register";
 import AboutTheVenture from "./pages/AboutTheVenture.js";
-import AboutTheCourse from "./pages/AboutTheCourse.js";
 import Goals from "./pages/Goals.js";
 import Audience from "./pages/Audience.js";
 import TechnologiesAreTaught from "./pages/TechnologiesAreTaught.js";
@@ -36,7 +34,6 @@ class Routes extends Component {
           <Route exact path="/login" render={()=><Login setUser={this.setUser}/>} />
           <Route exact path="/register" render={()=><Register setUser={this.setUser}/>} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
-          <Route exact path="/aboutTheCourse" component={AboutTheCourse} />
           <Route exact path="/goals" component={Goals} />
           <Route exact path="/audience" component={Audience} />
           <Route exact path="/technologiesAreTaught" component={TechnologiesAreTaught} />
@@ -55,4 +52,3 @@ class Routes extends Component {
 }
 
 export default Routes;
-

@@ -3,10 +3,10 @@
 }
 .TitlePage{
     margin-right: -2rem;
-    padding-bottom: 5rem;
+    padding-bottom: calc(50px + 0.5vw);
 }
 .SubTitlePage{
-    padding-bottom: 4rem;
+    padding: calc(5px + 0.5vw) 0 calc(32px + 0.5vw);
 }
 .TitlePage h1, .SubTitlePage h2{
     font-weight: bold;
@@ -25,7 +25,7 @@
     -webkit-text-fill-color: transparent;
 }
 .SubTitlePage h2{
-    font-size: calc(22px + 0.5vw);
+    font-size: calc(20px + 0.5vw);
 }
 .SubTitlePage h2:first-of-type{
     text-shadow:1.8px 1.8px 4px rgb(1, 23, 27); 
