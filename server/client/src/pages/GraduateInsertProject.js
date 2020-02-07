@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { Redirect ,Link} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import FormData from "form-data";
-
+import "./GraduateInsertProject.css";
+// import JSZip from "jszip";
 class GraduateInsertProject extends Component {
   state = {
     name: "",
@@ -22,13 +23,14 @@ class GraduateInsertProject extends Component {
   };
   imgChange = e => {
     let idCardBase64 = "";
-    console.log(e.target.files[0]);
+   
     this.getBase64(e.target.files[0], result => {
       idCardBase64 = result;
       this.setState({ img: idCardBase64 });
       console.log(idCardBase64);
     });
-    //this.setState({ img: e.target.value });
+    //this.setState({ img: e.target.files[0] });
+    
   };
   gitAddressChange = e => {
     this.setState({ gitAddress: e.target.value });
@@ -46,12 +48,17 @@ class GraduateInsertProject extends Component {
   }
   saveGraduate = () => {
     this.setState({errorDesc:""})
+   
+    // var formData = new FormData();
+    // formData.append('image', this.state.img); 
+
     axios
       .post("/graduate/insert", {
         name: this.state.name,
         desc: this.state.desc,
         img: this.state.img,
         gitAddress: this.state.gitAddress
+        
       })
       .then(res => {
         console.log("then axios");
@@ -81,9 +88,10 @@ class GraduateInsertProject extends Component {
    //  return <Link to="/graduates"></Link>;
      }
     return (
-      
+      <div className="pageTemplate backTemp">
         <div className="card">
         <div className="form-group">
+         
               <input
                 type="text"
                 className="form-control"
@@ -114,7 +122,7 @@ class GraduateInsertProject extends Component {
                 placeholder="Insert Link toYour Git"
                 onChange={this.gitAddressChange}
               />
-{this.state.errorDesc!=""?<label htmlFor="formGroupExampleInput">{this.state.errorDesc}</label>:""}
+{this.state.errorDesc!==""?<label htmlFor="formGroupExampleInput">{this.state.errorDesc}</label>:""}
       
               <Button className="form-control" variant="primary" onClick={this.saveGraduate}>
                 Save
@@ -122,13 +130,14 @@ class GraduateInsertProject extends Component {
             </div>
         
       </div>
+      </div>
     );
   }
 }
 
 export default GraduateInsertProject;
-{
-  /* <Card
+/*{
+   <Card
 style={{ width: "36rem" }}
 border="primary"
 className=" text-center h-100"
@@ -171,4 +180,3 @@ className=" text-center h-100"
   </Button>
 </Card.Footer>
 </Card> */
-}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import Button from "react-bootstrap/Button";
 // import Form from "react-bootstrap/Form";
 import axios from "axios";
-//import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 //import Popup from "reactjs-popup";
 import Modal from "react-bootstrap/Modal";
@@ -36,8 +36,8 @@ class Login extends Component {
     //e.preventDefault();
     console.log("clicked");
     
-    console.log('hashed:'+ this.hashCode(this.state.password));
-    console.log(this.state.email, this.state.password);
+    // console.log('hashed:'+ this.hashCode(this.state.password));
+    // console.log(this.state.email, this.state.password);
     this.setState({ isError: false });
     axios
       .post(this.loginUrl, {
@@ -46,18 +46,22 @@ class Login extends Component {
       })
       .then(res => {
         console.log("then axios");
-        console.log(res.data.res);
+        console.log('res.data-'+res.data);
         if (res.status === 200) {
+          console.log('--1--');
          this.setState({ redirectToStudent: true });
           this.props.setUser(res.data);
+          this.props.setToken(res.data);
           this.handleClose();
         } else {
+          console.log('--2--');
           this.setState({ isError: true });
           console.log("cna not login");
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
+        console.log('--3--');
         this.setState({ isError: true });
         console.log(err);
       });
@@ -68,8 +72,8 @@ class Login extends Component {
     const disabled = !this.state.email || !this.state.password;
 
     if (this.state.redirectToStudent) {
-      // return <Redirect to="/courseHome" />;
-      return <Link to="/courseHome"></Link> ;
+       return <Redirect to="/courseHome" />;
+     // return <Link to="/courseHome"></Link> ;
     }
     if (this.state.redirectToRegister) {
       console.log('reg');

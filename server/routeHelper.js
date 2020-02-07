@@ -4,6 +4,7 @@ const url = "mongodb://localhost:27017/";
 const myDb = "lodigitalDB";
 const usersColl = "users";
 const graduates = "graduates";
+const authen = require("./authentication");
 
 function login(req, res) {
   // console.log(req.query.userName);
@@ -23,8 +24,12 @@ function login(req, res) {
       if (!userFound) {
         console.log("--3--");
         return res.sendStatus(404);
+        // 401
       }
-      return res.sendStatus(200);
+      res.status(200);
+      res.json( authen.createToken(req.body));
+      return res.send;
+      //return res.sendStatus(200);
     });
   });
 }
@@ -54,6 +59,7 @@ function register(req, res) {
             console.log(err.message);
             return res.sendStatus(500);
           }
+          res.json( authen.createToken(req.body));
           return res.sendStatus(201);
         });
       });
@@ -115,14 +121,14 @@ function graduateGet(req, res) {
 function graduateDelete(req, res) {
   // console.log(req.query.userName);
   console.log("--0--");
+  if(!authen.authenticationIsOk(req.headers.authorization)){
+    return res.sendStatus(401);
+  }
   MongoClient.connect(url, function(err, db) {
     if (err) {
-      console.log("--1--");
       return res.sendStatus(500);
     }
-    console.log("--1.1--");
     const dbo = db.db(myDb);
-    console.log("reqid - " + req.params.id);
     dbo
       .collection(graduates)
       .deleteOne({ _id: new mongo.ObjectId(req.params.id) }, function(
@@ -130,13 +136,9 @@ function graduateDelete(req, res) {
         obj
       ) {
         if (err) {
-          console.log(err.message);
           return res.status(500).send(graduates);
-          // return res.send(allGraduates);
         }
-        console.log("del: " + obj);
-        //res.status(200);
-        return res.status(200); //.send(graduates);
+        return res.sendStatus(200);//.send(graduates);
       });
   });
 }

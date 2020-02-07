@@ -14,15 +14,23 @@ import Admission from "./pages/Admission.js";
 import Syllabus from "./pages/Syllabus.js";
 import AboutFullStack from "./pages/AboutFullStack.js";
 import Graduates from "./pages/Graduates.js";
+import GraduateInsertProject from "./pages/GraduateInsertProject.js";
 import ContactUs from "./pages/ContactUs.js";
 import CourseHome from "./pages/CourseHome.js";
 
 
 class Routes extends Component {
-  state = { user: null};
-
+  state = { user: null, hasMounted : true,token:'' };
+  
   setUser = user => {
     this.setState({user: user})
+  };
+
+  setToken = token => {
+    this.setState({token: token})
+  };
+    changeHasMounted = () => {
+    this.setState({hasMounted : false})
   };
 
   render() {
@@ -31,7 +39,8 @@ class Routes extends Component {
       <div className="Routes">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" render={()=><Login setUser={this.setUser}/>} />
+          {/* <Route exact path="/login" render={()=><Login setUser={this.setUser}/>} /> */}
+          <Route exact path="/login" render={()=><Login setUser={this.setUser} setToken={this.setToken}/>} />
           <Route exact path="/register" render={()=><Register setUser={this.setUser}/>} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
@@ -42,7 +51,9 @@ class Routes extends Component {
           <Route exact path="/admission" component={Admission} />
           <Route exact path="/syllabus" component={Syllabus} />                
           <Route exact path="/aboutFullStack" component={AboutFullStack} />                
-          <Route exact path="/graduates" component={Graduates} />                
+          {/* <Route exact path="/graduates" component={Graduates} /> */}
+          <Route exact path="/graduates" render={()=><Graduates token={this.state.token} />} /> 
+          <Route exact path="/graduateInsertProject" component={GraduateInsertProject} />                
           <Route exact path="/contactUs" component={ContactUs} /> 
           <Route exact path="/courseHome" component={CourseHome} />                
         </Switch>

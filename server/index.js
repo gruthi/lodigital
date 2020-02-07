@@ -35,6 +35,7 @@ app.get("/graduate/get", (req, res) => {
 });
 app.delete("/graduate/delete/:id", (req, res) => {
   console.log('graduateDelete');
+   console.log(req.headers.authorization);
   routeHelper.graduateDelete( req, res);
 });
 
