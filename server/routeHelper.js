@@ -33,6 +33,7 @@ function login(req, res) {
     });
   });
 }
+
 function register(req, res) {
   // console.log(req.query.userName);
   console.log("--0--");
@@ -142,6 +143,32 @@ function graduateDelete(req, res) {
       });
   });
 }
+function contactUs(req, res) {
+  // console.log(req.query.userName);
+  console.log("--5--");
+  MongoClient.connect(url, function(err, db) {
+    if (err) {
+      console.log("--1--");
+      return res.sendStatus(500);
+    }
+    console.log("--1.1--");
+    const dbo = db.db(myDb);
+
+    dbo.collection(contactUsInquiries).insertOne(req.body, function(err, result) {
+      if (err) {
+        console.log(err.message);
+        res.status(500);
+        return res.send(graduates);/**** */
+      }
+      dbo
+        .collection(contactUsInquiries)
+        .find({})
+        .toArray(function(err, allContactUsInquiries) {
+          return res.status(201).send(allContactUsInquiries);
+        });
+    });
+  });
+}
 
 // function handleGet(req, res) {
 //   console.log(req.query.userName);
@@ -178,6 +205,7 @@ module.exports.login = login;
 module.exports.graduateInsert = graduateInsert;
 module.exports.graduateGet = graduateGet;
 module.exports.graduateDelete = graduateDelete;
+module.exports.contactUs = contactUs;
 ////////////////////////////
 //
 // dbo.createCollection(usersColl, function(err, res) {

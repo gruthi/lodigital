@@ -16,6 +16,8 @@ import AboutFullStack from "./pages/AboutFullStack.js";
 import Graduates from "./pages/Graduates.js";
 import GraduateInsertProject from "./pages/GraduateInsertProject.js";
 import ContactUs from "./pages/ContactUs.js";
+import ThanksContactUsInquiries from "./pages/ThanksContactUsInquiries.js";
+import ContactUsInquiries from "./pages/ContactUsInquiries.js";
 import CourseHome from "./pages/CourseHome.js";
 
 
@@ -55,6 +57,8 @@ class Routes extends Component {
           <Route exact path="/graduates" render={()=><Graduates token={this.state.token} />} /> 
           <Route exact path="/graduateInsertProject" component={GraduateInsertProject} />                
           <Route exact path="/contactUs" component={ContactUs} /> 
+          <Route exact path="/thanksContactUsInquiries" component={ThanksContactUsInquiries} /> 
+          <Route exact path="/contactUsInquiries" component={ContactUsInquiries} /> 
           <Route exact path="/courseHome" component={CourseHome} />                
         </Switch>
       </div>
