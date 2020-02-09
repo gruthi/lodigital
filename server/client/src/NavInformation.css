@@ -3,7 +3,7 @@
     height: 3.4vw;
 }
 
-/* --- navigation -  --- */
+/* --- navigation - For all options --- */
 nav.navbar.navbar-expand-md.navbar-light{
     background-image: linear-gradient( to right bottom, rgba(40,126,148,0.85),  rgba(25,121,137,0.85),  rgba(31,142,161,0.85),  rgba(31,142,161,0.85), rgba(80, 158, 145,0.85));
     padding: 0.8vw 0;
