@@ -28,7 +28,7 @@ function login(req, res) {
         // 401
       }
       res.status(200);
-      res.json( authen.createToken(req.body));
+      res.json(authen.createToken(req.body));
       return res.send;
       //return res.sendStatus(200);
     });
@@ -61,7 +61,7 @@ function register(req, res) {
             console.log(err.message);
             return res.sendStatus(500);
           }
-          res.json( authen.createToken(req.body));
+          res.json(authen.createToken(req.body));
           return res.sendStatus(201);
         });
       });
@@ -69,9 +69,9 @@ function register(req, res) {
 }
 function graduateInsert(req, res) {
   // console.log(req.query.userName);
-  if(!authen.authenticationIsOk(req.headers.authorization)){
-    return res.sendStatus(401);
-  }
+  // if(!authen.authenticationIsOk(req.headers.authorization)){
+  //   return res.sendStatus(401);
+  // }
   console.log("--0--");
   MongoClient.connect(url, function(err, db) {
     if (err) {
@@ -80,12 +80,12 @@ function graduateInsert(req, res) {
     }
     console.log("--1.1--");
     const dbo = db.db(myDb);
-
+    console.log(req);
     dbo.collection(graduates).insertOne(req.body, function(err, result) {
       if (err) {
         console.log(err.message);
         res.status(500);
-        return res.send(graduates);
+        return res.send; //(graduates);
       }
       dbo
         .collection(graduates)
@@ -126,7 +126,7 @@ function graduateGet(req, res) {
 function graduateDelete(req, res) {
   // console.log(req.query.userName);
   console.log("--0--");
-  if(!authen.authenticationIsOk(req.headers.authorization)){
+  if (!authen.authenticationIsOk(req.headers.authorization)) {
     return res.sendStatus(401);
   }
   MongoClient.connect(url, function(err, db) {
@@ -141,9 +141,9 @@ function graduateDelete(req, res) {
         obj
       ) {
         if (err) {
-          return res.status(500).send(graduates);
+          return res.status(500); //.send(graduates);
         }
-        return res.sendStatus(200);//.send(graduates);
+        return res.sendStatus(200); //.send(graduates);
       });
   });
 }
@@ -158,19 +158,21 @@ function contactUs(req, res) {
     console.log("--1.1--");
     const dbo = db.db(myDb);
 
-    dbo.collection(contactUsInquiries).insertOne(req.body, function(err, result) {
-      if (err) {
-        console.log(err.message);
-        res.status(500);
-        return res.send(graduates);/**** */
-      }
-      dbo
-        .collection(contactUsInquiries)
-        .find({})
-        .toArray(function(err, allContactUsInquiries) {
-          return res.status(201).send(allContactUsInquiries);
-        });
-    });
+    dbo
+      .collection(contactUsInquiries)
+      .insertOne(req.body, function(err, result) {
+        if (err) {
+          console.log(err.message);
+          res.status(500);
+          return res.send(graduates); /**** */
+        }
+        dbo
+          .collection(contactUsInquiries)
+          .find({})
+          .toArray(function(err, allContactUsInquiries) {
+            return res.status(201).send(allContactUsInquiries);
+          });
+      });
   });
 }
 

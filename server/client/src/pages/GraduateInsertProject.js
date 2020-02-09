@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-// import FormData from "form-data";
+import FormData from "form-data";
 import "./GraduateInsertProject.css";
 // import JSZip from "jszip";
 class GraduateInsertProject extends Component {
@@ -12,7 +12,7 @@ class GraduateInsertProject extends Component {
     img: "",
     gitAddress: "",
     redirectToGraduates: false,
-    errorDesc:""
+    errorDesc: ""
   };
   // images = new FormData();
   nameChange = e => {
@@ -23,14 +23,13 @@ class GraduateInsertProject extends Component {
   };
   imgChange = e => {
     let idCardBase64 = "";
-   
+
     this.getBase64(e.target.files[0], result => {
       idCardBase64 = result;
       this.setState({ img: idCardBase64 });
       console.log(idCardBase64);
     });
     //this.setState({ img: e.target.files[0] });
-    
   };
   gitAddressChange = e => {
     this.setState({ gitAddress: e.target.value });
@@ -47,23 +46,28 @@ class GraduateInsertProject extends Component {
     };
   }
   saveGraduate = () => {
-    this.setState({errorDesc:""})
-   
-    //  const formData = new FormData();
-//      formData.append('img', this.state.img);
-//      formData.append('name', this.state.name);
-//      formData.append('desc', this.state.desc);
-//      formData.append('gitAddress', this.state.gitAddress); 
-// console.log('formdata');
-// console.log(formData);
+    this.setState({ errorDesc: "" });
+
+    const formData = new FormData();
+    formData.append("img", this.state.img);
+    formData.append("name", this.state.name);
+    formData.append("desc", this.state.desc);
+    formData.append("gitAddress", this.state.gitAddress);
+    
     axios
-    // .post("/graduate/insert", formData)
-      .post("/graduate/insert", {
-        name: this.state.name,
-        desc: this.state.desc,
-        img: this.state.img,
-        gitAddress: this.state.gitAddress
-      })
+      .post(
+        "/graduate/insert",
+        formData,
+        // .post(
+        //   "/graduate/insert",
+        //   {
+        //     name: this.state.name,
+        //     desc: this.state.desc,
+        //     img: this.state.img,
+        //     gitAddress: this.state.gitAddress
+        //   },
+        { headers: { "Content-Type": "multipart/form-data" } }
+      )
       .then(res => {
         console.log("then axios");
         console.log(res.status);
@@ -78,60 +82,78 @@ class GraduateInsertProject extends Component {
       })
       .catch(err => {
         console.log(err);
-        if(err.response.status ===413){
-        this.setState({errorDesc:"Image is too large.Please choose another image"})
-      }
-          else{
-            this.setState({errorDesc:"error"})
-         }
+        if (err.response.status === 413) {
+          this.setState({
+            errorDesc: "Image is too large.Please choose another image"
+          });
+        } else {
+          this.setState({ errorDesc: "error" });
+        }
       });
   };
   render() {
-     if (this.state.redirectToGraduates) {
-       return <Redirect to="/graduates"></Redirect>;
-     }
+    if (this.state.redirectToGraduates) {
+      return <Redirect to="/graduates"></Redirect>;
+    }
     return (
       <div className="pageTemplate backTemp">
         <div className="card">
-        <div className="form-group">
-         
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Insert Your Name"
-                onChange={this.nameChange}
-              />
-            
-              <input
-                type="textarea"
-                className="form-control"
-                placeholder="Describe your project"
-                onChange={this.descChange}
-              />
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Insert Your Name"
+              onChange={this.nameChange}
+            />
 
-              <input
-                type="file"
-                className="form-control"
-                id="file"
-                name="graduateImg"
-                ref="fileUploader"
-                onChange={this.imgChange}
-              />
-              <div></div>
+            <input
+              type="textarea"
+              className="form-control"
+              placeholder="Describe your project"
+              onChange={this.descChange}
+            />
 
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Insert Link toYour Git"
-                onChange={this.gitAddressChange}
-              />
-              {this.state.errorDesc!==""?<label style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}} htmlFor="formGroupExampleInput">{this.state.errorDesc}</label>:""}
-              <Button className="form-control" variant="primary" onClick={this.saveGraduate}>
-                Save
-              </Button>
-            </div>
-        
-      </div>
+            <input
+              type="file"
+              className="form-control"
+              id="file"
+              name="graduateImg"
+              ref="fileUploader"
+              onChange={this.imgChange}
+            />
+            <div></div>
+
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Insert Link toYour Git"
+              onChange={this.gitAddressChange}
+            />
+            {this.state.errorDesc !== "" ? (
+              <label
+                style={{
+                  color: "red",
+                  fontSize: "10px",
+                  lineHeight: "1px !important;",
+                  marginTop: "0",
+                  marginBottom: "0"
+                }}
+                htmlFor="formGroupExampleInput"
+              >
+                {this.state.errorDesc}
+              </label>
+            ) : (
+              ""
+            )}
+            <Button
+              className="form-control"
+              variant="primary"
+              onClick={this.saveGraduate}
+            >
+              Save
+            </Button>
+          </div>
+        </div>
       </div>
     );
   }
