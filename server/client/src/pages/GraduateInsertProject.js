@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import FormData from "form-data";
+// import FormData from "form-data";
 import "./GraduateInsertProject.css";
 // import JSZip from "jszip";
 class GraduateInsertProject extends Component {
@@ -14,7 +14,7 @@ class GraduateInsertProject extends Component {
     redirectToGraduates: false,
     errorDesc:""
   };
-  images = new FormData();
+  // images = new FormData();
   nameChange = e => {
     this.setState({ name: e.target.value });
   };
@@ -49,16 +49,20 @@ class GraduateInsertProject extends Component {
   saveGraduate = () => {
     this.setState({errorDesc:""})
    
-    // var formData = new FormData();
-    // formData.append('image', this.state.img); 
-
+    //  const formData = new FormData();
+//      formData.append('img', this.state.img);
+//      formData.append('name', this.state.name);
+//      formData.append('desc', this.state.desc);
+//      formData.append('gitAddress', this.state.gitAddress); 
+// console.log('formdata');
+// console.log(formData);
     axios
+    // .post("/graduate/insert", formData)
       .post("/graduate/insert", {
         name: this.state.name,
         desc: this.state.desc,
         img: this.state.img,
         gitAddress: this.state.gitAddress
-        
       })
       .then(res => {
         console.log("then axios");
@@ -73,6 +77,7 @@ class GraduateInsertProject extends Component {
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
+        console.log(err);
         if(err.response.status ===413){
         this.setState({errorDesc:"Image is too large.Please choose another image"})
       }
@@ -83,9 +88,7 @@ class GraduateInsertProject extends Component {
   };
   render() {
      if (this.state.redirectToGraduates) {
-    //   console.log("redirectToGraduates!!")
        return <Redirect to="/graduates"></Redirect>;
-   //  return <Link to="/graduates"></Link>;
      }
     return (
       <div className="pageTemplate backTemp">
@@ -122,8 +125,7 @@ class GraduateInsertProject extends Component {
                 placeholder="Insert Link toYour Git"
                 onChange={this.gitAddressChange}
               />
-{this.state.errorDesc!==""?<label htmlFor="formGroupExampleInput">{this.state.errorDesc}</label>:""}
-      
+              {this.state.errorDesc!==""?<label style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}} htmlFor="formGroupExampleInput">{this.state.errorDesc}</label>:""}
               <Button className="form-control" variant="primary" onClick={this.saveGraduate}>
                 Save
               </Button>

@@ -5,6 +5,7 @@ const myDb = "lodigitalDB";
 const usersColl = "users";
 const graduates = "graduates";
 const authen = require("./authentication");
+//const formData = require("express-form-data");
 
 function login(req, res) {
   // console.log(req.query.userName);
@@ -67,6 +68,9 @@ function register(req, res) {
 }
 function graduateInsert(req, res) {
   // console.log(req.query.userName);
+  if(!authen.authenticationIsOk(req.headers.authorization)){
+    return res.sendStatus(401);
+  }
   console.log("--0--");
   MongoClient.connect(url, function(err, db) {
     if (err) {
