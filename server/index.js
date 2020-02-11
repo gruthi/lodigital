@@ -20,7 +20,6 @@ app.post("/users/register", (req, res) => {
 //   console.log('graduateInsert');
 //   routeHelper.graduateInsert( req, res);
 // });
-
 app.post("/graduate/insert", (req, res) => {
   console.log('graduateInsert');
   routeHelper.graduateInsert( req, res);
@@ -40,12 +39,13 @@ app.get("/graduate/get", (req, res) => {
 
 app.delete("/graduate/delete/:id", (req, res) => {
   console.log('graduateDelete');
-   console.log(req.headers.authorization);
+  console.log(req.headers.authorization);
   routeHelper.graduateDelete( req, res);
 });
 
 app.post("/contactUs", (req, res) => {
   console.log('contactUs');
+  console.log('hello');
   routeHelper.contactUs( req, res);
 });
 

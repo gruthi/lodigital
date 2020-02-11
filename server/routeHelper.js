@@ -1,11 +1,62 @@
 const MongoClient = require("mongodb").MongoClient;
 const mongo = require("mongodb");
+const nodemailer = require('nodemailer');
 const url = "mongodb://localhost:27017/";
 const myDb = "lodigitalDB";
 const usersColl = "users";
 const graduates = "graduates";
+const contactList = "contactList";
 const authen = require("./authentication");
-//const formData = require("express-form-data");
+
+var smtpTransport = require('nodemailer-smtp-transport');
+
+const account = {
+    user:'donotreply.lodigital@gmail.com',
+    password: 'kushdhyk' 
+}
+
+function sendEmail(account, params) {
+    
+    // create reusable transporter object using the default SMTP transport
+    var transporter = nodemailer.createTransport(smtpTransport({
+    // var smtpTransport = nodemailer.createTransport({
+        service: 'Gmail', // sets automatically host, port and connection security settings
+        auth: {
+            user: account.user, 
+            pass: account.password  
+        }
+    }));
+
+    var toEmail = params.to[0];
+    for (var i = 1; i < params.to.length; i++) {
+        toEmail += ', ' + params.to[i];
+    }
+
+    // setup email data with unicode symbols
+    var mailOptions = {
+        from: params.from, // sender address
+        to: toEmail, // list of receivers
+        subject: params.subject, // Subject line
+        text: params.text, // plain text body
+        html: params.html, // html body
+        attachments: params.attachments
+    };
+
+    // send mail with defined transport object
+    // smtpTransport.sendMail(mailOptions, (error, info) => {
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            // return console.log('Error while sending mail: ' + error);
+            return { error : error };
+        } else {
+            return { success : info.messageId };
+            //   console.log('Message sent: %s', info.messageId);
+        }
+        // ????
+        smtpTransport.close(); // shut down the connection pool, no more messages.
+        transporter.close();
+    });
+}
 
 function login(req, res) {
   // console.log(req.query.userName);
@@ -81,6 +132,7 @@ function graduateInsert(req, res) {
     console.log("--1.1--");
     const dbo = db.db(myDb);
     console.log(req);
+
     dbo.collection(graduates).insertOne(req.body, function(err, result) {
       if (err) {
         console.log(err.message);
@@ -148,77 +200,53 @@ function graduateDelete(req, res) {
   });
 }
 function contactUs(req, res) {
-  // console.log(req.query.userName);
   console.log("--5--");
+
   MongoClient.connect(url, function(err, db) {
     if (err) {
       console.log("--1--");
       return res.sendStatus(500);
     }
+    console.log("--1234--");
     console.log("--1.1--");
-    const dbo = db.db(myDb);
+    // console.log(res);
 
+    const dbo = db.db(myDb);
+    console.log("--1.4--");
+    
     dbo
-      .collection(contactUsInquiries)
-      .insertOne(req.body, function(err, result) {
+    .collection(contactList)
+    .insertOne(req.body, function(err, result) {
+        console.log("--1.5--");
+
         if (err) {
-          console.log(err.message);
-          res.status(500);
-          return res.send(graduates); /**** */
+          // console.log(err.message);
+          console.log("--1.2--");
+          return res.sendStatus(500);
+          // res.status(500);
+          // return res.send; /*(graduates); *** */
         }
-        dbo
-          .collection(contactUsInquiries)
-          .find({})
-          .toArray(function(err, allContactUsInquiries) {
-            return res.status(201).send(allContactUsInquiries);
-          });
-      });
-  });
+        console.log("--1.6--");
+        const data = req.body;
+        // const mailWasSend = 
+        sendEmail(account,
+           {from: account.user,
+            to: 'henilana@gmail.com', // list of receivers
+            subject: 'פנייה חדשה התקבלה באתר לוד דיגיטל', // Subject line
+            html: `<p>${data.firstName}</p>
+            <p>${data.lastName}</p>
+            <p>${data.address}</p>` // html body,
+           });
+        //    where to send the return??? 
+        return res.sendStatus(200);
+          
+        });
+    });
 }
 
-// function handleGet(req, res) {
-//   console.log(req.query.userName);
-
-//   MongoClient.connect(url, function(err, db) {
-//     if (err) {
-//       return res.sendStatus(500);
-//     }
-//     let dbo = db.db(myDb);
-//     dbo.collection(usersColl).findOne({ email: req.query.email, password: req.query.passWord },
-//         function(err, result) {
-//           if (err) {
-//             // throw err;
-//             res.sendStatus(403);
-//             return;
-//           }
-//           if (result) {
-//             console.log('--1--');
-//             res.sendStatus(200);
-//             return;
-//           } else {
-//             console.log('--2--');
-//             res.sendStatus(401);
-//             return;
-//           }
-//           // db.close();
-//         }
-//       );
-//   });
-// }
-// module.exports.handleGet = handleGet;
 module.exports.register = register;
 module.exports.login = login;
 module.exports.graduateInsert = graduateInsert;
 module.exports.graduateGet = graduateGet;
 module.exports.graduateDelete = graduateDelete;
 module.exports.contactUs = contactUs;
-////////////////////////////
-//
-// dbo.createCollection(usersColl, function(err, res) {
-//   if (err) {
-//     res.sendStatus(400);
-//     return;
-//   }
-//   console.log("Collection created!");
-//   db.close();
-// });
