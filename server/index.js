@@ -2,7 +2,7 @@ console.log("app is loading");
 const routeHelper = require("./routeHelper");
 const authen = require("./authentication");
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const multer = require("multer");
 const upload = multer();
 
@@ -10,8 +10,8 @@ const app = express();
 // const jwtVerifier=('express-jwt');
 app.use(express.json());
 
-app.use(bodyParser.json({ limit: "50mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+// app.use(bodyParser.json({ limit: "50mb", extended: true }));
+// app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.post("/users/login", (req, res) => {
   console.log("login");
   routeHelper.login(req, res);
