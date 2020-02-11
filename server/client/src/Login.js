@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 // import Button from "react-bootstrap/Button";
 // import Form from "react-bootstrap/Form";
 import axios from "axios";
@@ -45,12 +46,11 @@ class Login extends Component {
         password: this.hashCode(this.state.password)//this.state.password
       })
       .then(res => {
-        console.log("then axios");
-        console.log('res.data-'+res.data);
-        if (res.status === 200) {
+         if (res.status === 200) {
           console.log('--1--');
+          console.log(res.data);
          this.setState({ redirectToStudent: true });
-          this.props.setUser(res.data);
+          this.props.setEmail(this.state.email);
           this.props.setToken(res.data);
           this.handleClose();
         } else {

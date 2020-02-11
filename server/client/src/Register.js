@@ -27,33 +27,28 @@ class Register extends Component {
   };
   clickRegister = e => {
     e.preventDefault();
-    console.log("clicked");
-    console.log(this.state.email, this.state.password);
-    this.setState({ errorNum: 0 });
+     this.setState({ errorNum: 0 });
     axios
       .post(this.registerUrl, {
         email: this.state.email,
         password: this.hashCode(this.state.password)
       })
       .then(res => {
-        console.log("then axios");
-        console.log(res.data.res);
-        if (res.status === 201) {
+       if (res.status === 201) {
           this.setState({ redirectToStudent: true });
-          this.props.setUser({
-            email: this.state.email,
-            password: this.state.password
-          });
+          // this.props.setUser({
+          //   email: this.state.email,
+          //   password: this.state.password
+          // });
+          this.props.setEmail(this.state.email);
           this.handleClose();
         } else {
           this.setState({ errorNum: res.status });
-          console.log("cna not register");
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
         this.setState({ errorNum: 600 });
-        console.log(err);
       });
   };
   getErrorText = () => {

@@ -23,13 +23,9 @@ getGraduates=()=>{
   axios
   .get("/graduate/get" )
   .then(res => {
-    console.log("then axios");
-    console.log(res.data);
     if (res.status === 200) {
-      // console.log('graduates-this.props.token'+this.props.token);
       this.setState({graduates:res.data});
    
-    //  console.log(this.state.graduates);
     } else {
       console.log("error");
     }
@@ -47,17 +43,18 @@ render() {
     <div className="pageTemplate backTemp">
       <div className="wrapper">
        {this.props.token? 
-       <Link to="/graduateInsertProject">
+       <Link to="/graduateInsertProject" >
        <button><i className="fas fa-plus"></i></button>
         </Link>:''}
+       
        <CardDeck>
         {this.state.graduates.map((item,i)=>
         <Graduate key ={i} token={this.props.token} title={item.name} desc={item.desc} 
-        img={item.img} link={item.gitAddress} id={item._id} 
-        getGraduates={this.getGraduates}/>)}
+        img={item.img} link={item.gitAddress} id={item._id} email={item.email} useremail={this.props.email}
+        getGraduates={this.getGraduates}/>
+         )}
         </CardDeck>
-        {/* } */}
-      </div>
+       </div>
     </div>
   );
 }

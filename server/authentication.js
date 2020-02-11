@@ -1,24 +1,27 @@
 const jwt=require('jsonwebtoken');
 const secret="xa12LA-9&%";
-// function authenticationIsOk(req,user){
-//   const body=req.body;
-//   return (body.email==user.email) && (body.password==user.password);
-// }
+
 function authenticationIsOk(token){
-  console.log('token'+token);
-  console.log('secret'+secret);
    try{
     verifiedJwt = jwt.verify(token,secret);
     return true;
   }catch(e){
     return false;
   }
-  //return (body.email==user.email) && (body.password==user.password);
+}
+function getMailAuthenticationIsOk(token){
+  
+   try{
+    verifiedJwt = jwt.verify(token,secret);
+    return verifiedJwt.email;
+  }catch(e){
+    return false;
+  }
 }
 function createToken(user){
   const validTimeSec=300*60;
   const expirationDate=Date.now()/1000+validTimeSec;
-  const token=jwt.sign({userID:user.email,exp:expirationDate},secret);
+  const token=jwt.sign({email:user.email,exp:expirationDate},secret);
   return token;
 
   
@@ -26,4 +29,5 @@ function createToken(user){
 module.exports={
   createToken:createToken,
   authenticationIsOk:authenticationIsOk,
+  getMailAuthenticationIsOk:getMailAuthenticationIsOk,
   secret:secret}

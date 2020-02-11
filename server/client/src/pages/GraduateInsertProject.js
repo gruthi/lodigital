@@ -27,9 +27,8 @@ class GraduateInsertProject extends Component {
     this.getBase64(e.target.files[0], result => {
       idCardBase64 = result;
       this.setState({ img: idCardBase64 });
-      console.log(idCardBase64);
+      
     });
-    //this.setState({ img: e.target.files[0] });
   };
   gitAddressChange = e => {
     this.setState({ gitAddress: e.target.value });
@@ -53,7 +52,7 @@ class GraduateInsertProject extends Component {
     formData.append("name", this.state.name);
     formData.append("desc", this.state.desc);
     formData.append("gitAddress", this.state.gitAddress);
-    
+    formData.append("email", this.props.token);
     axios
       .post(
         "/graduate/insert",
@@ -69,24 +68,21 @@ class GraduateInsertProject extends Component {
         { headers: { "Content-Type": "multipart/form-data" } }
       )
       .then(res => {
-        console.log("then axios");
-        console.log(res.status);
         if (res.status === 201) {
-          console.log(res);
           this.setState({ redirectToGraduates: true });
         } else {
           this.setState({ errorDesc: "error" });
-          console.log("error");
         }
-        // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        console.log(err);
         if (err.response.status === 413) {
           this.setState({
             errorDesc: "Image is too large.Please choose another image"
           });
-        } else {
+        } else if (err.response.status === 401) {
+          this.setState({
+            errorDesc: "You are not autorised to do this action"
+          })}else {
           this.setState({ errorDesc: "error" });
         }
       });
@@ -95,6 +91,7 @@ class GraduateInsertProject extends Component {
     if (this.state.redirectToGraduates) {
       return <Redirect to="/graduates"></Redirect>;
     }
+    const disabled = !this.state.name || !this.state.desc || !this.state.img || !this.state.gitAddress;
     return (
       <div className="pageTemplate backTemp">
         <div className="card">
@@ -148,6 +145,7 @@ class GraduateInsertProject extends Component {
             <Button
               className="form-control"
               variant="primary"
+               disabled={disabled} 
               onClick={this.saveGraduate}
             >
               Save

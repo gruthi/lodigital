@@ -22,15 +22,16 @@ import CourseHome from "./pages/CourseHome.js";
 
 
 class Routes extends Component {
-  state = { user: null, hasMounted : true,token:'' };
+  state = { email: null, hasMounted : true,token:'' };
   
-  setUser = user => {
-    this.setState({user: user})
+  setEmail = email => {
+    this.setState({email: email})
   };
 
   setToken = token => {
     this.setState({token: token})
   };
+ 
     changeHasMounted = () => {
     this.setState({hasMounted : false})
   };
@@ -41,9 +42,8 @@ class Routes extends Component {
       <div className="Routes">
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/login" render={()=><Login setUser={this.setUser}/>} /> */}
-          <Route exact path="/login" render={()=><Login setUser={this.setUser} setToken={this.setToken}/>} />
-          <Route exact path="/register" render={()=><Register setUser={this.setUser}/>} />
+          <Route exact path="/login" render={()=><Login setEmail={this.setEmail} setToken={this.setToken}/>} />
+          <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
           <Route exact path="/audience" component={Audience} />
@@ -54,8 +54,8 @@ class Routes extends Component {
           <Route exact path="/syllabus" component={Syllabus} />                
           <Route exact path="/aboutFullStack" component={AboutFullStack} />                
           {/* <Route exact path="/graduates" component={Graduates} /> */}
-          <Route exact path="/graduates" render={()=><Graduates token={this.state.token} />} /> 
-          <Route exact path="/graduateInsertProject" component={GraduateInsertProject} />                
+          <Route exact path="/graduates" render={()=><Graduates token={this.state.token} email={this.state.email}/>} /> 
+          <Route exact path="/graduateInsertProject" render={()=><GraduateInsertProject token={this.state.token}/>} />                
           <Route exact path="/contactUs" component={ContactUs} /> 
           <Route exact path="/thanksContactUsInquiries" component={ThanksContactUsInquiries} /> 
           <Route exact path="/contactUsInquiries" component={ContactUsInquiries} /> 

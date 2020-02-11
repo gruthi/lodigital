@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
+import  "./Graduate.css";
 
 class Graduate extends Component {
   state = { editHeader: false };
   enableChangeHeader = () => {
-    //console.log('e.target.value');
     this.setState({ editHeader: true });
   };
 
@@ -24,57 +24,60 @@ class Graduate extends Component {
           this.props.getGraduates();
           this.setState({ graduates: res.data });
         } else {
-          console.log("thenelse-error");
+          console.log("error");
         }
       })
       .catch(err => {
+        if (err.response.status === 403) {
+          console.log('you are not authorised to delete it'); 
+        }
         console.log(err);
       });
   };
   render() {
     return (
-      <div>
-        <Card
-          style={{ width: "36rem" }}
-          border="primary"
-          className=" text-center h-100"
-        >
-          {!this.state.editHeader ? (
-            <Card.Header
-              className="text-center"
-              onClick={this.enableChangeHeader}
-            >
-              {this.props.title}
-              {this.props.token ? (
-                <button onClick={this.removeGraduate}>
-                  <i className="fas fa-minus"></i>
-                </button>
-              ) : (
-                ""
-              )}
-            </Card.Header>
-          ) : (
-            <input
-              type="text"
-              onChange={this.ChangeHeader}
-              onKeyPress={this.disableChangeHeader}
-            />
-          )}
-          <Card.Body>
-            <Card.Img
-              className="card-img-left"
-              variant="top"
-              src={this.props.img}
-            />
-
-            <Card.Text>{this.props.desc}</Card.Text>
-
-            <a href={this.props.link}>Go to My Git</a>
-          </Card.Body>
-        </Card>
+      <div >
+      <Card
+        style={{ width: "36rem" }}
+        border="primary"
+        className=" text-center h-100"
+      >
+        {!this.state.editHeader ? (
+          <Card.Header
+            className="text-center"
+            onClick={this.enableChangeHeader}
+          >
+            {this.props.title}
+             {(this.props.useremail===this.props.email) ? (
+              <button onClick={this.removeGraduate}>
+                <i className="fas fa-minus"></i>
+              </button>
+            ) : (
+              ""
+            )}
+          </Card.Header>
+        ) : (
+          <input
+            type="text"
+            onChange={this.ChangeHeader}
+            onKeyPress={this.disableChangeHeader}
+          />
+        )}
+        <Card.Body>
+          <Card.Img
+            className="card-img-left"
+            variant="top"
+            src={this.props.img}
+          />
+      
+          <Card.Text>{this.props.desc}</Card.Text>
+          
+          <a href={this.props.link}>Go to My Git</a>
+        </Card.Body>
+      </Card>
       </div>
     );
   }
-}
-
+ }
+ 
 export default Graduate;

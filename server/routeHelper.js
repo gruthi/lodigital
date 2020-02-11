@@ -59,22 +59,17 @@ function sendEmail(account, params) {
 }
 
 function login(req, res) {
-  // console.log(req.query.userName);
-  console.log("--0--");
   MongoClient.connect(url, function(err, db) {
     if (err) {
-      console.log("--1--");
       return res.sendStatus(500);
     }
     const dbo = db.db(myDb);
     //req.body =={ email: req.body.email,password: req.body.password }
     dbo.collection(usersColl).findOne(req.body, function(err, userFound) {
       if (err) {
-        console.log("--2--");
-        return res.sendStatus(500);
+       return res.sendStatus(500);
       }
       if (!userFound) {
-        console.log("--3--");
         return res.sendStatus(404);
         // 401
       }
@@ -87,29 +82,22 @@ function login(req, res) {
 }
 
 function register(req, res) {
-  // console.log(req.query.userName);
-  console.log("--0--");
   MongoClient.connect(url, function(err, db) {
     if (err) {
-      console.log("--1--");
       return res.sendStatus(500);
     }
-    console.log("--1.1--");
     const dbo = db.db(myDb);
     dbo
       .collection(usersColl)
       .findOne({ email: req.body.email }, function(err, userFound) {
         if (err) {
-          console.log("--2--");
           return res.sendStatus(500);
         }
         if (userFound) {
-          console.log("--3--");
           return res.sendStatus(400);
         }
         dbo.collection(usersColl).insertOne(req.body, function(err, result) {
           if (err) {
-            console.log(err.message);
             return res.sendStatus(500);
           }
           res.json(authen.createToken(req.body));
@@ -119,23 +107,17 @@ function register(req, res) {
   });
 }
 function graduateInsert(req, res) {
-  // console.log(req.query.userName);
-  // if(!authen.authenticationIsOk(req.headers.authorization)){
-  //   return res.sendStatus(401);
-  // }
-  console.log("--0--");
+  if(!authen.authenticationIsOk(req.body.email)){//this is not  email but token
+     return res.sendStatus(401);
+  }
   MongoClient.connect(url, function(err, db) {
     if (err) {
-      console.log("--1--");
       return res.sendStatus(500);
     }
-    console.log("--1.1--");
     const dbo = db.db(myDb);
-    console.log(req);
-
+    req.body.email=authen.getMailAuthenticationIsOk(req.body.email);
     dbo.collection(graduates).insertOne(req.body, function(err, result) {
       if (err) {
-        console.log(err.message);
         res.status(500);
         return res.send; //(graduates);
       }
@@ -145,30 +127,22 @@ function graduateInsert(req, res) {
         .toArray(function(err, allGraduates) {
           return res.status(201).send(allGraduates);
         });
-      // res.status(201);
-      // return res.send(req.body);
-    });
+     });
   });
 }
 function graduateGet(req, res) {
-  // console.log(req.query.userName);
-  console.log("--0--");
-  MongoClient.connect(url, function(err, db) {
+   MongoClient.connect(url, function(err, db) {
     if (err) {
-      console.log("--1--");
       return res.sendStatus(500);
     }
-    console.log("--1.1--");
     const dbo = db.db(myDb);
     dbo
       .collection(graduates)
       .find({})
       .toArray(function(err, allGraduates) {
         if (err) {
-          console.log(err.message);
           return res.status(500);
-          // return res.send(allGraduates);
-        }
+         }
 
         res.status(200);
         return res.send(allGraduates);
@@ -176,26 +150,31 @@ function graduateGet(req, res) {
   });
 }
 function graduateDelete(req, res) {
-  // console.log(req.query.userName);
-  console.log("--0--");
   if (!authen.authenticationIsOk(req.headers.authorization)) {
     return res.sendStatus(401);
   }
-  MongoClient.connect(url, function(err, db) {
+   MongoClient.connect(url, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
+    const mailToCheck=authen.getMailAuthenticationIsOk(req.headers.authorization)
+ 
     const dbo = db.db(myDb);
     dbo
       .collection(graduates)
-      .deleteOne({ _id: new mongo.ObjectId(req.params.id) }, function(
+      .deleteOne({ _id: new mongo.ObjectId(req.params.id),email:mailToCheck }, function(
         err,
         obj
       ) {
         if (err) {
           return res.status(500); //.send(graduates);
         }
+        if (obj.deletedCount == 1){
         return res.sendStatus(200); //.send(graduates);
+        }
+        else{
+          return res.sendStatus(403);
+        }
       });
   });
 }
