@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
-import  "./Graduate.css";
+// import  "./Graduate.css";
 
 class Graduate extends Component {
   state = { editHeader: false };

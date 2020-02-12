@@ -1,6 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const mongo = require("mongodb");
 const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
 const url = "mongodb://localhost:27017/";
 const myDb = "lodigitalDB";
 const usersColl = "users";
@@ -8,33 +9,42 @@ const graduates = "graduates";
 const contactList = "contactList";
 const authen = require("./authentication");
 
-var smtpTransport = require('nodemailer-smtp-transport');
+function getMyTime(){
+  let d = new Date();
+  let months = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+  var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  days[d.getDay()];
+  return(`${days[d.getDay()]}: ${d.getDate()}/${months[d.getMonth()]}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`);
+}
 
 const account = {
     user:'donotreply.lodigital@gmail.com',
     password: 'kushdhyk' 
 }
 
+// params.to (email address/ addresses ) must be array
 function sendEmail(account, params) {
-    
-    // create reusable transporter object using the default SMTP transport
-    var transporter = nodemailer.createTransport(smtpTransport({
-    // var smtpTransport = nodemailer.createTransport({
-        service: 'Gmail', // sets automatically host, port and connection security settings
+
+    let transporter = nodemailer.createTransport(smtpTransport({        
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
         auth: {
             user: account.user, 
             pass: account.password  
         }
     }));
 
-    var toEmail = params.to[0];
+    // array to list:
+    let toEmail = params.to[0];
     for (var i = 1; i < params.to.length; i++) {
         toEmail += ', ' + params.to[i];
     }
-
+   
     // setup email data with unicode symbols
-    var mailOptions = {
-        from: params.from, // sender address
+    let mailOptions = {
+        from: '"Lodigital Service" <xx@gmail.com>',
         to: toEmail, // list of receivers
         subject: params.subject, // Subject line
         text: params.text, // plain text body
@@ -43,18 +53,14 @@ function sendEmail(account, params) {
     };
 
     // send mail with defined transport object
-    // smtpTransport.sendMail(mailOptions, (error, info) => {
       transporter.sendMail(mailOptions, (error, info) => {
+        console.log('sending mail');
         if (error) {
-            // return console.log('Error while sending mail: ' + error);
-            return { error : error };
+          console.log(error);
         } else {
-            return { success : info.messageId };
-            //   console.log('Message sent: %s', info.messageId);
+           console.log('Message %s sent: %s', info.messageId, info.response);
+           transporter.close();
         }
-        // ????
-        smtpTransport.close(); // shut down the connection pool, no more messages.
-        transporter.close();
     });
 }
 
@@ -179,44 +185,40 @@ function graduateDelete(req, res) {
   });
 }
 function contactUs(req, res) {
-  console.log("--5--");
 
   MongoClient.connect(url, function(err, db) {
     if (err) {
-      console.log("--1--");
       return res.sendStatus(500);
     }
-    console.log("--1234--");
-    console.log("--1.1--");
-    // console.log(res);
-
+    
     const dbo = db.db(myDb);
-    console.log("--1.4--");
+    const data = req.body;
     
     dbo
     .collection(contactList)
-    .insertOne(req.body, function(err, result) {
-        console.log("--1.5--");
+    .insertOne(data, function(err, result) {
 
         if (err) {
-          // console.log(err.message);
-          console.log("--1.2--");
           return res.sendStatus(500);
-          // res.status(500);
-          // return res.send; /*(graduates); *** */
         }
-        console.log("--1.6--");
-        const data = req.body;
-        // const mailWasSend = 
+        
         sendEmail(account,
-           {from: account.user,
-            to: 'henilana@gmail.com', // list of receivers
+            {to: ['henilana@gmail.com'], // list of receivers
             subject: 'פנייה חדשה התקבלה באתר לוד דיגיטל', // Subject line
-            html: `<p>${data.firstName}</p>
-            <p>${data.lastName}</p>
-            <p>${data.address}</p>` // html body,
+            text:'',
+            html:`<div><h3>להלן פרטי הפנייה שהתקבלה ב: ${getMyTime()}</h3>
+                      <p>שם פרטי: ${data.firstName}</p>
+                      <p>שם משפחה: ${data.lastName}</p>
+                      <p>כתובת: ${data.address}</p>
+                      <p>כתובת אימייל: ${data.email}</p>
+                      <p>מספר טלפון: ${data.phone}</p>
+                      <p>השכלה: ${data.education}</p>
+                      <p>עיסוק כיום: ${data.occupation}</p>
+                      <p>רקע בפיתוח תוכנה: ${data.BackSoftwareDvelopment}</p>
+                      <p>האם תוכל להשקיע 10 שעות שבועיות בקורס: ${data.tenHours}</p></div>`,
+            attachments:''
            });
-        //    where to send the return??? 
+       
         return res.sendStatus(200);
           
         });

@@ -1,17 +1,11 @@
 console.log("app is loading");
 const routeHelper = require("./routeHelper");
-const authen = require("./authentication");
 const express = require("express");
-// const bodyParser = require("body-parser");
 const multer = require("multer");
 const upload = multer();
-
 const app = express();
-// const jwtVerifier=('express-jwt');
 app.use(express.json());
 
-// app.use(bodyParser.json({ limit: "50mb", extended: true }));
-// app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.post("/users/login", (req, res) => {
   console.log("login");
   routeHelper.login(req, res);
@@ -51,8 +45,8 @@ app.delete("/graduate/delete/:id", (req, res) => {
 });
 
 app.post("/contactUs", (req, res) => {
-  console.log("contactUs");
-  routeHelper.contactUs(req, res);
+  console.log('contactUs');
+  routeHelper.contactUs( req, res);
 });
 
 const PORT = process.env.PORT || 5000;
