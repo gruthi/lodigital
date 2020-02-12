@@ -11,11 +11,9 @@ const authen = require("./authentication");
 const courseMails=['120@gmail.com']
 function getMyTime(){
   let d = new Date();
-  let months = ["January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"];
-  var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var days = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
   days[d.getDay()];
-  return(`${days[d.getDay()]}: ${d.getDate()}/${months[d.getMonth()]}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`);
+  return(`יום ${days[d.getDay()]} ${d.getDate()}.${(d.getMonth()+1)}.${d.getFullYear()}, בשעה ${d.getHours()}:${d.getMinutes()}`);
 }
 
 const account = {
@@ -213,7 +211,7 @@ function contactUs(req, res) {
             {to: ['henilana@gmail.com'], // list of receivers
             subject: 'פנייה חדשה התקבלה באתר לוד דיגיטל', // Subject line
             text:'',
-            html:`<div><h3>להלן פרטי הפנייה שהתקבלה ב: ${getMyTime()}</h3>
+            html:`<div><h3>להלן פרטי הפנייה שהתקבלה ב${getMyTime()}:</h3>
                       <p>שם פרטי: ${data.firstName}</p>
                       <p>שם משפחה: ${data.lastName}</p>
                       <p>כתובת: ${data.address}</p>
@@ -221,8 +219,8 @@ function contactUs(req, res) {
                       <p>מספר טלפון: ${data.phone}</p>
                       <p>השכלה: ${data.education}</p>
                       <p>עיסוק כיום: ${data.occupation}</p>
-                      <p>רקע בפיתוח תוכנה: ${data.BackSoftwareDvelopment}</p>
-                      <p>האם תוכל להשקיע 10 שעות שבועיות בקורס: ${data.tenHours}</p></div>`,
+                      <p>רקע בפיתוח תוכנה: ${data.backSoftwareDvelopment}</p>
+                      <p>האם תוכל להשקיע 10 שעות שבועיות בקורס? ${data.tenHours}</p></div>`,
             attachments:''
            });
        
