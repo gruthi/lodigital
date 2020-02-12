@@ -1,3 +1,4 @@
+
 .TitlePage, .SubTitlePage{
     position: relative;
 }
@@ -9,7 +10,7 @@
     padding: calc(5px + 0.5vw) 0 calc(32px + 0.5vw);
 }
 .TitlePage h1, .SubTitlePage h2{
-    font-weight: bold;
+    /* font-weight: bold; */
     position: absolute;
 }
 .TitlePage h1{
