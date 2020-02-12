@@ -8,7 +8,7 @@ const usersColl = "users";
 const graduates = "graduates";
 const contactList = "contactList";
 const authen = require("./authentication");
-
+const courseMails=['120@gmail.com']
 function getMyTime(){
   let d = new Date();
   let months = ["January", "February", "March", "April", "May", "June",
@@ -22,7 +22,6 @@ const account = {
     user:'donotreply.lodigital@gmail.com',
     password: 'kushdhyk' 
 }
-
 // params.to (email address/ addresses ) must be array
 function sendEmail(account, params) {
 
@@ -86,7 +85,6 @@ function login(req, res) {
     });
   });
 }
-
 function register(req, res) {
   MongoClient.connect(url, function(err, db) {
     if (err) {
@@ -102,12 +100,21 @@ function register(req, res) {
         if (userFound) {
           return res.sendStatus(400);
         }
+        if (!courseMails.includes(req.body.email)){
+          console.log('--courseMails--')
+          return res.sendStatus(600);
+        }
+       
+       console.log('req.body');
+       console.log(req.body);
         dbo.collection(usersColl).insertOne(req.body, function(err, result) {
           if (err) {
             return res.sendStatus(500);
           }
+          res.status(201);
           res.json(authen.createToken(req.body));
-          return res.sendStatus(201);
+          return res.send();
+         // return res.sendStatus(201);
         });
       });
   });

@@ -43,12 +43,13 @@ class Register extends Component {
           this.props.setEmail(this.state.email);
           this.handleClose();
         } else {
+          console.log('res.status');
           this.setState({ errorNum: res.status });
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        this.setState({ errorNum: 600 });
+        this.setState({ errorNum: err.response.status });
       });
   };
   getErrorText = () => {
@@ -58,6 +59,8 @@ class Register extends Component {
         txtError = "User exist";
         break;
       case 600:
+        txtError = "You are not authorised to register";
+        break;
       case 500:
         txtError = "Error";
         break;
@@ -170,6 +173,8 @@ class Register extends Component {
                           </p>
                         )}
                       </div>
+                      {this.state.errorNum > 0 ? 
+                      (<p style={{ color: "red" }}> {this.getErrorText()} </p>) : ( "" )}
                       <button
                         id="btn-log-in"
                         className="btn btn-lg btn-primary btn-block"

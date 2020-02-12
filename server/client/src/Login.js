@@ -56,7 +56,6 @@ class Login extends Component {
         } else {
           console.log('--2--');
           this.setState({ isError: true });
-          console.log("cna not login");
         }
         // this.setState({ data: res.data.res });
       })
