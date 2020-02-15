@@ -1,7 +1,7 @@
 html, body{
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: hidden;
-  
+ 
 }
 .App {
   height: 100vh;

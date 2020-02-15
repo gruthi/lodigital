@@ -43,7 +43,6 @@ class Register extends Component {
           this.props.setEmail(this.state.email);
           this.handleClose();
         } else {
-          console.log('res.status');
           this.setState({ errorNum: res.status });
         }
         // this.setState({ data: res.data.res });
@@ -83,7 +82,6 @@ class Register extends Component {
   repeatPasswordChange = e => {
     let tmpRepeatPassword = e.target.value;
     this.setState({ repeatPassword: tmpRepeatPassword });
-    console.log(tmpRepeatPassword.length);
     if ((this.state.password === tmpRepeatPassword) && (tmpRepeatPassword.length>1)) {
       this.setState({ repeatPasswordIsSame: true });
      

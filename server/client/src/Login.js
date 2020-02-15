@@ -27,19 +27,14 @@ class Login extends Component {
     return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
   }
   register = () => {
-    console.log('reg1');
-    this.setState({ redirectToRegister: true });
+   this.setState({ redirectToRegister: true });
   };
   forgotPassword = () => {
     this.setState({ redirectToResetPassword: true });
   };
   clickLogin = e => {
-    //e.preventDefault();
-    console.log("clicked");
-    
-    // console.log('hashed:'+ this.hashCode(this.state.password));
-    // console.log(this.state.email, this.state.password);
-    this.setState({ isError: false });
+    //e.preventDefault(); 
+     this.setState({ isError: false });
     axios
       .post(this.loginUrl, {
         email: this.state.email,
@@ -47,22 +42,17 @@ class Login extends Component {
       })
       .then(res => {
          if (res.status === 200) {
-          console.log('--1--');
-          console.log(res.data);
-         this.setState({ redirectToStudent: true });
+          this.setState({ redirectToStudent: true });
           this.props.setEmail(this.state.email);
           this.props.setToken(res.data);
           this.handleClose();
         } else {
-          console.log('--2--');
-          this.setState({ isError: true });
+         this.setState({ isError: true });
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        console.log('--3--');
         this.setState({ isError: true });
-        console.log(err);
       });
   };
   handleClose = () => this.setState({showModal:false});
@@ -75,8 +65,6 @@ class Login extends Component {
      // return <Link to="/courseHome"></Link> ;
     }
     if (this.state.redirectToRegister) {
-      console.log('reg');
-    //  return <Redirect to="/register" />;
         return <Link to="/register"></Link> ;
 
     }

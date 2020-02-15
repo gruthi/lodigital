@@ -47,7 +47,10 @@ div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:hover:after{
 /* div.dropdown.nav-item{
     
 } */
-
+div.mr-auto.navbar-nav>a.nav-link.active{
+   background: -webkit-linear-gradient(orange, gray);
+   -webkit-background-clip: text;
+}
 div.mr-auto.navbar-nav>a.nav-link:hover, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:hover, i:hover{
 /* div.mr-auto.navbar-nav a.nav-link:hover{ */
     background: -webkit-linear-gradient(orange, gray);
@@ -127,6 +130,7 @@ div.dropdown-menu.show a.nav-link:not(:last-of-type){
 div.dropdown-menu.show>a.nav-link:hover{
     background-color: #A5CACF !important;
 }
+
 /* div.dropdown-menu.show{
     margin-top: 0.8vw;
     text-align: right;
