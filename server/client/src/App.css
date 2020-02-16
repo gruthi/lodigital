@@ -9,4 +9,5 @@ html, body{
   position: relative;
   background-color: #8BCFB7;
   overflow-x: hidden !important;
+  direction: rtl;
 }

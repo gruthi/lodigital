@@ -2,14 +2,12 @@ const MongoClient = require("mongodb").MongoClient;
 const mongo = require("mongodb");
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
-
-const authen = require("./authentication");
-
 const url = "mongodb://localhost:27017/";
 const myDb = "lodigitalDB";
 const usersColl = "users";
 const graduates = "graduates";
 const contactList = "contactList";
+const authen = require("./authentication");
 
 const courseMails=['120@gmail.com', 'henilana@gmail.com']
 
@@ -18,12 +16,12 @@ function getMyTime(){
   var days = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
   days[d.getDay()];
   return(`יום ${days[d.getDay()]} ${d.getDate()}.${(d.getMonth()+1)}.${d.getFullYear()}, בשעה ${d.getHours()}:${d.getMinutes()}`);
-}
+};
 
 const account = {
     user:'donotreply.lodigital@gmail.com',
     password: 'kushdhyk' 
-}
+};
 
 // params.to (email address/ addresses ) must be array
 function sendEmail(account, params) {
@@ -134,29 +132,23 @@ function forgotPassword(req, res) {
     const data = req.body;
     
     dbo
-    .collection(usersColl)
-    .findOne({ email: data.email }, function(err, result) {
+    .collection(contactList)
+    .insertOne(data, function(err, res) {
 
         if (err) {
           return res.sendStatus(500);
         }
-        let link = "http://localhost:3000/resetPassword";
-
-        // try{
-          sendEmail(account,
+        
+        sendEmail(account,
             {to: [data.email], // list of receivers
-            subject: 'שחזור סיסמא לאתר לודיגיטל', // Subject line
+            subject: 'שחזור סיסמא לכניסה לאתר לודיגיטל', // Subject line
             text:'',
-            html:`<h2>שחזור סיסמא</h2>
-                  <p>שלום,<br>קיבלת את המייל הזה בגלל שהנך (או מישהו אחר) ביקשת לשחזר את הסיסמא שלך באתר לודיגיטל.</p>
-                  <a href=${link}>לחץ כאן לשינוי סיסמתך באתר לאחרת</a><br>
-                  <p>(אם המייל לא נשלח על ידך, יש להתעלם ממנו)</p>`,
+            html:`<div><h3>אנא הקש על הקישור לשחזור סיסמא:</h3>
+                      <p>קישור</p>
+                      </div>`,
             attachments:''
            });
-        // }catch(error){
-        //   return res.sendStatus(404);
-        // }
-       console.log(res.status);
+       
         return res.sendStatus(200);
           
         });
@@ -164,31 +156,33 @@ function forgotPassword(req, res) {
 }
 
 function resetPassword(req, res) {
-  
-  console.log("forgotPassword");
-  
+  console.log("---1---");
   MongoClient.connect(url, function(err, db) {
     if (err) {
-      console.log("---1---");
+      console.log("---2---");
       return res.sendStatus(500);
     }
-    console.log("---2---");
+    console.log("---3---");
     const dbo = db.db(myDb);
-
+    console.log("---4---");
     dbo
     .collection(usersColl)
-    .updateOne( { email : req.body.email }, {$set: { password : req.body.password }}, function(err, result) {
+    .changeUserPassword()
+    .updateOne( {email : req.body.email}, {$set: {password : req.body.password}}, function(err, result) {
+      console.log("---5---");
+      console.log("---5---");
         if (err) {
-          console.log("---4---");
+          console.log("---6---");
+          // console.log(err);
           return res.sendStatus(500);
         }
-        else if (!result.result.nModified){
-          return res.sendStatus(404);
-        }else{
+        else{
+          console.log("---7---");
+          // console.log(res);
           return res.sendStatus(200);
-        };
+        }
     });
-    console.log("---6---");
+    console.log("---8---");
   });
 }
 

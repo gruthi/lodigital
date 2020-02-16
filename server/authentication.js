@@ -23,11 +23,16 @@ function createToken(user){
   const expirationDate=Date.now()/1000+validTimeSec;
   const token=jwt.sign({email:user.email,exp:expirationDate},secret);
   return token;
-
-  
+}
+function createTokenLink(link){
+  const validTimeSec=5*60;
+  const expirationDate=Date.now()/1000+validTimeSec;
+  const token=jwt.sign({link:link,exp:expirationDate},secret);
+  return token;
 }
 module.exports={
   createToken:createToken,
+  createTokenLink:createTokenLink,
   authenticationIsOk:authenticationIsOk,
   getMailAuthenticationIsOk:getMailAuthenticationIsOk,
   secret:secret}

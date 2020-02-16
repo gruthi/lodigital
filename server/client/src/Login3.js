@@ -32,20 +32,14 @@ class Login extends Component {
   };
 
   resetPsdSuccessed= () => {
-    this.setState({ resetPsdSuccessed: this.props.location.state.resetPsdSuccessed});
+    this.setState({ resetPsdSuccessed: true });
   };
 
   handleChange = name => e => {
+    // this.setState({ userData: {...this.state.userData, [name]: e.target.value},
     this.setState({ [name] : e.target.value});
   };
 
-  // componentDidUpdate(_props,_state){
-  //   console.log(this.props.location.reset.resetPsdSuccessed);
-  //   if(this.props.location.state.resetPsdSuccessed)
-  //     this.setState({resetPsdSuccessed:true});
-  //   // else
-  //   //   this.setState({resetPsdSuccessed:false}); 
-  // }
 
   clickLogin = e => {
     //e.preventDefault();
@@ -99,11 +93,12 @@ class Login extends Component {
 
     if (this.state.redirectToStudent) {
        return <Redirect to="/courseHome" />;
+     // return <Link to="/courseHome"></Link> ;
     }
 
     if (this.state.redirectToRegister) {
      return <Redirect to="/register" />;
-
+        // return <Link to="/register"></Link> ;
     }
 
     if (this.state.forgotPassword) {
@@ -148,12 +143,6 @@ class Login extends Component {
     
     return (
       <div className="pageTemplate backTemp">
-        
-        {this.state.resetPsdSuccessed ?
-        // {/* // {this.props.location.state.resetPsdSuccessed? */}
-          <div>הסיסמא שונתה בהצלחה! אנא הכנס קוד וסיסמא כדי להתחבר:</div>
-          :''}
-
         <div className="card"> 
           <div className="card-body">
             
@@ -208,5 +197,4 @@ class Login extends Component {
     );
   }
 }
-
 export default Login;

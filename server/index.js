@@ -16,6 +16,16 @@ app.post("/users/register", (req, res) => {
   routeHelper.register(req, res);
 });
 
+app.post("/users/forgotPassword", (req, res) => {
+  console.log("forgotPassword");
+  routeHelper.forgotPassword(req, res);
+});
+
+app.put("/users/resetPassword", (req, res) => {
+  console.log("resetPassword");
+  routeHelper.resetPassword(req, res);
+});
+
 // app.post("/graduate/insert", req,jwtVerifier({secret:authen.secret}), res=> {
 //   console.log('graduateInsert');
 //   routeHelper.graduateInsert( req, res);

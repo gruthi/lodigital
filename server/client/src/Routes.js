@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from "./pages/Home.js";
 import Login from "./Login";
 import Register from "./Register";
+import ResetPassword from "./ResetPassword.js";
 import AboutTheVenture from "./pages/AboutTheVenture.js";
 import Goals from "./pages/Goals.js";
 import Audience from "./pages/Audience.js";
@@ -21,7 +22,7 @@ import CourseHome from "./pages/CourseHome.js";
 
 
 class Routes extends Component {
-  state = { email: null, hasMounted : true,token:'' };
+  state = { email: null, hasMounted : true ,token:'', loginHeader: 'הרשמה לאתר' };
   
   setEmail = email => {
     this.setState({email: email})
@@ -29,6 +30,10 @@ class Routes extends Component {
 
   setToken = token => {
     this.setState({token: token})
+  };
+
+  setloginHeader = loginHeader =>{
+    this.setState({loginHeader: loginHeader})
   };
  
     changeHasMounted = () => {
@@ -43,6 +48,7 @@ class Routes extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" render={()=><Login setEmail={this.setEmail} setToken={this.setToken}/>} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
+          <Route exact path="/resetPassword" component={ResetPassword} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
           <Route exact path="/audience" component={Audience} />

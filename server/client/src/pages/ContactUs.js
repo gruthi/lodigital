@@ -102,7 +102,7 @@ class ContactUs extends Component {
           )}
         </CardDeck>
                
-        <div style={{ height: "10px" }} >
+        <div>
           {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''}
         </div>
         <button
