@@ -1,5 +1,5 @@
 const jwt=require('jsonwebtoken');
-const secret="xa12LA-9&%";
+const secret="xa12LA-9&%IHRG";
 
 function authenticationIsOk(token){
    try{

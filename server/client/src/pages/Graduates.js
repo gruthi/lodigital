@@ -7,10 +7,7 @@ import axios from "axios";
 import CardDeck from 'react-bootstrap/CardDeck'
 
 class Graduates extends Component {
-//    graduates=[
-//     {title:'Hen Ilana & Ruthi Glick',text:'Lodigital Web Site',img:computer4Img,link:'https://github.com/gruthi/lodigital'}
-//     // {title:'',text:'',img:'',link:''}
-// ]
+
 state={graduates:[]}
 updateGraduates=(graduates)=>{
   console.log('updateGraduates');
@@ -25,7 +22,7 @@ getGraduates=()=>{
   .then(res => {
     if (res.status === 200) {
       this.setState({graduates:res.data});
-   
+      
     } else {
       console.log("error");
     }
@@ -50,7 +47,10 @@ render() {
        <CardDeck>
         {this.state.graduates.map((item,i)=>
         <Graduate key ={i} token={this.props.token} title={item.name} desc={item.desc} 
-        img={item.img} link={item.gitAddress} id={item._id} email={item.email} useremail={this.props.email}
+        img={item.img} link={item.gitAddress} id={item._id} 
+        email={item.email} 
+        useremail={this.props.email} 
+        passPic={item.passPic}
         getGraduates={this.getGraduates}/>
          )}
         </CardDeck>

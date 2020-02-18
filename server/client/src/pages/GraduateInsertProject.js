@@ -4,12 +4,13 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import FormData from "form-data";
 import "./GraduateInsertProject.css";
-// import JSZip from "jszip";
+
 class GraduateInsertProject extends Component {
   state = {
     name: "",
     desc: "",
     img: "",
+    passPic:"",
     gitAddress: "",
     redirectToGraduates: false,
     errorDesc: ""
@@ -27,6 +28,15 @@ class GraduateInsertProject extends Component {
     this.getBase64(e.target.files[0], result => {
       idCardBase64 = result;
       this.setState({ img: idCardBase64 });
+      
+    });
+  };
+  passPicChange = e => {
+    let idCardBase64 = "";
+
+    this.getBase64(e.target.files[0], result => {
+      idCardBase64 = result;
+      this.setState({ passPic: idCardBase64 });
       
     });
   };
@@ -53,18 +63,11 @@ class GraduateInsertProject extends Component {
     formData.append("desc", this.state.desc);
     formData.append("gitAddress", this.state.gitAddress);
     formData.append("email", this.props.token);
+    formData.append("passPic", this.state.passPic);
     axios
       .post(
         "/graduate/insert",
         formData,
-        // .post(
-        //   "/graduate/insert",
-        //   {
-        //     name: this.state.name,
-        //     desc: this.state.desc,
-        //     img: this.state.img,
-        //     gitAddress: this.state.gitAddress
-        //   },
         { headers: { "Content-Type": "multipart/form-data" } }
       )
       .then(res => {
@@ -109,15 +112,30 @@ class GraduateInsertProject extends Component {
               placeholder="Describe your project"
               onChange={this.descChange}
             />
-
+            {this.state.img?'':
+             <label  style={{color: "blue",marginBottom: "0"
+             }}>בחר תמונה  של הפרויקט:</label>}
             <input
               type="file"
               className="form-control"
               id="file"
-              name="graduateImg"
+              // name="graduateImg"
               ref="fileUploader"
               onChange={this.imgChange}
-            />
+           />
+            {this.state.passPic?'':
+             <label  style={{color: "blue",marginBottom: "0"
+             }}>בחר תמונה  שלך :</label>}
+            <input
+              type="file"
+              className="form-control"
+              id="file"
+              name="passPic"
+              ref="fileUploader"
+              onChange={this.passPicChange}
+           />
+          
+         
             <div></div>
 
             <input
@@ -158,47 +176,3 @@ class GraduateInsertProject extends Component {
 }
 
 export default GraduateInsertProject;
-/*{
-   <Card
-style={{ width: "36rem" }}
-border="primary"
-className=" text-center h-100"
->
-<Card.Header className="text-center">
-  <input
-    type="text"
-    placeholder="Insert Your Name"
-    onChange={this.nameChange}
-  />
-</Card.Header>
-<Card.Body>
-  <Card.Text>
-    {" "}
-    <textarea
-      placeholder="Describe your project"
-      onChange={this.descChange}
-    />{" "}
-  </Card.Text>
-
-  <input
-    type="file"
-    id="file"
-    name="graduateImg"
-    ref="fileUploader"
-    onChange={this.imgChange}
-  />
-  <div></div>
-  <Card.Link>
-    <input
-      type="text"
-      placeholder="Insert Link toYour Git"
-      onChange={this.gitAddressChange}
-    />
-  </Card.Link>
-</Card.Body>
-<Card.Footer>
-  <Button variant="primary" onClick={this.saveGraduate}>
-    Save
-  </Button>
-</Card.Footer>
-</Card> */

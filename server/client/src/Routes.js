@@ -36,9 +36,9 @@ class Routes extends Component {
     this.setState({loginHeader: loginHeader})
   };
  
-    changeHasMounted = () => {
-    this.setState({hasMounted : false})
-  };
+  //   changeHasMounted = () => {
+  //   this.setState({hasMounted : false})
+  // };
 
   render() {
     
