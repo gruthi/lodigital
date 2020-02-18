@@ -17,7 +17,7 @@ function Syllabus() {
    {subject:'React',desc:'Components, Props, State, Styling, Advanced Rendering, Component life cycle, Single Page Application, Routing, Validations, Forms,  Advanced: Redux',lst:[]},
    {subject:'Node.js',desc:'Events loop, Modules: core, custom, third party, Files',lst:[]},
    {subject:'Express.js',desc:'Web server, Middleware, Rest API, Authentication / Authorization, Postman',lst:[]},
-   {subject:'MongoDB/Mongoose',desc:'NoSQL, CRUD operations, ObjectId, Model',lst:[]},
+   {subject:'MongoDB / Mongoose',desc:'NoSQL, CRUD operations, ObjectId, Model',lst:[]},
    {subject:'Tools',desc:'Visual Studio Code ',lst:[]},
    {subject:'Deployment',desc:'Heroku',lst:[]},
    {subject:'Testing',desc:'Unit Test, Jest',lst:[]},
@@ -29,7 +29,7 @@ function Syllabus() {
 
   ] 
   return (
-    <div className="pageTemplate backTemp">
+    <div className="pageTemplate backTempSyllabus">
       {/* <div className="wrapper"> */}
         <TitlePage title="סילבוס"/>
         <Table striped bordered hover size="sm" responsive="sm" className="text-left"  dir="ltr" >

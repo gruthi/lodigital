@@ -15,16 +15,16 @@ class Home extends Component {
               
             <Carousel infiniteLoop={true} autoPlay={true} interval={4000} transitionTime={500}>
                 <div>
-                    <img src={computer2Img} alt="Los Angeles"/>
+                    <img src={computer2Img} alt="Los Angeles" className="homepgImg"/>
                     {/* <img src={computer2Img} alt="Los Angeles"/> */}
                     {/* <p className="legend">Legend 1</p> */}
                 </div>
                 <div>
-                    <img src={computer3Img} alt="Los Angeles"/>
+                    <img src={computer3Img} alt="Los Angeles" className="homepgImg"/>
                     {/* <p className="legend">Legend 2</p> */}
                 </div>
                 <div>
-                    <img src={computer4Img} alt="Los Angeles"/>
+                    <img src={computer4Img} alt="Los Angeles" className="homepgImg"/>
                     {/* <p className="legend">Legend 3</p> */}
                 </div>
             </Carousel>

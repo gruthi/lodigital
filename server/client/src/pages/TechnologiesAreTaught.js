@@ -12,7 +12,7 @@ function TechnologiesAreTaught() {
     <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="הטכנולוגיות הנלמדות בקורס"/>
-        {txt.map((item,i)=><p key={i}><TitlePage subTitle={item.subTitle}/><p>{item.subTxt}</p></p>)}    
+        {txt.map((item,i)=><div key={i}><TitlePage subTitle={item.subTitle}/><div>{item.subTxt}</div></div>)}    
       </div>
     </div>
   );
