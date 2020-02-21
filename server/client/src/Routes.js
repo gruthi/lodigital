@@ -48,7 +48,7 @@ class Routes extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" render={()=><Login setEmail={this.setEmail} setToken={this.setToken}/>} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
-          <Route exact path="/resetPassword" component={ResetPassword} />
+          <Route exact path="/resetPassword/:token" component={ResetPassword} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
           <Route exact path="/audience" component={Audience} />

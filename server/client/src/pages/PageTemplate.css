@@ -30,8 +30,8 @@
 }
 
 div{
-  /* font-size: calc(10px + 0.5vw); */
-  font-size: 15px;
+  font-size: calc(15px + 0.5vw);
+  /* font-size: 15px; */
     /* overflow: hidden; */
     /* line-height: 18px; */
     /* margin-top: 13px; */

@@ -1,64 +1,37 @@
-// import React, { Component } from 'react';
-import React from 'react';
+import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from 'react-responsive-carousel';
-// import computer2Img from '../images/computer2.jpg'
-// import computer3Img from '../images/computer3.jpg'
-// import computer4Img from '../images/computer4.jpg'
+import { Carousel } from 'react-responsive-carousel';
+import computer2Img from '../images/computer2.jpg'
+import computer3Img from '../images/computer3.jpg'
+import computer4Img from '../images/computer4.jpg'
 import "./Home.css";
 import "./PageTemplate.css";
 
-import Slider from 'react-animated-slider';
-import 'react-animated-slider/build/horizontal.css';
  
-
-function Home(){
-    const slides = [
-        { title: 'First item', description: 'Lorem ipsum'},
-        { title: 'Second item', description: 'Lorem ipsum'},
-        { title: 'three item', description: 'Lorem ipsum'}
-    ];
-    
-    return(
-        <div className='HomePage pageTemplate'>
-            <Slider autoplay={4000}>
-            {slides.map((slide, index) => <div key={index}>
-                <h2>{slide.title}</h2>
-                <div>{slide.description}</div>
-            </div>)}
-            </Slider>
-        </div>
-    )
-
-}
-
-
- 
-
-// class Home extends Component {
-//     render() {
-//         return (
-//          <div className="Home">
+class Home extends Component {
+    render() {
+        return (
+         <div className="Home">
              
-//             <Carousel infiniteLoop={true} autoPlay={true} interval={4000} transitionTime={500}>
-//                 <div>
-//                     <img src={computer2Img} alt="Los Angeles" className="homepgImg"/>
-//                     {/* <img src={computer2Img} alt="Los Angeles"/> */}
-//                     <p className="legend">Legend 1</p>
-//                 </div>
-//                 <div>
-//                     <img src={computer3Img} alt="Los Angeles" className="homepgImg"/>
-//                     <p className="legend">Legend 2</p>
-//                 </div>
-//                 <div>
-//                     <img src={computer4Img} alt="Los Angeles" className="homepgImg"/>
-//                     <p className="legend">Legend 3</p>
-//                 </div>
-//             </Carousel>
-//           </div> 
-//         );
-//     }
-// };
+            <Carousel infiniteLoop={true} autoPlay={true} interval={4000} transitionTime={500}>
+                <div>
+                    <img src={computer2Img} alt="Los Angeles" className="homepgImg"/>
+                    {/* <img src={computer2Img} alt="Los Angeles"/> */}
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div>
+                    <img src={computer3Img} alt="Los Angeles" className="homepgImg"/>
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div>
+                    <img src={computer4Img} alt="Los Angeles" className="homepgImg"/>
+                    <p className="legend">Legend 3</p>
+                </div>
+            </Carousel>
+          </div> 
+        );
+    }
+};
 
 // function Home(){
     

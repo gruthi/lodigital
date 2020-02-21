@@ -140,7 +140,8 @@ function forgotPassword(req, res) {
         if (err) {
           return res.sendStatus(500);
         }
-        let link = "http://localhost:3000/resetPassword";
+        const token = authen.createTokenLink(data);
+        let link = `http://localhost:3000/resetPassword/${token}`;
 
         // try{
           sendEmail(account,
@@ -150,6 +151,7 @@ function forgotPassword(req, res) {
             html:`<h2>שחזור סיסמא</h2>
                   <p>שלום,<br>קיבלת את המייל הזה בגלל שהנך (או מישהו אחר) ביקשת לשחזר את הסיסמא שלך באתר לודיגיטל.</p>
                   <a href=${link}>לחץ כאן לשינוי סיסמתך באתר לאחרת</a><br>
+                  <p>נא לשים לב! הקישור תקף לרבע שעה בלבד!</p>
                   <p>(אם המייל לא נשלח על ידך, יש להתעלם ממנו)</p>`,
             attachments:''
            });
@@ -166,7 +168,10 @@ function forgotPassword(req, res) {
 function resetPassword(req, res) {
   
   console.log("forgotPassword");
-  
+  console.log(req.body);
+  if(!authen.authenticationIsOk(req.body.token)){
+    return res.sendStatus(401);
+  }
   MongoClient.connect(url, function(err, db) {
     if (err) {
       console.log("---1---");
@@ -182,7 +187,8 @@ function resetPassword(req, res) {
           console.log("---4---");
           return res.sendStatus(500);
         }
-        else if (!result.result.nModified){
+        // else if (!result.result.nModified){
+        else if (!result.result.n){
           return res.sendStatus(404);
         }else{
           return res.sendStatus(200);

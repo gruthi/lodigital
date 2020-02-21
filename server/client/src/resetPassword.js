@@ -45,7 +45,8 @@ class ResetPassword extends Component {
     axios
       .put(this.resetPasswordUrl, {
         email: this.state.userData.email,
-        password: this.hashCode(this.state.userData.password)
+        password: this.hashCode(this.state.userData.password),
+        token: this.props.match.params.token
       })
       .then(res => {
     
