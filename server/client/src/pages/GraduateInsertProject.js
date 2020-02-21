@@ -94,7 +94,7 @@ class GraduateInsertProject extends Component {
     if (this.state.redirectToGraduates) {
       return <Redirect to="/graduates"></Redirect>;
     }
-    const disabled = !this.state.name || !this.state.desc || !this.state.img || !this.state.gitAddress;
+    const disabled = !this.state.name || !this.state.desc || !this.state.img ;
     return (
       <div className="pageTemplate backTemp">
         <div className="card">

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 //import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
+// import Modal from "react-bootstrap/Modal";
 import "./pages/PageTemplate.css";
 
 class Register extends Component {
@@ -102,9 +102,9 @@ class Register extends Component {
     }
     return (
       <div className="pageTemplate backTemp">
-      <Modal show={this.state.showModal} onHide={this.handleClose} style={{ marginTop: "200px"}}>
+      {/* <Modal show={this.state.showModal} onHide={this.handleClose} style={{ marginTop: "200px"}}>
         <Modal.Header closeButton >! מברכים אותך על החלטתך להרשם</Modal.Header>
-        <Modal.Body>
+        <Modal.Body> */}
          
                   <div className="card" >
                     <div className="card-body">
@@ -186,8 +186,8 @@ class Register extends Component {
                     
             </div>
           </div> 
-        </Modal.Body>
-      </Modal>
+        {/* </Modal.Body>
+      </Modal> */}
       </div>
     );
   }
