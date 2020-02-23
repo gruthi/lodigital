@@ -65,3 +65,4 @@ class Home extends Component {
 }
 
 export default Home;
+{/* <div className="container mt-3"> */}
