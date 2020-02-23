@@ -10,33 +10,34 @@ div.slide{
 }
 
 div[name = "First"]{
-    background-image: greenyellow;
-    background-image: url('../images/computer2.jpg');
+    background-color: greenyellow;
+    /* background-image: url('../images/computer2.jpg'); */
 }
 div[name = "Second"]{
     background-color: blue;
-    background-image: url('../images/computer3.jpg');
+    /* background-image: url('../images/computer3.jpg'); */
 }
 div[name = "Three"]{
     background-color: red;
-    background-image: url('../images/computer4.jpg');
+    /* background-image: url('../images/computer4.jpg'); */
 }
 div[name = "Four"]{
     background-color: gold;
-    background-image: url('../images/computer1.jpg');
+    /* background-image: url('../images/computer1.jpg'); */
 }
 
-div.slidePosition2{
+div.slideStand2{
     display: none;
 }
-div.slidePosition3{
+div.slideStand3{
     display: none;
 }
+
 /*** RTL ***/
-div.slidePosition1.rtl{
-    animation: gettinginRtl  0.5s linear forwards;
+div.slideStand1.rtl{
+    animation: insideRtl  0.5s linear forwards;
 }
-@keyframes gettinginRtl{
+@keyframes insideRtl{
     from {
         margin-right: -100vw;
     }
@@ -44,10 +45,10 @@ div.slidePosition1.rtl{
         margin-right: 0;
     }
 }
-div.slidePosition0.rtl{
-    animation: gettingOutRtl  0.5s linear  forwards;
+div.slideStand0.rtl{
+    animation: outsideRtl  0.5s linear  forwards;
 }
-@keyframes gettingOutRtl{
+@keyframes outsideRtl{
     from {
         margin-right:0;
     }
@@ -58,10 +59,10 @@ div.slidePosition0.rtl{
 
 /*** LTR ***/
 
-div.slidePosition0.ltr{
-    animation: gettinginLtr  0.5s linear forwards;
+div.slideStand0.ltr{
+    animation: insideLtr  0.5s linear forwards;
 }
-/* @keyframes gettinginLtr{
+/* @keyframes insideLtr{
     from {
         margin-left: -100vw;
     }
@@ -69,7 +70,7 @@ div.slidePosition0.ltr{
         margin-left: 0;
     }
 } */
-@keyframes gettinginLtr{
+@keyframes insideLtr{
     from {
         left: -100vw;
     }
@@ -78,10 +79,10 @@ div.slidePosition0.ltr{
     }
 }
 
-div.slidePosition1.ltr{
-    animation: gettingOutLtr  0.5s linear  forwards;
+div.slideStand1.ltr{
+    animation: outsideLtr  0.5s linear  forwards;
 }
-/* @keyframes gettingOutLtr{
+/* @keyframes outsideLtr{
     from {
         margin-left: 0;
     }
@@ -89,7 +90,7 @@ div.slidePosition1.ltr{
         margin-left: 100vw;
     }
 } */
-@keyframes gettingOutLtr{
+@keyframes outsideLtr{
     from {
         left:0;
     }
@@ -100,12 +101,12 @@ div.slidePosition1.ltr{
 div.slide h1, div.slide .desc{
     position: absolute;
 }
-div.slidePosition1.rtl h1, div.slidePosition0.ltr h1{
-    animation: godown  1s linear forwards;
+div.slideStand1.rtl h1, div.slideStand0.ltr h1{
+    animation: insideTopToBottom  1s linear forwards;
     margin: 20%;
     /* transition: godown 0.8s ease; */
 }
-@keyframes godown{
+@keyframes insideTopToBottom{
     0%{
         transform: scaleY(0);
     }
@@ -120,11 +121,11 @@ div.slidePosition1.rtl h1, div.slidePosition0.ltr h1{
         transform: scaleY(1);
     }
 }
-div.slidePosition0.rtl h1, div.slidePosition1.ltr h1{
-    animation: goupout  1s linear forwards;
+div.slideStand0.rtl h1, div.slideStand1.ltr h1{
+    animation: outsideBottomToTop  1s linear forwards;
     margin: 20%;
 }
-@keyframes goupout{
+@keyframes outsideBottomToTop{
     0% {
         top:10vw;
         display:block;
@@ -140,11 +141,11 @@ div.slidePosition0.rtl h1, div.slidePosition1.ltr h1{
     }
 }
 
-div.slidePosition1.rtl .desc, div.slidePosition0.ltr .desc{
-    animation: goup 1s linear forwards;
-    margin: 20%;
+div.slideStand1.rtl .desc, div.slideStand0.ltr .desc{
+    animation: insideBottomToTop  1s linear forwards;
+    margin: 20%;  
 }
-@keyframes goup{
+@keyframes insideBottomToTop{
     0% {
         bottom:0;
         transform: scaleY(0);
@@ -159,11 +160,11 @@ div.slidePosition1.rtl .desc, div.slidePosition0.ltr .desc{
        
     }
 }
-div.slidePosition0.rtl .desc, div.slidePosition1.ltr .desc{
-    animation: godownout 1s linear forwards;
+div.slideStand0.rtl .desc, div.slideStand1.ltr .desc{
+    animation: outsideTopToBottom 1s linear forwards;
     margin: 20%;
 }
-@keyframes godownout{
+@keyframes outsideTopToBottom{
     0% {
         transform: scaleY(1);
         bottom:10vw; 

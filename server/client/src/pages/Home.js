@@ -4,16 +4,39 @@ import "./PageTemplate.css";
 
 class Home extends Component {
 
-    state={slide0: 0,
+    state={
+        slide0: 0,
         slide1: 1,
         slide2: 2,
         slide3: 3,
-        duration: 'ltr'
+        direction: 'rtl',
+        changeSlide: this.intervalSlide
     };
     
-    changeSlidePositionRTL = () => {
-        if (this.state.duration === 'ltr') {
-            this.setState({ duration: 'rtl' });
+    
+    
+    intervalSlide = () => {
+        
+        let setIntervalSlide =
+        this.state.direction === 'rtl'
+        ?
+        setInterval(this.changeSlideStandRTL, 4000)
+        :
+        setInterval(this.changeSlideStandLTR, 4000)
+        console.log(setIntervalSlide);
+        return setIntervalSlide;
+    }
+
+    componentDidMount = () => {
+        // const IntervalRTL = setInterval(this.changeSlideStandRTL, 4000);
+        this.intervalSlide();
+    }
+    
+    changeSlideStandRTL = () => {
+        if (this.state.direction === 'ltr') {
+            clearInterval(this.state.changeSlide);
+            this.setState({ direction: 'rtl' });
+            this.intervalSlide();
         }
         else{
             this.setState({ 
@@ -24,9 +47,11 @@ class Home extends Component {
             });
         }
     }
-    changeSlidePositionLTR = () => {
-        if (this.state.duration === 'rtl') {
-            this.setState({ duration: 'ltr' });
+    changeSlideStandLTR = () => {
+        if (this.state.direction === 'rtl') {
+            clearInterval(this.state.changeSlide);
+            this.setState({ direction: 'ltr' });
+            this.intervalSlide();
         }
         else{
             this.setState({
@@ -37,27 +62,29 @@ class Home extends Component {
             });
         }
     }
-
+    
+    
+    // setInterval(this.changeSlideStandRTL, 4000);
 
     render(){
         const slides = [
-            { name: 'First',  title: 'First item', description: 'Lorem ipsum', slidePosition: `slide slidePosition${this.state.slide0} ${this.state.duration}`},
-            { name: 'Second', title: 'Second item', description: 'Lorem ipsum', slidePosition: `slide slidePosition${this.state.slide1} ${this.state.duration}`},
-            { name: 'Three', title: 'Three item', description: 'Lorem ipsum', slidePosition: `slide slidePosition${this.state.slide2} ${this.state.duration}`},
-            { name: 'Four', title: 'Four item', description: 'Lorem ipsum', slidePosition: `slide slidePosition${this.state.slide3} ${this.state.duration}`}
+            { name: 'First',  title: 'First item', description: 'Lorem ipsum', slideStand: `slide slideStand${this.state.slide0} ${this.state.direction}`},
+            { name: 'Second', title: 'Second item', description: 'Lorem ipsum', slideStand: `slide slideStand${this.state.slide1} ${this.state.direction}`},
+            { name: 'Three', title: 'Three item', description: 'Lorem ipsum', slideStand: `slide slideStand${this.state.slide2} ${this.state.direction}`},
+            { name: 'Four', title: 'Four item', description: 'Lorem ipsum', slideStand: `slide slideStand${this.state.slide3} ${this.state.direction}`}
         ];
         
         return(
             <div className='HomePage pageTemplate'>
                 <div className="slider">
                     {slides.map((slide, index) => 
-                        <div name={slide.name} className={slide.slidePosition}  key={index} >
+                        <div name={slide.name} className={slide.slideStand}  key={index} >
                             <div><h1>{slide.title}</h1></div>
                             <div className='desc'>{slide.description}</div>
-                            {/* {console.log(slide.slidePosition)} */}
+                            {/* {console.log(slide.slideStand)} */}
                         </div>)}
-                    <button name='RTL' onClick={this.changeSlidePositionRTL}>click RTL</button>
-                    <button name='LTR' onClick={this.changeSlidePositionLTR}>click LTR</button>
+                    <button name='RTL' onClick={this.changeSlideStandRTL}>click RTL</button>
+                    <button name='LTR' onClick={this.changeSlideStandLTR}>click LTR</button>
                 </div>
             </div>
         )
