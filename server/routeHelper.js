@@ -292,7 +292,7 @@ function contactUs(req, res) {
         
         sendEmail(account,
             {to: ['henilana@gmail.com'], // list of receivers
-            subject: 'פנייה חדשה התקבלה באתר לוד דיגיטל', // Subject line
+            subject: 'פנייה חדשה התקבלה באתר לודיגיטל', // Subject line
             text:'',
             html:`<div><h3>להלן פרטי הפנייה שהתקבלה ב${getMyTime()}:</h3>
                       <p>שם פרטי: ${data.firstName}</p>
