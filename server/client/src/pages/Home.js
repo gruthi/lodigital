@@ -9,34 +9,25 @@ class Home extends Component {
         slide1: 1,
         slide2: 2,
         slide3: 3,
-        direction: 'rtl',
-        changeSlide: this.intervalSlide
+        direction: 'rtl'
     };
     
-    
-    
     intervalSlide = () => {
-        
-        let setIntervalSlide =
         this.state.direction === 'rtl'
         ?
-        setInterval(this.changeSlideStandRTL, 4000)
+        this.setIntervalSlide = setInterval(this.changeSlideStandRTL, 4000)
         :
-        setInterval(this.changeSlideStandLTR, 4000)
-        console.log(setIntervalSlide);
-        return setIntervalSlide;
+        this.setIntervalSlide = setInterval(this.changeSlideStandLTR, 4000)
     }
 
     componentDidMount = () => {
-        // const IntervalRTL = setInterval(this.changeSlideStandRTL, 4000);
         this.intervalSlide();
     }
-    
+
     changeSlideStandRTL = () => {
         if (this.state.direction === 'ltr') {
-            clearInterval(this.state.changeSlide);
-            this.setState({ direction: 'rtl' });
-            this.intervalSlide();
+            clearInterval(this.setIntervalSlide);
+            this.setState({ direction: 'rtl' }, () => {this.intervalSlide();});
         }
         else{
             this.setState({ 
@@ -49,9 +40,8 @@ class Home extends Component {
     }
     changeSlideStandLTR = () => {
         if (this.state.direction === 'rtl') {
-            clearInterval(this.state.changeSlide);
-            this.setState({ direction: 'ltr' });
-            this.intervalSlide();
+            clearInterval(this.setIntervalSlide);
+            this.setState({ direction: 'ltr' }, () => {this.intervalSlide();});
         }
         else{
             this.setState({
@@ -62,9 +52,6 @@ class Home extends Component {
             });
         }
     }
-    
-    
-    // setInterval(this.changeSlideStandRTL, 4000);
 
     render(){
         const slides = [
@@ -81,7 +68,6 @@ class Home extends Component {
                         <div name={slide.name} className={slide.slideStand}  key={index} >
                             <div><h1>{slide.title}</h1></div>
                             <div className='desc'>{slide.description}</div>
-                            {/* {console.log(slide.slideStand)} */}
                         </div>)}
                     <button name='RTL' onClick={this.changeSlideStandRTL}>click RTL</button>
                     <button name='LTR' onClick={this.changeSlideStandLTR}>click LTR</button>
