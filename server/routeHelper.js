@@ -54,16 +54,22 @@ function sendEmail(account, params) {
         attachments: params.attachments
     };
 
-    // send mail with defined transport object
-      transporter.sendMail(mailOptions, (error, info) => {
-        console.log('sending mail');
-        if (error) {
-          console.log(error);
-        } else {
-           console.log('Message %s sent: %s', info.messageId, info.response);
-           transporter.close();
-        }
+  try{
+     // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+      console.log('sending mail');
+      if (error) {
+        // console.log(error);
+        return error;
+      } else {
+         console.log('Message %s sent: %s', info.messageId, info.response);
+         transporter.close();
+      }
     });
+  } catch(e){
+      throw e;
+  }
+      
 }
 
 function login(req, res) {
@@ -132,18 +138,19 @@ function forgotPassword(req, res) {
     
     const dbo = db.db(myDb);
     const data = req.body;
-    
+    console.log(data.email);
     dbo
     .collection(usersColl)
     .findOne({ email: data.email }, function(err, result) {
-
+      
         if (err) {
+          console.log('err: dint find mail')
           return res.sendStatus(500);
         }
         const token = authen.createTokenLink(data);
         let link = `http://localhost:3000/resetPassword/${token}`;
 
-        // try{
+        try{
           sendEmail(account,
             {to: [data.email], // list of receivers
             subject: 'שחזור סיסמא לאתר לודיגיטל', // Subject line
@@ -155,9 +162,10 @@ function forgotPassword(req, res) {
                   <p>(אם המייל לא נשלח על ידך, יש להתעלם ממנו)</p>`,
             attachments:''
            });
-        // }catch(error){
-        //   return res.sendStatus(404);
-        // }
+        }catch(error){
+          console.log('cath error');
+          return res.sendStatus(404);
+        }
        console.log(res.status);
         return res.sendStatus(200);
           

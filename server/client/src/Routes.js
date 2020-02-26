@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from "./pages/Home.js";
 import Login from "./Login";
 import Register from "./Register";
+import ForgotPassword from "./ForgotPassword";
 import ResetPassword from "./ResetPassword.js";
 import AboutTheVenture from "./pages/AboutTheVenture.js";
 import Goals from "./pages/Goals.js";
@@ -48,6 +49,7 @@ class Routes extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" render={()=><Login setEmail={this.setEmail} setToken={this.setToken}/>} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
+          <Route exact path="/forgotPassword" render={()=><ForgotPassword email={this.state.email}/>} />
           <Route exact path="/resetPassword/:token" component={ResetPassword} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
