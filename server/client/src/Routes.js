@@ -23,7 +23,7 @@ import CourseHome from "./pages/CourseHome.js";
 
 
 class Routes extends Component {
-  state = { email: null, hasMounted : true ,token:'', loginHeader: 'הרשמה לאתר' };
+  state = { email: null, hasMounted : true ,token:'', resetPsdSuccessed: false };
   
   setEmail = email => {
     this.setState({email: email})
@@ -33,8 +33,8 @@ class Routes extends Component {
     this.setState({token: token})
   };
 
-  setloginHeader = loginHeader =>{
-    this.setState({loginHeader: loginHeader})
+  setResetPsdSuccessed = () => {
+    this.setState({resetPsdSuccessed: true})
   };
  
   //   changeHasMounted = () => {
@@ -47,10 +47,10 @@ class Routes extends Component {
       <div className="Routes">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" render={()=><Login setEmail={this.setEmail} setToken={this.setToken}/>} />
+          <Route exact path="/login" render={()=><Login email={this.state.email} setEmail={this.setEmail} setToken={this.setToken} resetPsdSuccessed={this.resetPsdSuccessed} />} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
           <Route exact path="/forgotPassword" render={()=><ForgotPassword email={this.state.email}/>} />
-          <Route exact path="/resetPassword/:token" component={ResetPassword} />
+          <Route exact path="/resetPassword/:token" render={()=><ResetPassword setEmail={this.setEmail} setResetPsdSuccessed={this.setResetPsdSuccessed} />} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
           <Route exact path="/audience" component={Audience} />

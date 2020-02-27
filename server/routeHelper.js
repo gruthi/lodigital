@@ -138,11 +138,13 @@ function forgotPassword(req, res) {
     
     const dbo = db.db(myDb);
     const data = req.body;
+    console.log('data.email1');
     console.log(data.email);
     dbo
     .collection(usersColl)
     .findOne({ email: data.email }, function(err, result) {
-      
+      console.log('data.email2');
+      console.log(data.email);
         if (err) {
           console.log('err: dint find mail')
           return res.sendStatus(500);
@@ -177,9 +179,10 @@ function resetPassword(req, res) {
   
   console.log("forgotPassword");
   console.log(req.body);
-  if(!authen.authenticationIsOk(req.body.token)){
-    return res.sendStatus(401);
-  }
+  //***** לשנות את זה חזרה:::/
+  // if(!authen.authenticationIsOk(req.body.token)){
+  //   return res.sendStatus(401);
+  // }
   MongoClient.connect(url, function(err, db) {
     if (err) {
       console.log("---1---");

@@ -6,17 +6,18 @@ import CardDeck from 'react-bootstrap/CardDeck'
 
 class ResetPassword extends Component {   
 
-  resetPasswordUrl = "/users/resetPassword";
+  resetPsdUrl = "/users/resetPassword";
   
   state = {
-    userData : {
+    user : {
       email: "",
       password: "",
       confirmPass: "",
     }, 
     redirectToLogin: false,
     isError: false,
-    resetPsdSuccessed: true  ////*??
+    resetPsdSuccessed: true,  ////*??
+    buttonSending: false
   };
  
   redirectToLogin = () => {
@@ -32,21 +33,21 @@ class ResetPassword extends Component {
   };
 
   handleChange = name => e => {
-    this.setState({ userData: {...this.state.userData, [name]: e.target.value},
+    this.setState({ user: {...this.state.user, [name]: e.target.value},
     });
   };
 
   clickResetPassword = e => {
     
     //e.preventDefault();
-    
-    this.setState({ isError: false });
+    console.log(this.props);
+    this.setState({ buttonSending:true, isError: false });
     
     axios
-      .put(this.resetPasswordUrl, {
-        email: this.state.userData.email,
-        password: this.hashCode(this.state.userData.password),
-        token: this.props.match.params.token
+      .put(this.resetPsdUrl, {
+        email: this.state.user.email,
+        password: this.hashCode(this.state.user.password),
+        // token: this.props.match.params.token
       })
       .then(res => {
     
@@ -54,20 +55,24 @@ class ResetPassword extends Component {
         console.log('res.data: '+res.data);
     
         if (res.status === 200) {
+         console.log(this.state.user.email);
+          this.props.setEmail(this.state.user.email);
+          this.props.setResetPsdSuccessed();
+          console.log(this.props);
           this.setState({ redirectToLogin: true });
         } else {
-          this.setState({ isError: true });
+          this.setState({ buttonSending:false, isError: true });
           console.log("can not reset your password. please try again later");
         }
       })
       .catch(err => {
-        this.setState({ isError: true });
+        this.setState({ buttonSending:false, isError: true });
         console.log(err);
       });
   };
 
   render() {
-    const disabled = !this.state.userData.email || !this.state.userData.password || !this.state.userData.confirmPass;
+    const disabled = !this.state.user.email || !this.state.user.password || !this.state.user.confirmPass;
 
     const inputData = [ { type : "text", placeholder : 'כתובת דוא"ל', onChange : this.handleChange('email') },
                         { type : "text", placeholder : "סיסמא", onChange : this.handleChange('password') },
@@ -75,12 +80,12 @@ class ResetPassword extends Component {
                       ];
     
     if (this.state.redirectToLogin) {
-      // return <Redirect to="/login" />;
-      return <Redirect to={{
-          pathname: '/login',
-          reset: { resetPsdSuccessed: true }
-            }}
-        />;
+      return <Redirect to="/login" />;
+      // return <Redirect to={{
+      //     pathname: '/login',
+      //     reset: { resetPsdSuccessed: true }
+      //       }}
+      //   />;
     };
    
     return (
@@ -111,7 +116,7 @@ class ResetPassword extends Component {
           onClick={this.clickResetPassword}
           style={{backgroundColor:'#37889A'}}
         >
-          <div>שלח</div>
+          {!this.state.buttonSending ? <span>שלח</span> : <span>שולח...</span>}
         </button>
               
       </div>

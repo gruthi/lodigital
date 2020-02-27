@@ -19,10 +19,6 @@ class ForgotPassword extends Component {
     buttonSending: false
   };
 
-  hashCode =(s)=>{
-    return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
-  }
-
   register = () => {
     this.setState({ redirectToRegister: true });
   };
@@ -31,9 +27,10 @@ class ForgotPassword extends Component {
     this.setState({ redirectToLogin: true });
   };
 
+  // clickForgotPsd = () => {
   clickForgotPsd = e => {
 
-    this.setState({ isError: false });
+    this.setState({ buttonSending:true, isError: false });
 
     axios
       .post(this.forgotPsdUrl, {
@@ -44,11 +41,11 @@ class ForgotPassword extends Component {
         if (res.status === 200) {
           this.setState({ sentEmailSuccessed: true });
         } else {
-          this.setState({ isError: true });
+          this.setState({ buttonSending:false, isError: true });
         }
       })
       .catch(err => {
-        this.setState({ isError: true });
+        this.setState({ buttonSending:false, isError: true });
       });
   };
 
@@ -94,7 +91,7 @@ class ForgotPassword extends Component {
               onClick={this.clickForgotPsd}
               style={{backgroundColor:'#37889A'}}
             >
-              {!this.state.buttonSending ? <span>לשליחת מייל לאיפוס סיסמא</span> : <span>Sending...</span>}
+              {!this.state.buttonSending ? <span>לשליחת מייל לאיפוס סיסמא</span> : <span>שולח...</span>}
             </button>
 
             <div className="pt-3" onClick={this.forgotPassword} style={{color:'#37889A'}}>

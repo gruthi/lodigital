@@ -17,7 +17,8 @@ class Register extends Component {
     errorNum: 0,
     passwordAccRules: true,
     repeatPasswordIsSame: true,
-    showModal:true
+    showModal:true,
+    buttonSending: false
   };
   hashCode = s => {
     return s.split("").reduce(function(a, b) {
@@ -27,7 +28,7 @@ class Register extends Component {
   };
   clickRegister = e => {
     e.preventDefault();
-     this.setState({ errorNum: 0 });
+     this.setState({ buttonSending:true, errorNum: 0 });
     axios
       .post(this.registerUrl, {
         email: this.state.email,
@@ -43,12 +44,12 @@ class Register extends Component {
           this.props.setEmail(this.state.email);
           this.handleClose();
         } else {
-          this.setState({ errorNum: res.status });
+          this.setState({ buttonSending:false, errorNum: res.status });
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        this.setState({ errorNum: err.response.status });
+        this.setState({ buttonSending:false, errorNum: err.response.status });
       });
   };
   getErrorText = () => {
@@ -181,7 +182,7 @@ class Register extends Component {
                         onClick={this.clickRegister}
                         style={{ backgroundColor: "#37889A" }}
                       >
-                        <div>רישום</div>
+                        {!this.state.buttonSending ? <span>רישום</span> : <span>שולח...</span>}
                       </button>
                     
             </div>

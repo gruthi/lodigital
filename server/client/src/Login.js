@@ -6,17 +6,17 @@ import "./pages/PageTemplate.css";
 class Login extends Component {
 
   loginUrl = "/users/login";
-  forgotPassUrl = "/users/forgotPassword";
 
   state = {
-    email: "",
+    email: this.props.email || "",
     password: "",
     redirectToStudent: false,
     isError: false,
     redirectToRegister: false,
-    forgotPassword: false,
-    sentEmailSuccessed: false,
-    resetPsdSuccessed: false
+    // forgotPassword: false,
+    redirectToForgotPsd: false,
+    // resetPsdSuccessed: false,
+    buttonSending: false
   };
 
   hashCode =(s)=>{
@@ -28,12 +28,12 @@ class Login extends Component {
   };
   
   forgotPassword = () => {
-    this.setState({ forgotPassword: true });
+    this.setState({ redirectToForgotPsd: true });
   };
 
-  resetPsdSuccessed= () => {
-    this.setState({ resetPsdSuccessed: this.props.location.state.resetPsdSuccessed});
-  };
+  // resetPsdSuccessed= () => {
+  //   this.setState({ resetPsdSuccessed: this.props.location.state.resetPsdSuccessed});
+  // };
 
   handleChange = name => e => {
     this.setState({ [name] : e.target.value});
@@ -50,7 +50,7 @@ class Login extends Component {
   clickLogin = e => {
     //e.preventDefault();
     
-    this.setState({ isError: false });
+    this.setState({ buttonSending:true, isError: false });
     
     axios
       .post(this.loginUrl, {
@@ -63,32 +63,12 @@ class Login extends Component {
           this.props.setEmail(this.state.email);
           this.props.setToken(res.data);
         } else {
-          this.setState({ isError: true });
+          this.setState({ buttonSending:false, isError: true });
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        this.setState({ isError: true });
-      });
-  };
-
-  clickResetPass = e => {
-
-    this.setState({ isError: false });
-
-    axios
-      .post(this.forgotPassUrl, {
-        email: this.state.email
-      })
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({ sentEmailSuccessed: true });
-        } else {
-          this.setState({ isError: true });
-        }
-      })
-      .catch(err => {
-        this.setState({ isError: true });
+        this.setState({ buttonSending:false, isError: true });
       });
   };
 
@@ -102,56 +82,20 @@ class Login extends Component {
 
     if (this.state.redirectToRegister) {
      return <Redirect to="/register" />;
-
     }
 
-    if (this.state.forgotPassword) {
-      
-      return (
-        this.state.sentEmailSuccessed
-        ?
-        <div className="pageTemplate backTemp">
-          נשלח מייל עם קישור לאיפוס סיסמא לכתובת שמילאת.
-        </div>
-        :
-        <div className="pageTemplate backTemp">
-          <div className="card"> 
-            <div className="card-body">
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder='כתובת דוא"ל'
-                  value = {this.state.email}
-                  required={true}
-                  // onChange={e => this.setState({ email: e.target.value })}
-                  onChange = {this.handleChange('email')}
-                />
-              </div>                     
-              <button
-                id="btn-log-in"
-                className="btn btn-lg btn-primary btn-block"
-                type="submit"
-                // disabled={disabled} 
-                onClick={this.clickResetPass}
-                style={{backgroundColor:'#37889A'}}
-              >
-                <div>לשליחת מייל לאיפוס סיסמא</div>
-              </button>
-
-            </div>
-          </div> 
-        </div> 
-      )
+    if (this.state.redirectToForgotPsd) {
+      return <Redirect to="/forgotPassword" />;
     }
-    
+
     return (
       <div className="pageTemplate backTemp">
         
-        {this.state.resetPsdSuccessed ?
-        // {/* // {this.props.location.state.resetPsdSuccessed? */}
-          <div>הסיסמא שונתה בהצלחה! אנא הכנס קוד וסיסמא כדי להתחבר:</div>
-          :''}
+        {!this.props.resetPsdSuccessed ?
+        <h1>אנא הכנס קוד וסיסמא כדי להתחבר:</h1>  
+        :
+        <h1>הסיסמא שונתה בהצלחה! אנא הכנס קוד וסיסמא כדי להתחבר:</h1>
+        }
 
         <div className="card"> 
           <div className="card-body">
@@ -179,7 +123,7 @@ class Login extends Component {
             </div>
 
             <div style={{ height: "10px" }}>
-            {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''}
+              {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''}
             </div>
 
             <button
@@ -190,7 +134,7 @@ class Login extends Component {
               onClick={this.clickLogin}
               style={{backgroundColor:'#37889A'}}
             >
-              <div>כניסה לחשבונך</div>
+              {!this.state.buttonSending ? <span>כניסה לחשבונך</span> : <span>שולח...</span>}
             </button>
 
             <div className="pt-3" onClick={this.forgotPassword} style={{color:'#37889A'}}>
