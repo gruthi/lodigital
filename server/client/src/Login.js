@@ -48,7 +48,7 @@ class Login extends Component {
   // }
 
   clickLogin = e => {
-    //e.preventDefault();
+    e.preventDefault();
     
     this.setState({ buttonSending:true, isError: false });
     
@@ -91,7 +91,8 @@ class Login extends Component {
     return (
       <div className="pageTemplate backTemp">
         
-        {!this.props.resetPsdSuccessed ?
+        {!this.props.resetPsdSuccessed 
+        ?
         <h1>אנא הכנס קוד וסיסמא כדי להתחבר:</h1>  
         :
         <h1>הסיסמא שונתה בהצלחה! אנא הכנס קוד וסיסמא כדי להתחבר:</h1>
@@ -100,42 +101,45 @@ class Login extends Component {
         <div className="card"> 
           <div className="card-body">
             
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder='כתובת דוא"ל'
-                required={true}
-                // onChange={e => this.setState({ email: e.target.value })}
-                onChange = {this.handleChange('email')}
-              />
-            </div>
+            <form autoComplete="on">
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder='כתובת דוא"ל'
+                  required={true}
+                  // onChange={e => this.setState({ email: e.target.value })}
+                  id='email'
+                  onChange = {this.handleChange('email')}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="סיסמא"
+                  required=""
+                  id='password'
+                  // onChange={e => this.setState({ password: e.target.value })}
+                  onChange = {this.handleChange('password')}
+                />
+              </div>
 
-            <div className="form-group">
-              <input
-                type="password"
-                className="form-control"
-                placeholder="סיסמא"
-                required=""
-                // onChange={e => this.setState({ password: e.target.value })}
-                onChange = {this.handleChange('password')}
-              />
-            </div>
+              <div style={{ height: "10px" }}>
+                {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''}
+              </div>
 
-            <div style={{ height: "10px" }}>
-              {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''}
-            </div>
-
-            <button
-              id="btn-log-in"
-              className="btn btn-lg btn-primary btn-block"
-              type="submit"
-              disabled={disabled} 
-              onClick={this.clickLogin}
-              style={{backgroundColor:'#37889A'}}
-            >
-              {!this.state.buttonSending ? <span>כניסה לחשבונך</span> : <span>שולח...</span>}
-            </button>
+              <button
+                id="btn-log-in"
+                className="btn btn-lg btn-primary btn-block"
+                type="submit"
+                disabled={disabled} 
+                onClick={this.clickLogin}
+                style={{backgroundColor:'#37889A'}}
+              >
+                {!this.state.buttonSending ? <span>כניסה לחשבונך</span> : <span>שולח...</span>}
+              </button>
+            </form> 
 
             <div className="pt-3" onClick={this.forgotPassword} style={{color:'#37889A'}}>
               שכחת סיסמא?
@@ -144,7 +148,7 @@ class Login extends Component {
             <div className="pt-3" onClick={this.register} style={{color:'#37889A'}}>
                 הירשם כעת
             </div>
-
+           
           </div>
         </div>
       </div>

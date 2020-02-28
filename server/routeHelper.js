@@ -100,8 +100,7 @@ function register(req, res) {
       return res.sendStatus(500);
     }
     const dbo = db.db(myDb);
-    dbo
-      .collection(usersColl)
+    dbo  .collection(usersColl)
       .findOne({ email: req.body.email }, function(err, userFound) {
         if (err) {
           return res.sendStatus(500);
@@ -115,7 +114,7 @@ function register(req, res) {
         }
        
        console.log('req.body');
-       console.log(req.body);
+       
         dbo.collection(usersColl).insertOne(req.body, function(err, result) {
           if (err) {
             return res.sendStatus(500);
@@ -180,9 +179,9 @@ function resetPassword(req, res) {
   console.log("forgotPassword");
   console.log(req.body);
   //***** לשנות את זה חזרה:::/
-  // if(!authen.authenticationIsOk(req.body.token)){
-  //   return res.sendStatus(401);
-  // }
+  if(!authen.authenticationIsOk(req.body.token)){
+    return res.sendStatus(401);
+  }
   MongoClient.connect(url, function(err, db) {
     if (err) {
       console.log("---1---");

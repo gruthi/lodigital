@@ -41,13 +41,15 @@ class ResetPassword extends Component {
     
     //e.preventDefault();
     console.log(this.props);
+    // console.log(this.match.params.token);
+    // console.log(this.props.params.token);
     this.setState({ buttonSending:true, isError: false });
     
     axios
       .put(this.resetPsdUrl, {
         email: this.state.user.email,
         password: this.hashCode(this.state.user.password),
-        // token: this.props.match.params.token
+        token: this.props.match.params.token
       })
       .then(res => {
     
@@ -95,6 +97,7 @@ class ResetPassword extends Component {
               <div className="form-group" key={i}>
                 <input
                   type= {item.type}
+                  name= "email"
                   className="form-control"
                   placeholder={item.placeholder}
                   required={true}

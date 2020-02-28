@@ -47,10 +47,10 @@ class Routes extends Component {
       <div className="Routes">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" render={()=><Login email={this.state.email} setEmail={this.setEmail} setToken={this.setToken} resetPsdSuccessed={this.resetPsdSuccessed} />} />
+          <Route exact path="/login" render={()=><Login email={this.state.email} setEmail={this.setEmail} setToken={this.setToken} resetPsdSuccessed={this.state.resetPsdSuccessed} />} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
           <Route exact path="/forgotPassword" render={()=><ForgotPassword email={this.state.email}/>} />
-          <Route exact path="/resetPassword/:token" render={()=><ResetPassword setEmail={this.setEmail} setResetPsdSuccessed={this.setResetPsdSuccessed} />} />
+          <Route exact path="/resetPassword/:token" render={(props)=><ResetPassword {...props} setEmail={this.setEmail} setResetPsdSuccessed={this.setResetPsdSuccessed} />} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
           <Route exact path="/audience" component={Audience} />
