@@ -60,6 +60,13 @@ class Home extends Component {
             { name: 'Three', title: 'Three item', description: 'Lorem ipsum', slideStand: `slide slideStand${this.state.slide2} ${this.state.direction}`},
             { name: 'Four', title: 'Four item', description: 'Lorem ipsum', slideStand: `slide slideStand${this.state.slide3} ${this.state.direction}`}
         ];
+
+        // const slides1 = [
+        //     { name: 'First',  title: 'מיקום', description: '●המרכז לצעירים ,גרטבול ,לוד ●בקרוב במקומות נוספים!', slideStand: `slide slideStand${this.state.slide0} ${this.state.direction}`},
+        //     { name: 'Second', title: 'קהל היעד', description: 'מועמדים ללא רקע או עם רקע בסיסי בתכנות ל ,WEB- המעוניינים להתמקצע בתחום האינטרנט ותכנות בעולם ה.Web- ', slideStand: `slide slideStand${this.state.slide1} ${this.state.direction}`},
+        //     { name: 'Three', title: 'יתרונות התכנית', description: 'מסלול ייחודי שנבנה בהתאמה לצרכי השוק, ומעניק כרטיס כניסה לעולם הפיתוח full stack', slideStand: `slide slideStand${this.state.slide2} ${this.state.direction}`},
+        //     { name: 'Four', title: 'לימוד רב ערוצי', description: '-שיעורים פרונטליים -שיעורי תרגול - שיעורי אונליין - עבודה עצמית בבית', slideStand: `slide slideStand${this.state.slide3} ${this.state.direction}`}
+        // ];
         
         return(
             <div className='HomePage pageTemplate'>
