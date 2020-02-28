@@ -15,7 +15,7 @@ class GraduateInsertProject extends Component {
     redirectToGraduates: false,
     errorDesc: ""
   };
-  // images = new FormData();
+ 
   nameChange = e => {
     this.setState({ name: e.target.value });
   };

@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import { Row, Col, Container } from "react-bootstrap";
 import axios from "axios";
-import Figure from "react-bootstrap/Figure";
-// import FigureImage from 'react-bootstrap/FigureImage'
 
 class Graduate extends Component {
-  state = { editHeader: false };
+  state = { editHeader: false, crop: { aspect: 1 / 1 } };
   enableChangeHeader = () => {
     this.setState({ editHeader: true });
   };
@@ -70,26 +68,21 @@ class Graduate extends Component {
             <Container>
               <Row>
                 <Col xs={4}>
-                  {/* <Row> */}
-                      {/* className="h-50 overflow-hidden"> */}
-                    <Figure>
-                      <Figure.Image
-                        width={171}
-                        height={180}
-                        alt="171x180"
-                        src={this.props.passPic}
-                        className="rounded-circle "
-                      />
-                    </Figure>
-                    {/* {this.props.passPic? 
-                <Card.Img src={this.props.passPic} className="rounded-circle "/>:
-                <p><i className="fas fa-user-graduate" ></i></p>} */}
-                  {/* </Row> */}
-                  {/* <Row> */}
-                      {/* className="h-50"> */}
+                  {this.props.passPic ? (
+                    <Card.Img
+                      src={this.props.passPic}
+                      className="rounded-circle "
+                    />
+                  ) : (
+                    <p>
+                      <i className="fas fa-user-graduate"></i>
+                    </p>
+                  )}
+
                   <Card.Text>{this.props.desc}</Card.Text>
-                  <a href={this.props.link}>Go to My Git</a>
-                  {/* </Row> */}
+                  <Card.Text>
+                    <a href={this.props.link}>Go to My Git</a>{" "}
+                  </Card.Text>
                 </Col>
                 <Col xs={8}>
                   <a href={this.props.link}>
