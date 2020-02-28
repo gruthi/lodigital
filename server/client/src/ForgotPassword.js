@@ -9,7 +9,7 @@ class ForgotPassword extends Component {
 
   state = {
     user: {
-      email: this.props.email || '',
+      email: '',
       password: "",
     }, 
     isError: false,
@@ -18,6 +18,11 @@ class ForgotPassword extends Component {
     sentEmailSuccessed: false,
     buttonSending: false
   };
+
+  constructor(props) {
+    super(props);
+    this.state.user.email = props.email || '' ;
+  }
 
   register = () => {
     this.setState({ redirectToRegister: true });

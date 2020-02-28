@@ -8,7 +8,7 @@ class Login extends Component {
   loginUrl = "/users/login";
 
   state = {
-    email: this.props.email || "",
+    email: "",
     password: "",
     redirectToStudent: false,
     isError: false,
@@ -18,6 +18,13 @@ class Login extends Component {
     // resetPsdSuccessed: false,
     buttonSending: false
   };
+
+  constructor(props) {
+    super(props);
+    // this.state.user.email = 
+    // props ? props.email : '';
+    this.state.email = props.email || '';
+  }
 
   hashCode =(s)=>{
     return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
@@ -110,6 +117,7 @@ class Login extends Component {
                   required={true}
                   // onChange={e => this.setState({ email: e.target.value })}
                   id='email'
+                  value={this.state.email }
                   onChange = {this.handleChange('email')}
                 />
               </div>

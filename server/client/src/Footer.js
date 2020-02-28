@@ -6,7 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 function Footer(){
    
   return (
-    <div className="Footer">
+    <div className="Footer container">
       <FaFacebook/>
       {/* <div>האתר נבנה בידי בוגרות הקורס</div> */}
     </div>
