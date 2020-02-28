@@ -2,15 +2,14 @@ const MongoClient = require("mongodb").MongoClient;
 const mongo = require("mongodb");
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
-
 const authen = require("./authentication");
-
 const url = "mongodb://localhost:27017/";
 const myDb = "lodigitalDB";
 const usersColl = "users";
 const graduates = "graduates";
 const contactList = "contactList";
-
+const timeLogin=18000;
+const timeResetPassword=1200;
 const courseMails=['120@gmail.com', 'henilana@gmail.com']
 
 function getMyTime(){
@@ -88,7 +87,7 @@ function login(req, res) {
         // 401
       }
       res.status(200);
-      res.json(authen.createToken(req.body));
+      res.json(authen.createToken(req.body,timeLogin));
       return res.send;
       //return res.sendStatus(200);
     });
@@ -120,7 +119,7 @@ function register(req, res) {
             return res.sendStatus(500);
           }
           res.status(201);
-          res.json(authen.createToken(req.body));
+          res.json(authen.createToken(req.body,timeLogin));
           return res.send();
          // return res.sendStatus(201);
         });
@@ -148,7 +147,8 @@ function forgotPassword(req, res) {
           console.log('err: dint find mail')
           return res.sendStatus(500);
         }
-        const token = authen.createTokenLink(data);
+        // const token = authen.createTokenLink(data);
+        const token = authen.createToken(data,timeResetPassword);
         let link = `http://localhost:3000/resetPassword/${token}`;
 
         try{
@@ -219,7 +219,8 @@ function graduateInsert(req, res) {
       return res.sendStatus(500);
     }
     const dbo = db.db(myDb);
-    req.body.email=authen.getMailAuthenticationIsOk(req.body.email);
+    //req.body.email=authen.getMailAuthenticationIsOk(req.body.email);
+    req.body.email=authen.authenticationIsOk(req.body.email);
     dbo.collection(graduates).insertOne(req.body, function(err, result) {
       if (err) {
         res.status(500);
@@ -261,7 +262,8 @@ function graduateDelete(req, res) {
     if (err) {
       return res.sendStatus(500);
     }
-    const mailToCheck=authen.getMailAuthenticationIsOk(req.headers.authorization)
+    //const mailToCheck=authen.getMailAuthenticationIsOk(req.headers.authorization)
+    const mailToCheck=authen.authenticationIsOk(req.headers.authorization)
  
     const dbo = db.db(myDb);
     dbo
