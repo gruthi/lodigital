@@ -11,9 +11,9 @@ import Footer from "./Footer.js";
 class App extends Component {
   state = { user: null, hasMounted : true };
 
-  setUser = user => {
-    this.setState({user: user})
-  };
+  // setUser = user => {
+  //   this.setState({user: user})
+  // };
 
   changeHasMounted = () => {
     this.setState({hasMounted : false})

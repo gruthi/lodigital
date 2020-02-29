@@ -7,8 +7,8 @@ function Footer(){
    
   return (
     <div className="Footer container">
-      <FaFacebook/>
-      {/* <div>האתר נבנה בידי בוגרות הקורס</div> */}
+       <a href='https://facebook.com/lodigital2019'> <FaFacebook size={30}/></a>    
+      <span size={70}>האתר נבנה בידי בוגרות הקורס</span>
     </div>
   );
 };

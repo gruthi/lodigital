@@ -2,7 +2,7 @@
     width:100%;
     height: calc(15px + 1vw);
     background-color: #8BCFB7;
-    background-color: rgb(190, 156, 91);
+    /* background-color: rgb(190, 156, 91); */
     position: absolute;
     bottom: 0;
     font-size: 5px;

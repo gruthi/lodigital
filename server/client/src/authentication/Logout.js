@@ -1,12 +1,14 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-const LogOut =props=> {
-    props.setUser(Null);
+const Logout =props=> {
+    //    props.setUser(Null);   
+    props.setEmail('');
+    props.setToken('');   
         return (
             <Redirect to='/'/>
         );
     
 }
 
-export default LogOut;
+export default Logout;

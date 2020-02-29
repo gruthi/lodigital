@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Switch, Route } from 'react-router-dom';
 
 import Home from "./pages/Home.js";
-import Login from "./Login";
-import Register from "./Register";
-import ForgotPassword from "./ForgotPassword";
-import ResetPassword from "./ResetPassword.js";
+import Login from "./authentication/Login";
+import Logout from "./authentication/Logout";
+import Register from "./authentication/Register";
+import ForgotPassword from "./authentication/ForgotPassword";
+import ResetPassword from "./authentication/ResetPassword.js";
 import AboutTheVenture from "./pages/AboutTheVenture.js";
 import Goals from "./pages/Goals.js";
 import Audience from "./pages/Audience.js";
@@ -24,6 +25,7 @@ import CourseHome from "./pages/CourseHome.js";
 
 class Routes extends Component {
   state = { email: null, hasMounted : true ,token:'', resetPsdSuccessed: false };
+  
   
   setEmail = email => {
     this.setState({email: email})
@@ -48,6 +50,7 @@ class Routes extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" render={()=><Login email={this.state.email} setEmail={this.setEmail} setToken={this.setToken} resetPsdSuccessed={this.state.resetPsdSuccessed} />} />
+          <Route exact path="/logout" render={()=><Logout setEmail={this.setEmail} setToken={this.setToken}/>} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
           <Route exact path="/forgotPassword" render={()=><ForgotPassword email={this.state.email}/>} />
           <Route exact path="/resetPassword/:token" render={(props)=><ResetPassword {...props} setEmail={this.setEmail} setResetPsdSuccessed={this.setResetPsdSuccessed} />} />

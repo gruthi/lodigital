@@ -33,6 +33,7 @@ i{
 input{
     padding-left: 10px;
     border: none;
+    direction:"rtl";
 }
 span{
     background-color: black; 

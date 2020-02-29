@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./pages/PageTemplate.css";
+import "../pages/PageTemplate.css";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import CardDeck from 'react-bootstrap/CardDeck'

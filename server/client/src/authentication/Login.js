@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import "./pages/PageTemplate.css";
+import "../pages/PageTemplate.css";
 
 class Login extends Component {
 
   loginUrl = "/users/login";
 
   state = {
-    email: "",
-    password: "",
+    user : {
+      email: "",
+      password: ""
+    },
     redirectToStudent: false,
     isError: false,
     redirectToRegister: false,
@@ -21,9 +23,7 @@ class Login extends Component {
 
   constructor(props) {
     super(props);
-    // this.state.user.email = 
-    // props ? props.email : '';
-    this.state.email = props.email || '';
+    this.state.user.email = props.email || '';
   }
 
   hashCode =(s)=>{
@@ -43,7 +43,7 @@ class Login extends Component {
   // };
 
   handleChange = name => e => {
-    this.setState({ [name] : e.target.value});
+    this.setState({ user: {...this.state.user, [name]: e.target.value}, });
   };
 
   // componentDidUpdate(_props,_state){
@@ -61,13 +61,13 @@ class Login extends Component {
     
     axios
       .post(this.loginUrl, {
-        email: this.state.email,
-        password: this.hashCode(this.state.password)//this.state.password
+        email: this.state.user.email,
+        password: this.hashCode(this.state.user.password)//this.state.password
       })
       .then(res => {
          if (res.status === 200) {
          this.setState({ redirectToStudent: true });
-          this.props.setEmail(this.state.email);
+          this.props.setEmail(this.state.user.email);
           this.props.setToken(res.data);
         } else {
           this.setState({ buttonSending:false, isError: true });
@@ -81,7 +81,7 @@ class Login extends Component {
 
   render() {
 
-    const disabled = !this.state.email || !this.state.password;
+    const disabled = !this.state.user.email || !this.state.user.password;
 
     if (this.state.redirectToStudent) {
        return <Redirect to="/courseHome" />;
@@ -117,7 +117,7 @@ class Login extends Component {
                   required={true}
                   // onChange={e => this.setState({ email: e.target.value })}
                   id='email'
-                  value={this.state.email }
+                  value={this.state.user.email }
                   onChange = {this.handleChange('email')}
                 />
               </div>

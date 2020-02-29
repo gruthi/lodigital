@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import "./pages/PageTemplate.css";
+import "../pages/PageTemplate.css";
 
 class ForgotPassword extends Component {
 

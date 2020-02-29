@@ -10,7 +10,7 @@ const graduates = "graduates";
 const contactList = "contactList";
 const timeLogin=18000;
 const timeResetPassword=1200;
-const courseMails=['120@gmail.com', 'henilana@gmail.com']
+const courseMails=['120@gmail.com', 'henilana@gmail.com','121@gmail.com']
 
 function getMyTime(){
   let d = new Date();
