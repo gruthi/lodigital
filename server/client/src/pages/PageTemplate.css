@@ -7,7 +7,6 @@
   text-align: justify;
   /* direction: rtl; */
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- 
 }
 
 .backTemp{
@@ -15,6 +14,7 @@
   background-size: cover; 
   overflow-y: auto;
   padding: 4.4vw 10% 2.4vw 20%;
+  padding: calc(40px + 4.4vw) 10% 2.4vw 20%;
 }
 .backTempSyllabus{
   background-image: url(../images/Capture10.JPG);
@@ -25,6 +25,7 @@
 @media screen and (min-width: 768px){
   .pageTemplate{
     background-image: url(../images/Capture9.JPG);
+    padding-top: 4.4vw;
     /* background-color: red; */
   }
 }
