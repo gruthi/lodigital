@@ -254,6 +254,27 @@ function graduateGet(req, res) {
       });
   });
 }
+
+function getContactsList(req, res) {
+  MongoClient.connect(url, function(err, db) {
+   if (err) {
+     return res.sendStatus(500);
+   }
+   const dbo = db.db(myDb);
+   dbo
+     .collection(contactList)
+     .find({})
+     .toArray(function(err, allContacts) {
+       if (err) {
+         return res.status(500);
+        }
+
+       res.status(200);
+       return res.send(allContacts);
+     });
+ });
+}
+
 function graduateDelete(req, res) {
   if (!authen.authenticationIsOk(req.headers.authorization)) {
     return res.sendStatus(401);
@@ -331,5 +352,6 @@ module.exports.graduateInsert = graduateInsert;
 module.exports.graduateGet = graduateGet;
 module.exports.graduateDelete = graduateDelete;
 module.exports.contactUs = contactUs;
+module.exports.getContactsList = getContactsList;
 module.exports.forgotPassword = forgotPassword;
 module.exports.resetPassword = resetPassword;

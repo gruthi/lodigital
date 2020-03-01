@@ -7,23 +7,40 @@ div.slide{
     height: 100%;
     width: 100%;
     position: absolute;
+    background-size: cover;
 }
 
 div[name = "First"]{
     background-color: greenyellow;
-    /* background-image: url('../images/computer2.jpg'); */
+    background-image: url(../images/compm1.JPG);
+    /* background-image: url(../images/compm2.JPG); */
 }
 div[name = "Second"]{
     background-color: blue;
-    /* background-image: url('../images/computer3.jpg'); */
+    background-image: url(../images/compm2.jpg);
 }
 div[name = "Three"]{
     background-color: red;
-    /* background-image: url('../images/computer4.jpg'); */
+    background-image: url(../images/compm3.jpg);
 }
 div[name = "Four"]{
     background-color: gold;
-    /* background-image: url('../images/computer1.jpg'); */
+    background-image: url(../images/compm4.jpg);
+}
+
+@media screen and (min-width: 768px){
+    div[name = "First"]{
+        background-image: url(../images/comp1.JPG);
+    }
+    div[name = "Second"]{
+        background-image: url(../images/comp2.JPG);
+    }
+    div[name = "Three"]{
+        background-image: url(../images/comp3.JPG);
+    }
+    div[name = "Four"]{
+        background-image: url(../images/comp4.JPG);
+    }
 }
 
 div.slideStand2{

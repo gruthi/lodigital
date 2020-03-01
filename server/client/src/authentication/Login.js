@@ -15,9 +15,7 @@ class Login extends Component {
     redirectToStudent: false,
     isError: false,
     redirectToRegister: false,
-    // forgotPassword: false,
     redirectToForgotPsd: false,
-    // resetPsdSuccessed: false,
     buttonSending: false
   };
 

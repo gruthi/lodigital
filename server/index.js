@@ -45,6 +45,11 @@ app.post("/contactUs", (req, res) => {
   routeHelper.contactUs( req, res);
 });
 
+app.get("/getContactsList", (req, res) => {
+  console.log('getContactsList');
+  routeHelper.getContactsList( req, res);
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

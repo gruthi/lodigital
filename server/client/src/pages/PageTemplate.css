@@ -25,8 +25,10 @@
 @media screen and (min-width: 768px){
   .pageTemplate{
     background-image: url(../images/Capture9.JPG);
-    padding-top: 4.4vw;
     /* background-color: red; */
+  }
+  .backTemp{
+    padding-top: 4.4vw;
   }
 }
 
