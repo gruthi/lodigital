@@ -31,7 +31,7 @@ div#basic-navbar-nav.navbar-collapse.collapse.show div.dropdown-menu.show{
 }
 
 /* --- collapse hide style --- */
-div.mr-auto.navbar-nav>a.nav-link, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link, i{
+div.mr-auto.navbar-nav>a.nav-link, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link, .NavInformation i{
 font-weight: bold;
 background: -webkit-linear-gradient(white, rgb(200,200,200));
 -webkit-background-clip: text;
@@ -51,7 +51,7 @@ div.mr-auto.navbar-nav>a.nav-link.active{
    background: -webkit-linear-gradient(orange, gray);
    -webkit-background-clip: text;
 }
-div.mr-auto.navbar-nav>a.nav-link:hover, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:hover, i:hover{
+div.mr-auto.navbar-nav>a.nav-link:hover, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:hover, .NavInformation i:hover{
 /* div.mr-auto.navbar-nav a.nav-link:hover{ */
     background: -webkit-linear-gradient(orange, gray);
     -webkit-background-clip: text;
@@ -71,7 +71,7 @@ div.mr-auto.navbar-nav{
     div.dropdown.nav-item, div.mr-auto.navbar-nav>a.nav-link:not(:last-of-type){
         border-left: 2px solid orange!important;
     }
-    div.mr-auto.navbar-nav>a.nav-link, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link, i{
+    div.mr-auto.navbar-nav>a.nav-link, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link, .NavInformation i{
         font-size: 1.8vw;
         margin: 0.1vw 0 0;
         height:1.8vw;
