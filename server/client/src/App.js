@@ -9,16 +9,11 @@ import Footer from "./Footer.js";
 // HeaderRoutes = props =>( <HeaderPage/> )
 
 class App extends Component {
-  state = { user: null, hasMounted : true };
-
-  // setUser = user => {
-  //   this.setState({user: user})
-  // };
-
-  changeHasMounted = () => {
-    this.setState({hasMounted : false})
-  };
+  state = { manager: false};
   
+  setManager=manager=>{
+    this.setState({manager: manager});
+   }
   render() {
     
     return (
@@ -26,8 +21,8 @@ class App extends Component {
         
         <BrowserRouter>
           <HeaderPage/>
-          <NavInformation/>
-          <Routes/>
+          <NavInformation manager={this.state.manager} />
+          <Routes setManager={this.setManager} manager={this.state.manager} />
           <Footer/>
         </BrowserRouter>
         

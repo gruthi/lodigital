@@ -21,10 +21,11 @@ import GraduateInsertProject from "./pages/GraduateInsertProject.js";
 import ContactUs from "./pages/ContactUs.js";
 import ContactsList from "./pages/ContactsList.js";
 import CourseHome from "./pages/CourseHome.js";
+import NavInformation from "./NavInformation.js";
 
 
 class Routes extends Component {
-  state = { email: null, hasMounted : true ,token:'', resetPsdSuccessed: false };
+  state = { email: null, token:'', resetPsdSuccessed: false};
   
   
   setEmail = email => {
@@ -38,10 +39,8 @@ class Routes extends Component {
   setResetPsdSuccessed = () => {
     this.setState({resetPsdSuccessed: true})
   };
- 
-  //   changeHasMounted = () => {
-  //   this.setState({hasMounted : false})
-  // };
+  
+  
 
   render() {
     
@@ -49,7 +48,7 @@ class Routes extends Component {
       <div className="Routes">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" render={()=><Login email={this.state.email} setEmail={this.setEmail} setToken={this.setToken} resetPsdSuccessed={this.state.resetPsdSuccessed} />} />
+          <Route exact path="/login" render={()=><Login email={this.state.email} setEmail={this.setEmail} setToken={this.setToken} setManager={this.props.setManager} resetPsdSuccessed={this.state.resetPsdSuccessed} />} />
           <Route exact path="/logout" render={()=><Logout setEmail={this.setEmail} setToken={this.setToken}/>} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
           <Route exact path="/forgotPassword" render={()=><ForgotPassword email={this.state.email}/>} />
@@ -67,7 +66,7 @@ class Routes extends Component {
           <Route exact path="/graduates" render={()=><Graduates token={this.state.token} email={this.state.email}/>} /> 
           <Route exact path="/graduateInsertProject" render={()=><GraduateInsertProject token={this.state.token}/>} />                
           <Route exact path="/contactUs" component={ContactUs} /> 
-          <Route exact path="/contactsList" component={ContactsList} /> 
+          {this.props.manager?<Route exact path="/contactsList" component={ContactsList} /> :''}
           <Route exact path="/courseHome" component={CourseHome} />                
         </Switch>
       </div>

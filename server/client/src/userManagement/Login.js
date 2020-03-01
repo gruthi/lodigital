@@ -10,7 +10,8 @@ class Login extends Component {
   state = {
     user : {
       email: "",
-      password: ""
+      password: "",
+      manager:false
     },
     redirectToStudent: false,
     isError: false,
@@ -67,8 +68,11 @@ class Login extends Component {
       .then(res => {
          if (res.status === 200) {
          this.setState({ redirectToStudent: true });
+        
+         console.log(res.data.manager);
           this.props.setEmail(this.state.user.email);
-          this.props.setToken(res.data);
+          this.props.setToken(res.data.token);
+          this.props.setManager(res.data.manager);
           
         } else {
           //this.setState({ buttonSending:false, isError: true });

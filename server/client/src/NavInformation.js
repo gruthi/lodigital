@@ -18,8 +18,13 @@ function LinkContainerNavLink(props) {
 // function NavInformation() {
   class NavInformation extends Component {
     state={
-      navExpanded:false
+      navExpanded:false,
+      // manager:false
     }
+    // constructor(props) {
+    //   super(props);
+    //   this.state.manager=this.props.manager;
+    // }
     setNavExpanded=(expanded)=> {
       this.setState({ navExpanded: expanded });
     }
@@ -69,7 +74,7 @@ function LinkContainerNavLink(props) {
             />
             <LinkContainerNavLink to="/graduates" textLink="בוגרים" />
             <LinkContainerNavLink to="/contactUs" textLink="צור קשר " />
-            <LinkContainerNavLink to="/contactsList" textLink="רשימת פניות" />
+            {this.props.manager? <LinkContainerNavLink to="/contactsList" textLink="רשימת פניות" />:''}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
