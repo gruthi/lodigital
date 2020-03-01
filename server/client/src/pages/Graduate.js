@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import { Row, Col, Container } from "react-bootstrap";
 import axios from "axios";
+import "./Graduate.css";
 
 class Graduate extends Component {
   state = { editHeader: false, crop: { aspect: 1 / 1 } };
@@ -44,13 +45,13 @@ class Graduate extends Component {
         >
           {!this.state.editHeader ? (
             <Card.Header
-              className="text-center"
+              className="text-center graduateText"
               onClick={this.enableChangeHeader}
             >
               {this.props.title}
               {this.props.useremail === this.props.email ? (
                 <button onClick={this.removeGraduate} className="float-left">
-                  <i className="fas fa-minus"></i>
+                  <i className="fas fa-minus graduateIcons"></i>
                 </button>
               ) : (
                 ""
@@ -75,13 +76,13 @@ class Graduate extends Component {
                     />
                   ) : (
                     <p>
-                      <i className="fas fa-user-graduate" size={70}></i>
+                      <i className="fas fa-user-graduate graduateIcons" size={70}></i>
                     </p>
                   )}
 
-                  <Card.Text>{this.props.desc}</Card.Text>
+                  <Card.Text className='graduateText'>{this.props.desc}</Card.Text>
                   <Card.Text>
-                    <a href={this.props.link}>Go to My Git</a>{" "}
+                    <a href={this.props.link} className='graduateText'>Go to My Git</a>{" "}
                   </Card.Text>
                 </Col>
                 <Col xs={8}>

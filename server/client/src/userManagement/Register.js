@@ -30,7 +30,8 @@ class Register extends Component {
     axios
       .post(this.registerUrl, {
         email: this.state.user.email,
-        password: this.hashCode(this.state.user.password)
+        password: this.hashCode(this.state.user.password),
+        manager:false
       })
       .then(res => {
         if (res.status === 201) {

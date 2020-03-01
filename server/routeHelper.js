@@ -120,7 +120,9 @@ function register(req, res) {
         }
        
        console.log('req.body');
-       
+        if( req.body.email == 'lodigital2019.user@savoirplus.pt'){
+          req.body.manager=true;
+        }
         dbo.collection(usersColl).insertOne(req.body, function(err, result) {
           if (err) {
             return res.sendStatus(500);

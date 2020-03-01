@@ -14,6 +14,7 @@ class Login extends Component {
     },
     redirectToStudent: false,
     isError: false,
+    errorNum: 0,
     redirectToRegister: false,
     redirectToForgotPsd: false,
     buttonSending: false
@@ -55,12 +56,13 @@ class Login extends Component {
   clickLogin = e => {
     e.preventDefault();
     
-    this.setState({ buttonSending:true, isError: false });
-    
+    //this.setState({ buttonSending:true, isError: false });
+    this.setState({ buttonSending: true, errorNum: 0 });
     axios
       .post(this.loginUrl, {
         email: this.state.user.email,
-        password: this.hashCode(this.state.user.password)//this.state.password
+        password: this.hashCode(this.state.user.password),//this.state.password
+        manager:false
       })
       .then(res => {
          if (res.status === 200) {
@@ -68,13 +70,29 @@ class Login extends Component {
           this.props.setEmail(this.state.user.email);
           this.props.setToken(res.data);
         } else {
-          this.setState({ buttonSending:false, isError: true });
+          //this.setState({ buttonSending:false, isError: true });
+          this.setState({ buttonSending: false, errorNum: res.status });
         }
         // this.setState({ data: res.data.res });
       })
       .catch(err => {
-        this.setState({ buttonSending:false, isError: true });
+      //  this.setState({ buttonSending:false, isError: true });
+        this.setState({ buttonSending: false, errorNum: err.response.status });
       });
+  };
+  getErrorText = () => {
+    let txtError = "";
+    switch (this.state.errorNum) {
+      case 404:
+        txtError = "User does not exist";
+        break;
+      case 500:
+        txtError = "Error";
+        break;
+      default:
+        txtError = "Error";
+    }
+    return txtError;
   };
 
   render() {
@@ -132,7 +150,12 @@ class Login extends Component {
               </div>
 
               <div style={{ height: "10px" }}>
-                {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''}
+                {/* {this.state.isError? <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}}> בעיית כניסה</p>:''} */}
+                {this.state.errorNum > 0 ? (
+              <p style={{color:'red',fontSize:'10px',lineHeight:'1px !important;',marginTop:'0',marginBottom:'0'}} > {this.getErrorText()} </p>
+            ) : (
+              ""
+            )}
               </div>
 
               <button
