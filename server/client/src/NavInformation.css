@@ -108,6 +108,9 @@ div.mr-auto.navbar-nav{
     div.mr-auto.navbar-nav>a.nav-link:nth-of-type(7){
         min-width: 9vw;
     }
+    div.mr-auto.navbar-nav>a.nav-link:nth-of-type(8){
+        min-width: 12.5vw;
+    }
 }
 
 

@@ -69,6 +69,7 @@ function LinkContainerNavLink(props) {
             />
             <LinkContainerNavLink to="/graduates" textLink="בוגרים" />
             <LinkContainerNavLink to="/contactUs" textLink="צור קשר " />
+            <LinkContainerNavLink to="/contactsList" textLink="רשימת פניות" />
           </Nav>
         </Navbar.Collapse>
       </Navbar>
