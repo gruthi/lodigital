@@ -10,7 +10,14 @@ const graduates = "graduates";
 const contactList = "contactList";
 const timeLogin=18000;
 const timeResetPassword=1200;
-const courseMails=['120@gmail.com', 'henilana@gmail.com','121@gmail.com']
+const courseMails=[
+  'yosriz@gmail.com','770mdk@gmail.com','adi9788@yahoo.com','adisogermay@gmail.com',
+'agammor224@gmail.com','bykjennifer@gmail.com','chanieluz@gmail.com','distne72@gmail.com',
+'gozmanv@013.net','gruthi@gmail.com','harpaz.g@gmail.com','hasan.hta6@gmail.com',
+'henilana@gmail.com','jeck99@gmail.com','lodigital2019.user@savoirplus.pt',
+'meirigel123@walla.co.il','Netanelhadad@gmail.com','rezrati@gmail.com',
+'simhamahari@gmail.com','taliyaacov@hotmail.com','yakovm1690@gmail.com',
+'yosefel123@gmail.com','yys770770@gmail.com','zohar87@gmail.com']
 
 function getMyTime(){
   let d = new Date();

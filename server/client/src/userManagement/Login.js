@@ -109,7 +109,7 @@ class Login extends Component {
             <form autoComplete="on">
               <div className="form-group">
                 <input
-                  type="text"
+                  type="email"
                   className="form-control"
                   placeholder='כתובת דוא"ל'
                   required={true}

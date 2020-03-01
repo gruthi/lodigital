@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Switch, Route } from 'react-router-dom';
 
 import Home from "./pages/Home.js";
-import Login from "./authentication/Login";
-import Logout from "./authentication/Logout";
-import Register from "./authentication/Register";
-import ForgotPassword from "./authentication/ForgotPassword";
-import ResetPassword from "./authentication/ResetPassword.js";
+import Login from "./userManagement/Login";
+import Logout from "./userManagement/Logout";
+import Register from "./userManagement/Register";
+import ForgotPassword from "./userManagement/ForgotPassword";
+import ResetPassword from "./userManagement/ResetPassword.js";
 import AboutTheVenture from "./pages/AboutTheVenture.js";
 import Goals from "./pages/Goals.js";
 import Audience from "./pages/Audience.js";
