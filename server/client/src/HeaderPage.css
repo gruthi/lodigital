@@ -1,5 +1,6 @@
 .HeaderPage{
-    height: calc(65px + 2.5vw);
+    /* height: calc(65px + 2.5vw); */
+    height: calc(70px + 0.5vw);
     background-color: rgb(245,245,245);
     padding:calc(5px + 0.5vw);
 }

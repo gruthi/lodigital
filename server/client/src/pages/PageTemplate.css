@@ -1,6 +1,7 @@
 .pageTemplate{
   width: 100%;
-  height: calc(100vh - 80px - 3.5vw);
+  /* height: calc(100vh - 80px - 3.5vw); */
+  height: calc(100vh - 85px - 1.5vw);
   background-color: rgb(204, 238, 252);
   background-size: cover; 
   margin-top: -3.4vw;
