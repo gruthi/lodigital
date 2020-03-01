@@ -61,14 +61,15 @@ class Login extends Component {
     axios
       .post(this.loginUrl, {
         email: this.state.user.email,
-        password: this.hashCode(this.state.user.password),//this.state.password
-        manager:false
+        password: this.hashCode(this.state.user.password)//this.state.password
+       
       })
       .then(res => {
          if (res.status === 200) {
          this.setState({ redirectToStudent: true });
           this.props.setEmail(this.state.user.email);
           this.props.setToken(res.data);
+          
         } else {
           //this.setState({ buttonSending:false, isError: true });
           this.setState({ buttonSending: false, errorNum: res.status });

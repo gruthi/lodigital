@@ -76,7 +76,7 @@ class Graduate extends Component {
                     />
                   ) : (
                     <p>
-                      <i className="fas fa-user-graduate graduateIcons" size={70}></i>
+                      <i className="fas fa-user-graduate graduateIcons fa-5x" size={70}></i>
                     </p>
                   )}
 

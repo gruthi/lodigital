@@ -95,6 +95,9 @@ function login(req, res) {
       }
       res.status(200);
       res.json(authen.createToken(req.body,timeLogin));
+     // res.json({'token':authen.createToken(req.body,timeLogin),'manager':req.body.manager});
+     console.log(res);
+    
       return res.send;
       //return res.sendStatus(200);
     });
