@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Home.css";
 import "./PageTemplate.css";
+import { FaFacebook } from "react-icons/fa";
 
 class Home extends Component {
 
@@ -62,7 +63,7 @@ class Home extends Component {
         // ];
 
         const slides = [
-            { name: 'First',  title: 'מיקום', description: '●המרכז לצעירים ,גרטבול ,לוד ●בקרוב במקומות נוספים!', slideStand: `slide slideStand${this.state.slide0} ${this.state.direction}`},
+            { name: 'First',  title: 'מיקום', description: <ul><li>המרכז לצעירים ,גרטבול ,לוד</li><li>בקרוב במקומות נוספים!'</li></ul>, slideStand: `slide slideStand${this.state.slide0} ${this.state.direction}`},
             { name: 'Second', title: 'קהל היעד', description: 'מועמדים ללא רקע או עם רקע בסיסי בתכנות ל ,WEB- המעוניינים להתמקצע בתחום האינטרנט ותכנות בעולם ה.Web- ', slideStand: `slide slideStand${this.state.slide1} ${this.state.direction}`},
             { name: 'Three', title: 'יתרונות התכנית', description: 'מסלול ייחודי שנבנה בהתאמה לצרכי השוק, ומעניק כרטיס כניסה לעולם הפיתוח full stack', slideStand: `slide slideStand${this.state.slide2} ${this.state.direction}`},
             { name: 'Four', title: 'לימוד רב ערוצי', description: '-שיעורים פרונטליים -שיעורי תרגול - שיעורי אונליין - עבודה עצמית בבית', slideStand: `slide slideStand${this.state.slide3} ${this.state.direction}`}
@@ -73,7 +74,7 @@ class Home extends Component {
                 <div className="slider">
                     {slides.map((slide, index) => 
                         <div name={slide.name} className={slide.slideStand}  key={index} >
-                            <div><h1 className='display-5 sm-display-1'>{slide.title}</h1></div>
+                            <div><h1>{slide.title}</h1></div>
                             <div className='desc'>{slide.description}</div>
                         </div>)}
                     <button name='RTL' onClick={this.changeSlideStandRTL}>click RTL</button>

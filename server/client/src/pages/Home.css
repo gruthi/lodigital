@@ -125,89 +125,91 @@ div.slide h1, div.slide .desc{
 }
 div.slideStand1.rtl h1, div.slideStand0.ltr h1{
     animation: insideTopToBottom  1s linear forwards;
-    margin: 20%;
+    margin: 5vw 10% 5% 5%;
     /* transition: godown 0.8s ease; */
 }
 @keyframes insideTopToBottom{
     0%{
         transform: scaleY(0);
+        margin-top: 5vw;
     }
     50% {
        /* top:0; */
-       margin-top: 0;
+       margin-top: 5vw;
        display:none;
        transform: scaleY(0);
     }
     100% {
         /* top:1vw; */
-        margin-top: 5vw;
+        margin-top: 10vw;
         display:block;
         transform: scaleY(1);
     }
 }
 div.slideStand0.rtl h1, div.slideStand1.ltr h1{
     animation: outsideBottomToTop  1s linear forwards;
-    margin: 20%;
+    margin: 5vw 10% 5% 5%;
 }
 @keyframes outsideBottomToTop{
     0% {
         /* top:1vw; */
-        margin-top: 5vw;
+        margin-top: 10vw;
         display:block;
         transform: scaleY(1);
     }
     50% {
         /* top:0; */
-        margin-top: 0vw;
+        margin-top: 5vw;
         display:none;
         transform: scaleY(0);
     }
     100% {
         transform: scaleY(0);
+        margin-top: 5vw;
     }
 }
 
 div.slideStand1.rtl .desc, div.slideStand0.ltr .desc{
     animation: insideBottomToTop  1s linear forwards;
-    margin: 20%;  
+    margin: calc(60px + 10.5vw) 5% 5% 5%;
 }
 @keyframes insideBottomToTop{
     0% {
         /* bottom:0; */
-        margin-top: 20vw;
+        margin-top: calc(60px + 30.5vw);
         transform: scaleY(0);
     }
     50% {
         /* bottom:0; */
-        margin-top:20vw;
+        margin-top: calc(60px + 30.5vw);
         transform: scaleY(0);
     }
     100% {
         transform: scaleY(1);
         /* bottom:1vw; */
-        margin-top: 10vw;
+        margin-top: calc(60px + 10.5vw);
        
     }
 }
 div.slideStand0.rtl .desc, div.slideStand1.ltr .desc{
-    animation: outsideTopToBottom 1s linear forwards;
-    margin: 20%;
+    /* animation: outsideTopToBottom 1s linear forwards; */
+    margin: calc(60px + 10.5vw) 5% 5% 5%;
 }
 @keyframes outsideTopToBottom{
     0% {
         transform: scaleY(1);
         /* margin:3vw;  */
-        margin-top: 10vw;
+        margin-top: calc(60px + 10.5vw);
     }
     50% {
         /* bottom:0; */
-        margin-top: 20vw;
+        margin-top: calc(60px + 30.5vw);
         transform: scaleY(0);
     }
     100% {
         /* bottom:0; */
         transform: scaleY(0);
-        margin-top: 20vw;
+        margin-top: calc(60px + 30.5vw);
     }
 }
 
@@ -240,20 +242,18 @@ div.slideStand0.rtl .desc, div.slideStand1.ltr .desc{
 
 .HomePage h1{
     font-size: bold;
-    text-shadow:1.8px 1.8px 4px rgb(183, 197, 199); 
-    /* font-size: calc(30px + 0.5vw); */
+    text-shadow:1.8px 1.8px 4px rgb(211, 218, 188); 
+    font-size: calc(45px + 0.5vw);
+    color: rgba(30,94,111);
+    color: rgba(25,79,92);
 }
 
 .desc{
-    /* border: 2px gray solid; */
-    border: 2px #8BCFB7 solid;
-    border-radius: 4px;
+    border: 2px gray solid;
+    /* border: 2px rgba(40,126,148) solid; */
+    border-radius: 10px;
     padding: calc(15px + 0.5vw);
     font-size: calc(24px + 0.5vw);
-    /* padding: 50px; */
-    background-color: rgba(255,255,255,0.2) ;
-    /* border-width: 1px;
-    border-style: solid;
-    border-image: linear-gradient(to right, rgba(0,0,0,0), #A5CACF, rgba(0,0,0,0))100% 1; */
-  
+    background-color: rgba(255,255,255,0.35) ;
+    color: rgba(20,63,74);
 }
