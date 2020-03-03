@@ -117,7 +117,6 @@ class Login extends Component {
         <div className="card"> 
           <div className="card-body">
             
-            <form autoComplete="on">
               <div className="form-group">
                 <input
                   type="email"
@@ -159,7 +158,7 @@ class Login extends Component {
               >
                 {!this.state.buttonSending ? <span>כניסה לחשבונך</span> : <span>שולח...</span>}
               </button>
-            </form> 
+            
             <div className="pt-3 d-inline-block btn" onClick={this.forgotPassword} style={{color:'#37889A'}}>
               שכחת סיסמא?
             </div>
