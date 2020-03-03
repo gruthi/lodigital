@@ -72,7 +72,7 @@ class ResetPassword extends Component {
   render() {
     const disabled = !this.state.user.email || !this.state.user.password || !this.state.user.repeatPassword;
 
-    const inputData = [ { type : "text", placeholder : 'כתובת דוא"ל', onChange : this.handleChange('email') },
+    const inputData = [ { type : "email", placeholder : 'כתובת דוא"ל', onChange : this.handleChange('email') },
                         { type : "password", placeholder : "סיסמא", onChange : this.handleChange('password') },
                         { type : "password", placeholder : "הקש שוב את הסיסמא", onChange : this.handleChange('repeatPassword') }
                       ];
