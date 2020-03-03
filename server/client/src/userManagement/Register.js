@@ -5,6 +5,7 @@ import "../pages/PageTemplate.css";
 
 class Register extends Component {
   registerUrl = "/users/register";
+  
   state = {
     user: {
       email: "",
@@ -18,6 +19,7 @@ class Register extends Component {
     showModal: true,
     buttonSending: false
   };
+
   hashCode = s => {
     return s.split("").reduce(function(a, b) {
       a = (a << 5) - a + b.charCodeAt(0);
@@ -110,11 +112,12 @@ class Register extends Component {
           <div className="card-body">
             <div className="form-group" style={{ marginBottom: "4px" }}>
               <input
-                type="text"
-                className="form-control"
-                placeholder='כתובת דוא"ל'
-                required=""
-                onChange={this.handleChange("email")}
+                type ="email"
+                id = "email"
+                className ="form-control"
+                placeholder ='כתובת דוא"ל'
+                required = ""
+                onChange = {this.handleChange("email")}
               />
             </div>
             <div style={{ height: "20px" }}></div>

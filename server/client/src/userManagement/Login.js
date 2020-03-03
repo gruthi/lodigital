@@ -38,27 +38,13 @@ class Login extends Component {
     this.setState({ redirectToForgotPsd: true });
   };
 
-  // resetPsdSuccessed= () => {
-  //   this.setState({ resetPsdSuccessed: this.props.location.state.resetPsdSuccessed});
-  // };
-
   handleChange = name => e => {
     this.setState({ user: {...this.state.user, [name]: e.target.value}, });
   };
 
-  // componentDidUpdate(_props,_state){
-  //   console.log(this.props.location.reset.resetPsdSuccessed);
-  //   if(this.props.location.state.resetPsdSuccessed)
-  //     this.setState({resetPsdSuccessed:true});
-  //   // else
-  //   //   this.setState({resetPsdSuccessed:false}); 
-  // }
-
   clickLogin = e => {
-    e.preventDefault();
-    
-    //this.setState({ buttonSending:true, isError: false });
     this.setState({ buttonSending: true, errorNum: 0 });
+
     axios
       .post(this.loginUrl, {
         email: this.state.user.email,
@@ -75,13 +61,10 @@ class Login extends Component {
           this.props.setManager(res.data.manager);
           
         } else {
-          //this.setState({ buttonSending:false, isError: true });
           this.setState({ buttonSending: false, errorNum: res.status });
         }
-        // this.setState({ data: res.data.res });
       })
       .catch(err => {
-      //  this.setState({ buttonSending:false, isError: true });
         this.setState({ buttonSending: false, errorNum: err.response.status });
       });
   };
@@ -113,7 +96,12 @@ class Login extends Component {
     }
 
     if (this.state.redirectToForgotPsd) {
-      return <Redirect to="/forgotPassword" />;
+
+      return <Redirect to={{
+            pathname: '/forgotPassword',
+            email: { email: this.state.user.email }
+              }}
+          />;
     }
 
     return (
@@ -121,9 +109,9 @@ class Login extends Component {
         
         {!this.props.resetPsdSuccessed 
         ?
-        <h1>אנא הכנס קוד וסיסמא כדי להתחבר:</h1>  
+        <h2>אנא הכנס קוד וסיסמא כדי להתחבר:</h2>  
         :
-        <h1>הסיסמא שונתה בהצלחה! אנא הכנס קוד וסיסמא כדי להתחבר:</h1>
+        <h2>הסיסמא שונתה בהצלחה! אנא הכנס קוד וסיסמא כדי להתחבר:</h2>
         }
 
         <div className="card"> 
@@ -136,7 +124,6 @@ class Login extends Component {
                   className="form-control"
                   placeholder='כתובת דוא"ל'
                   required={true}
-                  // onChange={e => this.setState({ email: e.target.value })}
                   id='email'
                   value={this.state.user.email }
                   onChange = {this.handleChange('email')}
@@ -149,7 +136,6 @@ class Login extends Component {
                   placeholder="סיסמא"
                   required=""
                   id='password'
-                  // onChange={e => this.setState({ password: e.target.value })}
                   onChange = {this.handleChange('password')}
                 />
               </div>
@@ -174,12 +160,11 @@ class Login extends Component {
                 {!this.state.buttonSending ? <span>כניסה לחשבונך</span> : <span>שולח...</span>}
               </button>
             </form> 
-
-            <div className="pt-3" onClick={this.forgotPassword} style={{color:'#37889A'}}>
+            <div className="pt-3 d-inline-block btn" onClick={this.forgotPassword} style={{color:'#37889A'}}>
               שכחת סיסמא?
             </div>
             
-            <div className="pt-3" onClick={this.register} style={{color:'#37889A'}}>
+            <div className="pt-3 d-inline-block btn" onClick={this.register} style={{color:'#37889A'}}>
                 הירשם כעת
             </div>
            

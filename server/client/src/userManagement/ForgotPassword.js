@@ -21,7 +21,9 @@ class ForgotPassword extends Component {
 
   constructor(props) {
     super(props);
-    this.state.user.email = props.email || '' ;
+    if(props.location.email){
+      this.state.user.email = props.location.email.email || '' ;
+    }
   }
 
   register = () => {
@@ -79,7 +81,8 @@ class ForgotPassword extends Component {
             
             <div className="form-group">
               <input
-                type="text"
+                type="email"
+                id='email'
                 className="form-control"
                 placeholder='כתובת דוא"ל'
                 value = {this.state.user.email}
@@ -99,11 +102,11 @@ class ForgotPassword extends Component {
               {!this.state.buttonSending ? <span>לשליחת מייל לאיפוס סיסמא</span> : <span>שולח...</span>}
             </button>
 
-            <div className="pt-3" onClick={this.forgotPassword} style={{color:'#37889A'}}>
+            <div className="pt-3 d-inline-block btn" onClick={this.forgotPassword} style={{color:'#37889A'}}>
               חזרה לכניסה לחשבון
             </div>
           
-            <div className="pt-3" onClick={this.register} style={{color:'#37889A'}}>
+            <div className="pt-3 d-inline-block btn" onClick={this.register} style={{color:'#37889A'}}>
               הירשם כעת
             </div>
 

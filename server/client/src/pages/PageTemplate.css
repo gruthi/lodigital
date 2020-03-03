@@ -41,3 +41,11 @@ div{
     /* line-height: 18px; */
     /* margin-top: 13px; */
 }
+
+h1{
+  font-size: calc(24px + 0.5vw);
+}
+
+h2{
+  font-size: calc(18px + 0.5vw);
+}

@@ -70,52 +70,49 @@ class ContactUs extends Component {
                      !this.state.newContant.tenHours;
     
     const inputData = [ {label : "שם פרטי:", type : "text", id:'fname', onChange : this.handleChange('firstName') },
-                        {label : "שם משפחה:", type : "text", id:'flast', onChange : this.handleChange('lastName') },
-                        {label : "כתובת:", type : "text", id:'frmAddressS', onChange : this.handleChange('address') },
-                        {label : "כתובת אימייל:", type : "text", id:'email', onChange : this.handleChange('email') },
-                        {label : "מספר טלפון:", type : "text", id:'phone', onChange : this.handleChange('phone') },
+                        {label : "שם משפחה:", type : "text", id:'lname', onChange : this.handleChange('lastName') },
+                        {label : "כתובת:", type : "text", id:'frmAddress', onChange : this.handleChange('address') },
+                        {label : "כתובת אימייל:", type : "email", id:'email', onChange : this.handleChange('email') },
+                        {label : "מספר טלפון:", type : "tel", id:'phone', onChange : this.handleChange('phone') },
                         {label : "השכלה:", type : "text", id:'education', onChange : this.handleChange('education') },
                         {label : "עיסוק כיום:", type : "text", id:'occupation', onChange : this.handleChange('occupation') },
                         {label : "רקע בפיתוח תוכנה:", type : "text", id:'backSoftwareDvelopment', onChange : this.handleChange('backSoftwareDvelopment') },
-                        {label : "האם תוכל להשקיע 10 שעות שבועיות בקורס (מעבר לשעות הלימודים)?:", 
-                                  type : "text", id:'tenHours', onChange : this.handleChange('tenHours') }
+                        // {label : "האם תוכל להשקיע 10 שעות שבועיות בקורס (מעבר לשעות הלימודים)?:", 
+                                  // type : "text", id:'tenHours', onChange : this.handleChange('tenHours') }
                       ];
     
     return (
       this.state.thanks
       ?
       <div className="pageTemplate backTemp">
-        <TitlePage title="תודה על פנייתך! נהיה בקשר "/>
+        <TitlePage title="תודה על פנייתך! נחזור אליכם בהקדם."/>
       </div>
       :
       <div className="pageTemplate backTemp">
+        <TitlePage title="מתעניינים בקורס? מוזמנים להצטרף אלינו!"/>
+        <TitlePage subTitle="אנא מלאו את הפרטים הבאים, ונהיה בקשר בהקדם:"/>
         <CardDeck>
-        {/* <label for="fname">First name:</label>
-  <input type="text" id="fname" name="fname"/>
-  <label for="lname">Last name:</label>
-  <input type="text" id="lname" name="lname"/>
-   <label for="pwd">Password:</label>
-  <input type="password" id="pwd" name="pwd"/>
-  <label for="email">Enter your email:</label>
-  <input type="email" id="email" name="email"/>
-  <label for="myfile">Select a file:</label>
-  <input type="file" id="myfile" name="myfile"/>
-  <label for="phone">Enter your phone number:</label>
-  <input type="tel" id="phone" name="phone" pattern="([0-9]{3}-[0-9]{2}-[0-9]{3})||([0-9]{10})"/> */}
-          <form autoComplete="on">
+          
           {inputData.map((item,i) => 
-            <div className="form-group" key={i}>
+            <div className="form-group m-2" key={i}>
               <label>{item.label}</label>
               <input
                 type= {item.type}
                 id = {item.id}
-                className="form-control"
+                className="form-control mt-0"
                 required={true}
                 onChange= {item.onChange}
               />
             </div>
           )}
-          </form>
+          <div className="form-group m-2">
+          <label className="ml-2" >האם תוכל/י להשקיע 10 שעות שבועיות בקורס (מעבר לשעות הלימודים)?</label>
+          
+          <input type="radio" id="yes" name="tenHours" value="כן" onChange = {this.handleChange('tenHours')}/>
+          <label className="mx-2" for="yes" >כן</label>
+          <input type="radio" id="no" name="tenHours" value="לא"  onChange = {this.handleChange('tenHours')}/>
+          <label className="mx-2" for="no">לא</label>
+          </div>
         </CardDeck>
                
         <div>

@@ -12,7 +12,7 @@ class ResetPassword extends Component {
     user : {
       email: "",
       password: "",
-      confirmPass: "",
+      repeatPassword: ""
     }, 
     redirectToLogin: false,
     isError: false,
@@ -39,10 +39,6 @@ class ResetPassword extends Component {
 
   clickResetPassword = e => {
     
-    //e.preventDefault();
-    console.log(this.props);
-    // console.log(this.match.params.token);
-    // console.log(this.props.params.token);
     this.setState({ buttonSending:true, isError: false });
     
     axios
@@ -74,20 +70,15 @@ class ResetPassword extends Component {
   };
 
   render() {
-    const disabled = !this.state.user.email || !this.state.user.password || !this.state.user.confirmPass;
+    const disabled = !this.state.user.email || !this.state.user.password || !this.state.user.repeatPassword;
 
     const inputData = [ { type : "text", placeholder : 'כתובת דוא"ל', onChange : this.handleChange('email') },
-                        { type : "text", placeholder : "סיסמא", onChange : this.handleChange('password') },
-                        { type : "text", placeholder : "הקש שוב את הסיסמא", onChange : this.handleChange('confirmPass') }
+                        { type : "password", placeholder : "סיסמא", onChange : this.handleChange('password') },
+                        { type : "password", placeholder : "הקש שוב את הסיסמא", onChange : this.handleChange('repeatPassword') }
                       ];
     
     if (this.state.redirectToLogin) {
-      return <Redirect to="/login" />;
-      // return <Redirect to={{
-      //     pathname: '/login',
-      //     reset: { resetPsdSuccessed: true }
-      //       }}
-      //   />;
+      return <Redirect to="/login" />;  
     };
    
     return (
@@ -97,7 +88,7 @@ class ResetPassword extends Component {
               <div className="form-group" key={i}>
                 <input
                   type= {item.type}
-                  name= "email"
+                  id= "email"
                   className="form-control"
                   placeholder={item.placeholder}
                   required={true}

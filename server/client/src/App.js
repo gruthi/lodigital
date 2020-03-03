@@ -6,7 +6,6 @@ import HeaderPage from "./HeaderPage.js";
 import NavInformation from "./NavInformation.js";
 import Routes from "./Routes.js";
 import Footer from "./Footer.js";
-// HeaderRoutes = props =>( <HeaderPage/> )
 
 class App extends Component {
   state = { manager: false};

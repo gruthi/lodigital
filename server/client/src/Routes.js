@@ -21,8 +21,6 @@ import GraduateInsertProject from "./pages/GraduateInsertProject.js";
 import ContactUs from "./pages/ContactUs.js";
 import ContactsList from "./pages/ContactsList.js";
 import CourseHome from "./pages/CourseHome.js";
-import NavInformation from "./NavInformation.js";
-
 
 class Routes extends Component {
   state = { email: null, token:'', resetPsdSuccessed: false};
@@ -51,7 +49,7 @@ class Routes extends Component {
           <Route exact path="/login" render={()=><Login email={this.state.email} setEmail={this.setEmail} setToken={this.setToken} setManager={this.props.setManager} resetPsdSuccessed={this.state.resetPsdSuccessed} />} />
           <Route exact path="/logout" render={()=><Logout setEmail={this.setEmail} setToken={this.setToken}/>} />
           <Route exact path="/register" render={()=><Register setEmail={this.setEmail}/>} />
-          <Route exact path="/forgotPassword" render={()=><ForgotPassword email={this.state.email}/>} />
+          <Route exact path="/forgotPassword" component={ForgotPassword} />
           <Route exact path="/resetPassword/:token" render={(props)=><ResetPassword {...props} setEmail={this.setEmail} setResetPsdSuccessed={this.setResetPsdSuccessed} />} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
           <Route exact path="/goals" component={Goals} />
