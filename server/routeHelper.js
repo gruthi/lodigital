@@ -60,22 +60,16 @@ function sendEmail(account, params) {
         attachments: params.attachments
     };
 
-  try{
      // send mail with defined transport object
     transporter.sendMail(mailOptions, (error, info) => {
       console.log('sending mail');
       if (error) {
-        // console.log(error);
         return error;
       } else {
          console.log('Message %s sent: %s', info.messageId, info.response);
          transporter.close();
       }
     });
-  } catch(e){
-      throw e;
-  }
-      
 }
 
 function login(req, res) {
