@@ -308,6 +308,7 @@ div[name='joinButton']:hover{
     padding: calc(6px + 0.5vw) calc(27px + 0.5vw) ; 
 }
 
+
 @media screen and (min-width: 768px){
     div.desc{
         padding: calc(15px + 0.5vw);
