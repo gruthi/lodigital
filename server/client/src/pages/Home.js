@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import "./Home.css";
 import "./PageTemplate.css";
-import { FaFacebook } from "react-icons/fa";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
 
@@ -63,10 +64,10 @@ class Home extends Component {
         // ];
 
         const slides = [
-            { name: 'First',  title: 'מיקום', description: <ul><li>המרכז לצעירים ,גרטבול ,לוד</li><li>בקרוב במקומות נוספים!'</li></ul>, slideStand: `slide slideStand${this.state.slide0} ${this.state.direction}`},
-            { name: 'Second', title: 'קהל היעד', description: 'מועמדים ללא רקע או עם רקע בסיסי בתכנות ל ,WEB- המעוניינים להתמקצע בתחום האינטרנט ותכנות בעולם ה.Web- ', slideStand: `slide slideStand${this.state.slide1} ${this.state.direction}`},
-            { name: 'Three', title: 'יתרונות התכנית', description: 'מסלול ייחודי שנבנה בהתאמה לצרכי השוק, ומעניק כרטיס כניסה לעולם הפיתוח full stack', slideStand: `slide slideStand${this.state.slide2} ${this.state.direction}`},
-            { name: 'Four', title: 'לימוד רב ערוצי', description: '-שיעורים פרונטליים -שיעורי תרגול - שיעורי אונליין - עבודה עצמית בבית', slideStand: `slide slideStand${this.state.slide3} ${this.state.direction}`}
+            { name: 'First',  title: 'מיקום', description: <ul><li>המרכז לצעירים, רח' גרטבול, לוד</li><li><b>בקרוב במקומות נוספים!</b></li></ul>, slideStand: `slide slideStand${this.state.slide0} ${this.state.direction}`},
+            { name: 'Second', title: 'קהל היעד', description: <p>מועמדים ללא רקע<br/>או עם רקע בסיסי בתכנות WEB,<br/>המעוניינים להתמקצע בתחום האינטרנט<br/>ובתכנות בעולם ה-<small>WEB</small>.</p>, slideStand: `slide slideStand${this.state.slide1} ${this.state.direction}`},
+            { name: 'Three', title: 'יתרונות התכנית', description: <p>מסלול ייחודי שנבנה בהתאמה לצרכי השוק,<br/>ומעניק כרטיס כניסה לעולם הפיתוח Full stack</p>, slideStand: `slide slideStand${this.state.slide2} ${this.state.direction}`},
+            { name: 'Four', title: 'לימוד רב ערוצי', description: <ul><li>שיעורים פרונטליים</li><li>שיעורי תרגול</li><li>שיעורי אונליין</li><li>עבודה עצמית בבית</li></ul>, slideStand: `slide slideStand${this.state.slide3} ${this.state.direction}`}
         ];
         
         return(
@@ -74,11 +75,15 @@ class Home extends Component {
                 <div className="slider">
                     {slides.map((slide, index) => 
                         <div name={slide.name} className={slide.slideStand}  key={index} >
-                            <div><h1>{slide.title}</h1></div>
-                            <div className='desc'>{slide.description}</div>
+                           <div>
+                                <div className='senter'><h1>{slide.title}</h1></div>
+                                <div className='desc text-senter'>{slide.description}</div>
+                            </div>
                         </div>)}
-                    <button name='RTL' onClick={this.changeSlideStandRTL}>click RTL</button>
-                    <button name='LTR' onClick={this.changeSlideStandLTR}>click LTR</button>
+                    {/* <button name='RTL' onClick={this.changeSlideStandRTL}>click RTL</button> */}
+                    <div name='buttonRTL'  onClick={this.changeSlideStandRTL}> <IoIosArrowForward/></div>
+                    <div name='buttonLTR' onClick={this.changeSlideStandLTR}><IoIosArrowBack/></div>
+                    <Link to="/contactUs" ><div name='joinButton'>להצטרפות</div></Link>
                 </div>
             </div>
         )

@@ -9,6 +9,7 @@ div.slide{
     position: absolute;
     background-size: cover;
     padding-top: calc(40px + 4.4vw);
+    overflow: hidden;
 }
 @media screen and (min-width: 768px){
     div.slide{
@@ -18,7 +19,6 @@ div.slide{
 div[name = "First"]{
     background-color: greenyellow;
     background-image: url(../images/compm1.JPG);
-    /* background-image: url(../images/compm2.JPG); */
 }
 div[name = "Second"]{
     background-color: blue;
@@ -32,8 +32,7 @@ div[name = "Four"]{
     background-color: gold;
     background-image: url(../images/compm4.jpg);
 }
-
-@media screen and (min-width: 768px){
+@media (min-aspect-ratio: 13/10){
     div[name = "First"]{
         background-image: url(../images/comp1.JPG);
     }
@@ -46,6 +45,21 @@ div[name = "Four"]{
     div[name = "Four"]{
         background-image: url(../images/comp4.JPG);
     }
+}
+@media (min-aspect-ratio: 8/5){
+    div[name = "First"]{
+        background-image: url(../images/compw1.JPG);
+    }
+    div[name = "Second"]{
+        background-image: url(../images/compw2.JPG);
+    }
+    div[name = "Three"]{
+        background-image: url(../images/compw3.JPG);
+    }
+    div[name = "Four"]{
+        background-image: url(../images/compw4.JPG);
+    }
+    
 }
 
 div.slideStand2{
@@ -125,30 +139,29 @@ div.slide h1, div.slide .desc{
 }
 div.slideStand1.rtl h1, div.slideStand0.ltr h1{
     animation: insideTopToBottom  1s linear forwards;
-    margin: 5vw 10% 5% 5%;
-    /* transition: godown 0.8s ease; */
+    margin: 0vw 5% 5% 5%;
 }
 @keyframes insideTopToBottom{
     0%{
         transform: scaleY(0);
-        margin-top: 5vw;
+        margin-top: 0vw;
     }
     50% {
        /* top:0; */
-       margin-top: 5vw;
+       margin-top: 0vw;
        display:none;
        transform: scaleY(0);
     }
     100% {
         /* top:1vw; */
-        margin-top: 10vw;
+        margin-top: 5vw;
         display:block;
         transform: scaleY(1);
     }
 }
 div.slideStand0.rtl h1, div.slideStand1.ltr h1{
     animation: outsideBottomToTop  1s linear forwards;
-    margin: 5vw 10% 5% 5%;
+    margin: 5vw 5% 5% 5%;
 }
 @keyframes outsideBottomToTop{
     0% {
@@ -171,55 +184,64 @@ div.slideStand0.rtl h1, div.slideStand1.ltr h1{
 
 div.slideStand1.rtl .desc, div.slideStand0.ltr .desc{
     animation: insideBottomToTop  1s linear forwards;
-    margin: calc(60px + 10.5vw) 5% 5% 5%;
+    margin: calc(60px + 5vw) 5% 5% 5%;
 }
 @keyframes insideBottomToTop{
     0% {
         /* bottom:0; */
-        margin-top: calc(60px + 30.5vw);
+        margin-top: calc(60px + 15vw);
         transform: scaleY(0);
     }
     50% {
         /* bottom:0; */
-        margin-top: calc(60px + 30.5vw);
+        margin-top: calc(60px + 15vw);
         transform: scaleY(0);
     }
     100% {
         transform: scaleY(1);
         /* bottom:1vw; */
-        margin-top: calc(60px + 10.5vw);
+        margin-top: calc(60px + 5vw);
        
     }
 }
 div.slideStand0.rtl .desc, div.slideStand1.ltr .desc{
-    /* animation: outsideTopToBottom 1s linear forwards; */
-    margin: calc(60px + 10.5vw) 5% 5% 5%;
+    animation: outsideTopToBottom 1s linear forwards;
+    margin: calc(60px + 5vw) 5% 5% 5%;
 }
 @keyframes outsideTopToBottom{
     0% {
         transform: scaleY(1);
         /* margin:3vw;  */
-        margin-top: calc(60px + 10.5vw);
+        margin-top: calc(60px + 5vw);
     }
     50% {
         /* bottom:0; */
-        margin-top: calc(60px + 30.5vw);
+        margin-top: calc(60px + 15vw);
         transform: scaleY(0);
     }
     100% {
         /* bottom:0; */
         transform: scaleY(0);
-        margin-top: calc(60px + 30.5vw);
+        margin-top: calc(60px + 10vw);
     }
 }
 
-.HomePage button{
+.HomePage  div[name^='button']{
     position: absolute;
     top:50%;
     z-index: 100;
+    font-size: calc(50px + 0.5vw);
+    font-weight: bold;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
 }
-
-.HomePage button[name='LTR']{
+.HomePage  div[name^='button']:hover{
+    color: rgb(255,255,255);
+}
+.HomePage  div[name^='button']:active{
+    color: rgba(40,126,148);
+}
+.HomePage div[name='buttonLTR']{
     left:0;
 }
 
@@ -248,12 +270,59 @@ div.slideStand0.rtl .desc, div.slideStand1.ltr .desc{
     color: rgba(25,79,92);
 }
 
+.HomePage ul{
+    padding-right: calc(15px + 0.5vw);
+}
+
 .desc{
-    border: 2px gray solid;
+    border: 1px rgb(188, 218, 218) solid;
     /* border: 2px rgba(40,126,148) solid; */
     border-radius: 10px;
     padding: calc(15px + 0.5vw);
     font-size: calc(24px + 0.5vw);
+    padding: calc(10px + 0.5vw);
+    font-size: calc(16.4px + 0.5vw);
     background-color: rgba(255,255,255,0.35) ;
     color: rgba(20,63,74);
+}
+div[name='joinButton']{
+    position: absolute;
+    top:80%;
+    left: 0;
+    width: calc(150px + 0.5vw); 
+    width: calc(130px + 0.5vw); 
+    margin-left: -20px;
+    padding: calc(2px + 0.5vw); 
+    padding: calc(6px + 0.5vw); 
+    border-radius: 15px;
+
+    background-color: #d46700;
+    font-size: calc(24px + 0.5vw);
+    cursor: pointer;
+    transition: all 0.5s;
+    color: black;
+}
+div[name='joinButton']:hover{
+    width: calc(200px + 0.5vw);
+    width: calc(170px + 0.5vw); 
+    padding: calc(6px + 0.5vw) calc(27px + 0.5vw) ; 
+}
+
+@media screen and (min-width: 768px){
+    div.desc{
+        padding: calc(15px + 0.5vw);
+        /* font-size: calc(20px + 0.5vw); */
+        font-size: calc(24px + 0.5vw);
+    }
+    div[name='joinButton']{
+        top:80%;
+        left: 0;
+        width: calc(150px + 0.5vw); 
+        padding: calc(2px + 0.5vw);
+        font-size: calc(22px + 0.5vw); 
+    }
+    div[name='joinButton']:hover{
+        width: calc(200px + 0.5vw);
+        padding: calc(2px + 0.5vw) calc(27px + 0.5vw) ; 
+    }
 }
