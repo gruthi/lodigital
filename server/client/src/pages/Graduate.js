@@ -37,7 +37,7 @@ class Graduate extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="Graduate">
         <Card
           style={{ backgroundColor: "rgba(255, 255, 255, 0.4)" }}
           border="primary"
