@@ -1,7 +1,7 @@
 .Footer{
     width:100%;
     height: calc(15px + 1vw);
-    background-color: #8BCFB7;
+    /* background-color: #8BCFB7; */
     background-color: rgb(190, 156, 91);
     position: absolute;
     bottom: 0;
@@ -13,9 +13,11 @@
 }
 .Footer svg{
     margin-left: calc(10px + 0.5vw);
+    color: rgb(62, 62, 173);
 }
 .Footer div{
     margin: 0;
     padding: 0;
     font-size: calc(10px + 0.5vw);
+    color: rgba(25,79,92);
 }
