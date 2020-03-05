@@ -9,7 +9,8 @@ function AboutFullStack() {
     <div className="pageTemplate backTemp">
       <div className="wrapper">
         <TitlePage title="מה זה Full Stack?"/>
-        <TitlePage subTitle="פיתוח המסורתי WEB  אינטרנט - נחלק לשניים: "/>
+        {/* <TitlePage subTitle="פיתוח המסורתי WEB  אינטרנט - נחלק לשניים: "/> */}
+        <p>הפיתוח המסורתי של אינטרנט WEB נחלק לשניים:</p>
         {txt.map((item,i)=><div key={i}><TitlePage subTitle={item.subTitle} /><p>{item.subTxt}</p></div>)}  
        
       </div>
