@@ -285,6 +285,9 @@ div.slideStand0.rtl .desc, div.slideStand1.ltr .desc{
     background-color: rgba(255,255,255,0.35) ;
     color: rgba(20,63,74);
 }
+.desc:hover{
+    background-color:  rgba(255,255,255,0.85) ;
+}
 div[name='joinButton']{
     position: absolute;
     top:80%;
