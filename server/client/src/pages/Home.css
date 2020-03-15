@@ -2,6 +2,8 @@ div.slider{
     height:100%;
     width: 100%;    
     position: relative;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: hidden;
 }
 div.slide{
     height: 100%;
@@ -17,19 +19,15 @@ div.slide{
     }
 }
 div[name = "First"]{
-    background-color: greenyellow;
     background-image: url(../images/compm1.JPG);
 }
 div[name = "Second"]{
-    background-color: blue;
     background-image: url(../images/compm2.jpg);
 }
 div[name = "Three"]{
-    background-color: red;
     background-image: url(../images/compm3.jpg);
 }
 div[name = "Four"]{
-    background-color: gold;
     background-image: url(../images/compm4.jpg);
 }
 @media (min-aspect-ratio: 13/10){
@@ -299,16 +297,116 @@ div[name='joinButton']{
     padding: calc(6px + 0.5vw); 
     border-radius: 15px;
 
-    background-color: #d46700;
+    /* background-color: #d46700; */
+    background-color: rgb(197, 89, 17);
     font-size: calc(24px + 0.5vw);
     cursor: pointer;
     transition: all 0.5s;
     color: black;
+
+    -webkit-animation-name: wobble-to-top-right;
+	animation-name: wobble-to-top-right;
+	-webkit-animation-duration: 5s;
+    animation-duration: 5s;
+	-webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
 }
 div[name='joinButton']:hover{
     width: calc(200px + 0.5vw);
     width: calc(170px + 0.5vw); 
-    padding: calc(6px + 0.5vw) calc(27px + 0.5vw) ; 
+    padding: calc(6px + 0.5vw) calc(27px + 0.5vw); 
+    animation-play-state: paused;
+}
+@-webkit-keyframes wobble-to-top-right {
+    0%{
+        -ms-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+    	transform: translate(0, 0);
+    }
+    80%{
+        -ms-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+    	transform: translate(0, 0);
+    }
+    83.33%{
+		-ms-transform: translate(8px, -8px);
+		-webkit-transform: translate(8px, -8px);
+    	transform: translate(8px, -8px);
+	}
+    86.66%{
+	    -ms-transform: translate(-6px, 6px);
+	    -webkit-transform: translate(-6px, 6px);
+	    transform: translate(-6px, 6px);
+  	}
+    89.99% {
+	    -ms-transform: translate(4px, -4px);
+	    -webkit-transform: translate(4px, -4px);
+	    transform: translate(4px, -4px);
+  	}
+    93.32% {
+	    -ms-transform: translate(-2px, 2px);
+	    -webkit-transform: translate(-2px, 2px);
+	    transform: translate(-2px, 2px);
+  	}
+    96.65% {
+    	-ms-transform: translate(1px, -1px);
+    	-webkit-transform: translate(1px, -1px);
+		transform: translate(1px, -1px);
+	}
+	100% {
+		-ms-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+}
+@keyframes wobble-to-top-right {
+    0%{
+        -ms-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+    	transform: translate(0, 0);
+    }
+    80%{
+        -ms-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+    	transform: translate(0, 0);
+    }
+    /* 16.65% { */
+    83.33%{
+  	    -ms-transform: translate(8px, -8px);
+	    -webkit-transform: translate(8px, -8px);
+	    transform: translate(8px, -8px);
+  	}
+  	/* 33.3% { */
+    86.66%{
+  		-ms-transform: translate(-6px, 6px);
+	    -webkit-transform: translate(-6px, 6px);
+	    transform: translate(-6px, 6px);
+  	}
+      /* 49.95% { */
+    89.99% {
+  		-ms-transform: translate(4px, -4px);
+	    -webkit-transform: translate(4px, -4px);
+	    transform: translate(4px, -4px);
+  	}
+  	/* 66.6% { */
+    93.32% {
+  		-ms-transform: translate(-2px, 2px);
+	    -webkit-transform: translate(-2px, 2px);
+	    transform: translate(-2px, 2px);
+  	}
+      /* 83.25% { */
+    96.65% {
+  		-ms-transform: translate(1px, -1px);
+	    -webkit-transform: translate(1px, -1px);
+	    transform: translate(1px, -1px);
+  	}
+  	100% {
+  		-ms-transform: translate(0, 0);
+	    -webkit-transform: translate(0, 0);
+	    transform: translate(0, 0);
+  	}
 }
 
 
