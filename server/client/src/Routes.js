@@ -23,9 +23,9 @@ import ContactsList from "./pages/ContactsList.js";
 import CourseHome from "./pages/CourseHome.js";
 
 class Routes extends Component {
+
   state = { email: null, token:'', resetPsdSuccessed: false};
-  
-  
+
   setEmail = email => {
     this.setState({email: email})
   };
@@ -37,9 +37,7 @@ class Routes extends Component {
   setResetPsdSuccessed = () => {
     this.setState({resetPsdSuccessed: true})
   };
-  
-  
-
+ 
   render() {
     
     return (
@@ -60,11 +58,10 @@ class Routes extends Component {
           <Route exact path="/admission" component={Admission} />
           <Route exact path="/syllabus" component={Syllabus} />                
           <Route exact path="/aboutFullStack" component={AboutFullStack} />                
-          {/* <Route exact path="/graduates" component={Graduates} /> */}
           <Route exact path="/graduates" render={()=><Graduates token={this.state.token} email={this.state.email}/>} /> 
           <Route exact path="/graduateInsertProject" render={()=><GraduateInsertProject token={this.state.token}/>} />                
           <Route exact path="/contactUs" component={ContactUs} /> 
-          {this.props.manager?<Route exact path="/contactsList" component={ContactsList} /> :''}
+          {this.props.manager? <Route exact path="/contactsList" component={ContactsList} /> :''}
           <Route exact path="/courseHome" component={CourseHome} />                
         </Switch>
       </div>
