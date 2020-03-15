@@ -1,13 +1,8 @@
-html, body{
-  overflow-x: hidden !important;
-  -webkit-overflow-scrolling: hidden;
- 
-}
 .App {
   height: 100vh;
   box-sizing: border-box;
   position: relative;
-  background-color: #8BCFB7;
-  overflow-x: hidden !important;
+  background-color: rgb(40,126,148);
   direction: rtl;
+  overflow: hidden;
 }

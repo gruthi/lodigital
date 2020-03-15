@@ -1,91 +1,71 @@
 .HeaderPage{
-    /* height: calc(65px + 2.5vw); */
-    height: calc(70px + 0.5vw);
+    height: calc(70px + 0.75vw);
     background-color: rgb(245,245,245);
-    padding:calc(5px + 0.5vw);
+    padding:calc(5px + 0.25vw);
 }
-
-.HeaderPage>div{
-    background-image: url(./images/Capture-lodogotal2.JPG);
-    background-repeat: no-repeat; 
-    height: 100%;
-    /* max-width: 80vw; */
-    background-position: center;
-    /* animation: App-logo-spin  20s linear; */
-}
-.HeaderPage>div{
+.wrraper{
+    height: calc(60px + 0.25vw);
+    width:  calc(290.32px + 1.21vw);
+    margin: auto;
+    border-radius: 30%;
     position: relative;
-    overflow: hidden;
+    overflow: hidden;   
 }
-
-.HeaderPage>div::after{
-    background-color: khaki !important;
-    width:500px !important;
-    height: 100px !important;
-    display: block !important;
-    z-index: 10000 !important;
+.logoImg{
+    height: calc(60px + 0.25vw);
+    width:  calc(290.32px + 1.21vw);
+    display: block;
+    /* background-image: url(./images/lodigital-logo.png);
+    background-size: 300px; */
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-color: none;
+    border-radius: 30%;
+    /* position: relative;
+    overflow: hidden;    */
+    animation: changeScale 2s ease-out; 
 }
-
-  
-  /**
-   * The "shine" element
-   */
-  
-/* .top>div:after {
-    
-    animation: shine 20s ease-in-out  infinite;
-    animation-fill-mode: forwards;  
-    content: "";
-    position: absolute;
-    top: -110%;
-    left: -210%;
-    width: 200%;
+.wrraper span {
+    /* content: ""; */
+    width: 50px;
     height: 200%;
-    opacity: 0;
-    transform: rotate(30deg);
-    background: rgba(245, 224, 104, 0.6);
+    position: absolute;
+    top: -30%;
+    left: 0; 
+    left: -50px;  
+    transform: rotate(30deg); 
+    animation: shine 1.5s 1.8s ease-out; 
+    animation-fill-mode: forwards; 
     background: linear-gradient(
-      to right, 
-      rgba(245, 224, 104, 0.13) 0%,
-      rgba(245, 224, 104, 0.13) 77%,
-      rgba(245, 224, 104, 0.5) 92%,
-      rgba(245, 224, 104, 0.0) 100%
+      to left, 
+      rgba(255, 255 ,255 ,0) 0%,
+      rgba(245, 245, 245, 0.13) 10%,
+      rgba(245, 245, 245, 1) 50%,
+      rgba(245, 245, 245, 0.13) 90%,
+      rgba(255, 255, 255, 0.0) 100%
     );
-  } */
-  
-  /* Hover state - trigger effect */
-  
-  
-  /* Active state */
-  
-  /* .icon:active:after {
-    opacity: 0;
-  }
-   */
-/* @keyframes shine{
-10% {
-    opacity: 1;
-    top: -30%;
-    left: -30%;
-    transition-property: left, top, opacity;
-    
-    
-    transition-duration: 20s,20s,20s;
-    transition-timing-function: ease;
 }
-100% {
-    opacity: 0;
-    top: -30%;
-    left: -30%;
-    transition-property: left, top, opacity;
+.wrraper:hover span{
+    animation: shine 2s ease-in-out infinite forwards;  
 }
-} */
-/* @keyframes App-logo-spin {
-    from {
+  
+@keyframes shine{
+    0% {
+        left: -50px;
+    }
+    100% {
+        left: calc(290.32px + 1.21vw)
+    }
+}
+
+@keyframes changeScale {
+    0% {
         transform: scale(2);
     }
-    to {
+    45% {
+        transform: scale(0.7);
+    }
+    100% {
         transform: scale(1);
     }
-} */
-
+}

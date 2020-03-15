@@ -8,11 +8,13 @@ import Routes from "./Routes.js";
 import Footer from "./Footer.js";
 
 class App extends Component {
+  
   state = { manager: false};
   
   setManager=manager=>{
     this.setState({manager: manager});
    }
+
   render() {
     
     return (

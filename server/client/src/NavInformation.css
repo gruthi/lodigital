@@ -1,5 +1,4 @@
 .NavInformation{
-    /* direction: rtl; */
     height: 3.4vw;
 }
 
@@ -12,14 +11,8 @@ nav.navbar.navbar-expand-md.navbar-light{
 nav.navbar.navbar-expand-md.navbar-light a{
     text-align: center;
 }
-/* --- navigation links --- */
 
 /* --- collapse show style --- */
-div#basic-navbar-nav.navbar-collapse.collapse.show{
-    padding: 0 20px;
-    width: 60%;
-    transition: all 0.5s;
-}
 
 div#basic-navbar-nav.navbar-collapse.collapse.show a{
     border-width: 1px;
@@ -30,7 +23,7 @@ div#basic-navbar-nav.navbar-collapse.collapse.show a{
 div#basic-navbar-nav.navbar-collapse.collapse.show div.dropdown-menu.show{
     width: 30%;
     margin: 0 35%;
-    transition: all 2s;
+    transition: all 0.8s;
 }
 
 /* --- collapse hide style --- */
@@ -44,7 +37,7 @@ background-clip: text;
 div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:after, div.mr-auto.navbar-nav>a.nav-link svg{
     color: rgb(215,215,215);
 }
-div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:hover:after, div.mr-auto.navbar-nav>a.nav-link svg:hover{
+div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:hover:after, div.mr-auto.navbar-nav>a.nav-link svg:hover {
     color: rgb(190, 156, 91);
 }
 div.mr-auto.navbar-nav>a.nav-link svg{
@@ -59,34 +52,29 @@ div.mr-auto.navbar-nav>a.nav-link.active{
 }
 div.mr-auto.navbar-nav>a.nav-link:hover, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link:hover, .NavInformation i:hover{
 /* div.mr-auto.navbar-nav a.nav-link:hover{ */
-    background: -webkit-linear-gradient(orange,rgb(150, 150, 150));
+    background: -webkit-linear-gradient(orange,rgb(194, 172, 172));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-
 div.mr-auto.navbar-nav{
-    margin: auto !important;
+    margin: auto;
 }
 
 @media screen and (min-width: 768px){
     div.dropdown.nav-item, div.mr-auto.navbar-nav>a.nav-link:not(:last-of-type){
-        border-left: 2px solid orange!important;
+        border-left: 2px solid orange;
     }
-    div.mr-auto.navbar-nav>a.nav-link, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link, .NavInformation i{
+    div.mr-auto.navbar-nav>a.nav-link, div.mr-auto.navbar-nav a.dropdown-toggle.nav-link, a.nav-link svg{
         font-size: 1.8vw;
-        margin: 0.1vw 0 0;
         height:1.8vw;
-        padding: 0;
         line-height:1.8vw;
     }
     div.dropdown-menu.show a.nav-link{
         /* font-size: calc(12px+0.5vw) !important; */
     }
-    div.dropdown-menu.show a.nav-link:hover{
-        background-color: bluevioletc !important;
-    }
+    
     div.mr-auto.navbar-nav>div.dropdown.nav-item>a, div.mr-auto.navbar-nav>a.nav-link{
         padding: 0 1vw;
     }
