@@ -4,6 +4,8 @@ const express = require("express");
 const multer = require("multer");
 const upload = multer();
 const app = express();
+const utils = require("./production_utils");
+
 app.use(express.json());
 
 app.post("/users/login", (req, res) => {
@@ -49,6 +51,8 @@ app.get("/getContactsList", (req, res) => {
   console.log('getContactsList');
   routeHelper.getContactsList( req, res);
 });
+utils.handleProduction(express, app);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
