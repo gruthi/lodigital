@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+
 import "./NavInformation.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -14,13 +15,23 @@ function LinkContainerNavLink(props) {
   );
 }
 
-function NavInformation(props){
+class NavInformation extends Component {
+  state={ navExpanded:false }
+    
+  setNavExpanded=(expanded)=> {
+    this.setState({ navExpanded: expanded });
+  }
+  closeNav=()=> {
+    this.setState({ navExpanded: false });
+  }
+  render() {
+
     return (
       <div className="NavInformation">
-        <Navbar expand="md">
+        <Navbar expand="md" onToggle={this.setNavExpanded} expanded={this.state.navExpanded}>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav onSelect={this.closeNav} className="mr-auto">
               <LinkContainerNavLink to="/" textLink={<FaHome/>} />
               <LinkContainerNavLink to="/login" textLink="אתר הלימודים" />
               <LinkContainerNavLink to="/aboutTheVenture" textLink="אודות המיזם" />
@@ -36,13 +47,14 @@ function NavInformation(props){
               <LinkContainerNavLink to="/aboutFullStack" textLink="מה זה full stack ?" />
               <LinkContainerNavLink to="/graduates" textLink="בוגרים" />
               <LinkContainerNavLink to="/contactUs" textLink="צור קשר " />
-              {props.manager? <LinkContainerNavLink to="/contactsList" textLink="רשימת פניות" />:''}
+              {this.props.manager? <LinkContainerNavLink to="/contactsList" textLink="רשימת פניות" />:''}
 
             </Nav>
           </Navbar.Collapse>
         </Navbar>
       </div>
     );
+  }
 }
 
 export default NavInformation;
