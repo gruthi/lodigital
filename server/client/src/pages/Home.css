@@ -293,13 +293,13 @@ div[name='joinButton']{
     width: calc(150px + 0.5vw); 
     width: calc(130px + 0.5vw); 
     margin-left: -20px;
-    padding: calc(2px + 0.5vw); 
-    padding: calc(6px + 0.5vw); 
+    padding: calc(6px + 0.5vw) calc(6px + 0.5vw) calc(6px + 0.5vw) calc(26px + 0.5vw); 
     border-radius: 15px;
 
     /* background-color: #d46700; */
     background-color: rgb(197, 89, 17);
-    font-size: calc(24px + 0.5vw);
+    font-size: calc(20px + 0.5vw);
+    text-align: center;
     cursor: pointer;
     transition: all 0.5s;
     color: black;
@@ -420,7 +420,7 @@ div[name='joinButton']:hover{
         top:80%;
         left: 0;
         width: calc(150px + 0.5vw); 
-        padding: calc(2px + 0.5vw);
+        padding: calc(2px + 0.5vw) calc(2px + 0.5vw) calc(2px + 0.5vw) calc(22px + 0.5vw); 
         font-size: calc(22px + 0.5vw); 
     }
     div[name='joinButton']:hover{
