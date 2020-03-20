@@ -32,7 +32,7 @@ class Graduates extends Component {
   }
   render() {
     return (
-      <div className="pageTemplate backTempSyllabus">
+      <div className="pageTemplate backTemp">
         <div className="wrapper">
           {this.props.token ? (
             <Link to="/graduateInsertProject">

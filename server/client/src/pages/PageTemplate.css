@@ -6,28 +6,18 @@
   background-size: cover; 
   margin-top: -3.4vw;
   text-align: justify;
-  /* direction: rtl; */
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
 .backTemp{
   background-image: url(../images/Capture10.JPG);
   background-size: cover; 
   overflow-y: auto;
-  padding: 4.4vw 10% 2.4vw 20%;
   padding: calc(40px + 4.4vw) 10% 2.4vw 10%;
 }
-.backTempSyllabus{
-  background-image: url(../images/Capture10.JPG);
-  background-size: cover; 
-  overflow-y: auto;
-  /* padding: 4.4vw 5% 2.4vw 5%; */
-  padding: 4.4vw 5% 5% 5%;
-}
+
 @media screen and (min-width: 768px){
   .pageTemplate{
     background-image: url(../images/Capture9.JPG);
-    /* background-color: red; */
   }
   .backTemp{
     padding-top: 4.4vw;
@@ -36,10 +26,6 @@
 
 div{
   font-size: calc(15px + 0.5vw);
-  /* font-size: 15px; */
-    /* overflow: hidden; */
-    /* line-height: 18px; */
-    /* margin-top: 13px; */
 }
 
 h1{
