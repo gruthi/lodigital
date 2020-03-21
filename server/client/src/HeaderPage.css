@@ -34,7 +34,7 @@
     left: 0; 
     left: -50px;  
     transform: rotate(30deg); 
-    animation: shine 1.5s 1.8s ease-out; 
+    animation: shine 1.3s 1.8s linear; 
     animation-fill-mode: forwards; 
     background: linear-gradient(
       to left, 
@@ -45,10 +45,11 @@
       rgba(255, 255, 255, 0.0) 100%
     );
 }
-.wrraper:hover span{
-    animation: shine 2s ease-in-out infinite forwards;  
-}
-  
+@media screen and (min-width: 768px){
+    .wrraper:hover span{
+        animation: shine 2s ease-in-out infinite forwards;  
+    }
+}  
 @keyframes shine{
     0% {
         left: -50px;
