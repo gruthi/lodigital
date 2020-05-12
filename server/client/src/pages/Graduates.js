@@ -34,6 +34,7 @@ class Graduates extends Component {
     return (
       <div className="pageTemplate backTemp">
         <div className="wrapper">
+        <h1>בוגרים</h1>
           {this.props.token ? (
             <Link to="/graduateInsertProject">
               <button>

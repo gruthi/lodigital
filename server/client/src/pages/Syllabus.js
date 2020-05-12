@@ -1,6 +1,5 @@
 import React from "react";
 import "./PageTemplate.css";
-import TitlePage from "./TitlePage.js";
 import Table from 'react-bootstrap/Table'
 
 function Syllabus() {
@@ -8,7 +7,7 @@ function Syllabus() {
    let course=[
         {subject:'Introduction to programming',desc:'Computer, input, output, hardware, software, operating system, CPU, memory, bit, byte, binary base, flow diagrams',lst:[]},
         {subject:'HTML',desc:'IDE,Tags, HTML elements,HTML5 elements,URL,  Elements properties ',lst:[]},
-        {subject:'CSS',desc:'Syntax, Selectors, Inline/Internal/External,  Box mode, Width/Height, Layout, Pseudo class, Responsive Web Site,  Frameworks: Bootstrap, Advanced: Flexbox, Grid   ',lst:[]},
+        {subject:'CSS',desc:'Syntax, Selectors, Inline/Internal/External, Box mode, Width/Height, Layout, Pseudo class, Responsive Web Site,  Frameworks: Bootstrap, Advanced: Flexbox, Grid   ',lst:[]},
         {subject:'JavaScript',desc:'',
             lst:[{subject:'Basic Programming',desc:'Variables, Operators, Conditions, Loops, Functions, Scope, Array, Event, Object'},
                 {subject:'Web Programming',desc:'DOM, AJAX, JSON'},
@@ -29,7 +28,7 @@ function Syllabus() {
   return (
     <div className="pageTemplate backTemp">
       {/* <div className="wrapper"> */}
-      <TitlePage title="סילבוס"/>
+      <h1>סילבוס</h1>
       <Table striped bordered hover size="sm" responsive="sm" className="text-left"  dir="ltr" >
         <thead><th>Subject</th><th>Description</th></thead>
         <tbody> 

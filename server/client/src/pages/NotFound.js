@@ -10,7 +10,7 @@ const NotFound = () => (
         <div />
         <h1>Page Not Found</h1>
         <Link to="/">
-          <i className="fas fa-home "></i>
+          לדף הבית <i className="fas fa-home "></i>
         </Link>
       </center>
     </div>

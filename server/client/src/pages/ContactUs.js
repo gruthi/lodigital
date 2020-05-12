@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./PageTemplate.css";
-import TitlePage from "./TitlePage.js";
 import axios from "axios";
 import CardDeck from 'react-bootstrap/CardDeck'
 
@@ -85,12 +84,12 @@ class ContactUs extends Component {
       this.state.thanks
       ?
       <div className="pageTemplate backTemp">
-        <TitlePage title="תודה על פנייתך! נחזור אליכם בהקדם."/>
+        <h1>תודה על פנייתך! נחזור אליכם בהקדם.</h1>
       </div>
       :
       <div className="pageTemplate backTemp">
-        <TitlePage title="מתעניינים בקורס? מוזמנים להצטרף אלינו!"/>
-        <TitlePage subTitle="אנא מלאו את הפרטים הבאים, ונהיה בקשר בהקדם:"/>
+        <h1>מתעניינים בקורס? מוזמנים להצטרף אלינו!</h1>
+        <h2>אנא מלאו את הפרטים הבאים, ונהיה בקשר בהקדם:</h2>
         <CardDeck>
           
           {inputData.map((item,i) => 
@@ -106,12 +105,12 @@ class ContactUs extends Component {
             </div>
           )}
           <div className="form-group m-2">
-          <label className="ml-2" >האם תוכל/י להשקיע 10 שעות שבועיות בקורס (מעבר לשעות הלימודים)?</label>
-          
-          <input type="radio" id="yes" name="tenHours" value="כן" onChange = {this.handleChange('tenHours')}/>
-          <label className="mx-2" for="yes" >כן</label>
-          <input type="radio" id="no" name="tenHours" value="לא"  onChange = {this.handleChange('tenHours')}/>
-          <label className="mx-2" for="no">לא</label>
+            <label className="ml-2" >האם תוכל/י להשקיע 10 שעות שבועיות בקורס (מעבר לשעות הלימודים)?</label>
+            
+            <input type="radio" id="yes" name="tenHours" value="כן" onChange = {this.handleChange('tenHours')}/>
+            <label className="mx-2" for="yes" >כן</label>
+            <input type="radio" id="no" name="tenHours" value="לא"  onChange = {this.handleChange('tenHours')}/>
+            <label className="mx-2" for="no">לא</label>
           </div>
         </CardDeck>
                
