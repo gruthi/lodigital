@@ -8,7 +8,6 @@ import Register from "./userManagement/Register";
 import ForgotPassword from "./userManagement/ForgotPassword";
 import ResetPassword from "./userManagement/ResetPassword.js";
 import AboutTheVenture from "./pages/AboutTheVenture.js";
-import Goals from "./pages/Goals.js";
 import Audience from "./pages/Audience.js";
 import TechnologiesAreTaught from "./pages/TechnologiesAreTaught.js";
 import CourseFormat from "./pages/CourseFormat.js";
@@ -21,6 +20,7 @@ import GraduateInsertProject from "./pages/GraduateInsertProject.js";
 import ContactUs from "./pages/ContactUs.js";
 import ContactsList from "./pages/ContactsList.js";
 import CourseHome from "./pages/CourseHome.js";
+import NotFound from "./pages/NotFound.js";
 
 class Routes extends Component {
 
@@ -50,7 +50,6 @@ class Routes extends Component {
           <Route exact path="/forgotPassword" component={ForgotPassword} />
           <Route exact path="/resetPassword/:token" render={(props)=><ResetPassword {...props} setEmail={this.setEmail} setResetPsdSuccessed={this.setResetPsdSuccessed} />} />
           <Route exact path="/aboutTheVenture" component={AboutTheVenture} />
-          <Route exact path="/goals" component={Goals} />
           <Route exact path="/audience" component={Audience} />
           <Route exact path="/technologiesAreTaught" component={TechnologiesAreTaught} />
           <Route exact path="/courseFormat" component={CourseFormat} />
@@ -63,6 +62,7 @@ class Routes extends Component {
           <Route exact path="/contactUs" component={ContactUs} /> 
           {this.props.manager? <Route exact path="/contactsList" component={ContactsList} /> :''}
           <Route exact path="/courseHome" component={CourseHome} />                
+          <Route exact path="/*" component={NotFound} />                
         </Switch>
       </div>
     );
