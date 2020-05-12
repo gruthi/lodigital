@@ -3,13 +3,17 @@ const mongo = require("mongodb");
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 const authen = require("./authentication");
+
 const url = "mongodb://localhost:27017/";
+
 const myDb = "lodigitalDB";
 const usersColl = "users";
 const graduates = "graduates";
 const contactList = "contactList";
+
 const timeLogin=18000;
 const timeResetPassword=1200;
+
 const courseMails=[
   'yosriz@gmail.com','770mdk@gmail.com','adi9788@yahoo.com','adisogermay@gmail.com',
 'agammor224@gmail.com','bykjennifer@gmail.com','chanieluz@gmail.com','distne72@gmail.com',
@@ -28,7 +32,7 @@ function getMyTime(){
 
 const account = {
     user:'donotreply.lodigital@gmail.com',
-    password: 'kushdhyk' 
+    password: 'kushdhyk777' 
 }
 
 // params.to (email address/ addresses ) must be array
@@ -64,6 +68,8 @@ function sendEmail(account, params) {
     transporter.sendMail(mailOptions, (error, info) => {
       console.log('sending mail');
       if (error) {
+        console.log('error');
+        console.log(error);
         return error;
       } else {
          console.log('Message %s sent: %s', info.messageId, info.response);
@@ -73,7 +79,7 @@ function sendEmail(account, params) {
 }
 
 function login(req, res) {
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
@@ -97,8 +103,9 @@ function login(req, res) {
     });
   });
 }
+
 function register(req, res) {
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
@@ -135,7 +142,8 @@ function register(req, res) {
 
 function forgotPassword(req, res) {
 
-  MongoClient.connect(url, function(err, db) {
+  // MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
@@ -188,7 +196,7 @@ function resetPassword(req, res) {
   if(!authen.authenticationIsOk(req.body.token)){
     return res.sendStatus(401);
   }
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       console.log("---1---");
       return res.sendStatus(500);
@@ -220,7 +228,7 @@ function graduateInsert(req, res) {
   if(!authen.authenticationIsOk(req.body.email)){//this is not  email but token
      return res.sendStatus(401);
   }
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
@@ -242,7 +250,7 @@ function graduateInsert(req, res) {
   });
 }
 function graduateGet(req, res) {
-   MongoClient.connect(url, function(err, db) {
+   MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
@@ -262,7 +270,7 @@ function graduateGet(req, res) {
 }
 
 function getContactsList(req, res) {
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
    if (err) {
      return res.sendStatus(500);
    }
@@ -285,7 +293,7 @@ function graduateDelete(req, res) {
   if (!authen.authenticationIsOk(req.headers.authorization)) {
     return res.sendStatus(401);
   }
-   MongoClient.connect(url, function(err, db) {
+   MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
@@ -313,7 +321,7 @@ function graduateDelete(req, res) {
 }
 function contactUs(req, res) {
 
-  MongoClient.connect(url, function(err, db) {
+  MongoClient.connect(url,{useNewUrlParser: true, useUnifiedTopology: true}, function(err, db) {
     if (err) {
       return res.sendStatus(500);
     }
@@ -328,9 +336,9 @@ function contactUs(req, res) {
         if (err) {
           return res.sendStatus(500);
         }
-        
+         
         sendEmail(account,
-            {to: ['henilana@gmail.com'], // list of receivers
+            {to: ['Lodigital2019@gmail.com'], // list of receivers
             subject: 'פנייה חדשה התקבלה באתר לודיגיטל', // Subject line
             text:'',
             html:`<div><h3>להלן פרטי הפנייה שהתקבלה ב${getMyTime()}:</h3>
