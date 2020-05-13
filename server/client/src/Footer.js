@@ -1,6 +1,8 @@
 import React from "react";
 import "./Footer.css";
 import { FaFacebook } from "react-icons/fa";
+import { AiFillLinkedin } from "react-icons/ai";
+// import { AiOutlineLinkedin } from "react-icons/ai";
 
 
 function Footer(){
@@ -26,10 +28,10 @@ function Footer(){
           </div>
           <div className="to-right">
           אתר בהרצה - נבנה על ידי 
-          <a href='https://www.linkedin.com/in/ruthi-glick-2a81a311' target="_blank" rel="noopener noreferrer"> רותי גליק </a>
+          <a href='https://www.linkedin.com/in/ruthi-glick-2a81a311' target="_blank" rel="noopener noreferrer"> רותי גליק <AiFillLinkedin/> </a>
            & 
-           <a href='https://www.linkedin.com/in/ilana-hen-05300b198/' target="_blank" rel="noopener noreferrer"> אילנה חן </a>
-           , מבוגרי הקורס
+           <a href='https://www.linkedin.com/in/ilana-hen-05300b198/' target="_blank" rel="noopener noreferrer"> אילנה חן <AiFillLinkedin/> </a>
+           מבוגרי הקורס
           </div> 
           {/* <div className="text-right">
            אתר בהרצה * 

@@ -15,8 +15,11 @@
     color: rgb(62, 62, 173);
     margin-top: -2px;
 }
+.Footer a svg{
+    font-size: calc(8px + 0.5vw);
+}
 .Footer div{
-    font-size: calc(11px + 0.5vw);
+    font-size: calc(10.7px + 0.5vw);
     /* color: rgba(25,79,92); */
     color: rgb(62, 62, 173);
 }
@@ -28,5 +31,5 @@
 }
 .Footer a{
     color: rgb(62, 62, 173);
-    text-decoration: underline;
+    text-decoration:none;
 }
