@@ -163,7 +163,7 @@ function forgotPassword(req, res) {
         }
         // const token = authen.createTokenLink(data);
         const token = authen.createToken(data,timeResetPassword);
-        let link = `http://localhost:3000/resetPassword/${token}`;
+        let link = `https://lodigital.org/resetPassword/${token}`;
 
         try{
           sendEmail(account,
