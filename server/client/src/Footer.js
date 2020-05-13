@@ -22,16 +22,20 @@ function Footer(){
            אתר בהרצה * 
           </div>  */}
           <div className="to-left">
-            <a href='https://facebook.com/lodigital2019' target="_blank" rel="noopener noreferrer">
-              <FaFacebook />
-            </a>
+              <a href='https://facebook.com/lodigital2019' target="_blank" rel="noopener noreferrer">
+                <FaFacebook />
+              </a>
           </div>
           <div className="to-right">
-          אתר בהרצה - נבנה על ידי 
-          <a href='https://www.linkedin.com/in/ruthi-glick-2a81a311' target="_blank" rel="noopener noreferrer"> רותי גליק <AiFillLinkedin/> </a>
-           & 
-           <a href='https://www.linkedin.com/in/ilana-hen-05300b198/' target="_blank" rel="noopener noreferrer"> אילנה חן <AiFillLinkedin/> </a>
-           מבוגרי הקורס
+              {/* אתר בהרצה - נבנה על ידי 
+              <a href='https://www.linkedin.com/in/ruthi-glick-2a81a311' target="_blank" rel="noopener noreferrer"> רותי גליק <AiFillLinkedin/> </a>
+              & 
+              <a href='https://www.linkedin.com/in/ilana-hen-05300b198/' target="_blank" rel="noopener noreferrer"> אילנה חן <AiFillLinkedin/> </a>
+              מבוגרי הקורס */}
+              אתר בהרצה - נבנה על ידי בוגרות הקורס - 
+              <a href='https://www.linkedin.com/in/ruthi-glick-2a81a311' target="_blank" rel="noopener noreferrer"> רותי גליק <AiFillLinkedin/> </a>
+              ו 
+              <a href='https://www.linkedin.com/in/ilana-hen-05300b198/' target="_blank" rel="noopener noreferrer">אילנה חן <AiFillLinkedin/> </a>
           </div> 
           {/* <div className="text-right">
            אתר בהרצה * 
