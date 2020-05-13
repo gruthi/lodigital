@@ -36,7 +36,7 @@ class NavInformation extends Component {
               <LinkContainerNavLink to="/login" textLink="אתר הלימודים" />
               <LinkContainerNavLink to="/aboutTheVenture" textLink="אודות המיזם" />
               <NavDropdown title="אודות הקורס " id="basic-nav-dropdown">
-                <LinkContainerNavLink to="/audience" textLink="למי מיועד הקורס" />
+                <LinkContainerNavLink to="/audience" textLink="קהל יעד ומטרות הקורס" />
                 <LinkContainerNavLink to="/technologiesAreTaught" textLink="טכנולוגיות הנלמדות בקורס" />
                 <LinkContainerNavLink to="/courseFormat" textLink="זמנים ומתכונת הקורס" />
                 <LinkContainerNavLink to="/projects" textLink="פרויקטים ופרויוקטונים" />
